@@ -1,24 +1,78 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import React, { useEffect } from 'react';
+import { Platform } from 'react-native';
+
+if (Platform.OS === 'web' && typeof window !== 'undefined') {
+  (window as any).React = React;
+  
+  const style = document.createElement('style');
+  style.innerHTML = `
+    wcm-modal {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+    }
+    #walletconnect-modal {
+      max-width: 450px !important;
+      width: 100% !important;
+      border-radius: 20px !important;
+    }
+  `;
+  document.head.appendChild(style);
+}
+
 import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
+import { WalletConnectModal, useWalletConnectModal } from '@walletconnect/modal-react-native';
+import { RPC_URL } from './contractConfig';
 
-import { useColorScheme } from '@/hooks/use-color-scheme';
+const projectId = 'f4c08310d2caa9d83e6686c1237b0778';
 
-export const unstable_settings = {
-  anchor: '(tabs)',
+const providerMetadata = {
+  name: 'Blood Donation App',
+  description: 'Decentralized Blood Donation System',
+  url: 'https://github.com/expo/expo',
+  icons: ['https://walletconnect.com/walletconnect-logo.png'],
+  redirect: {
+    native: 'blooddonationapp://',
+    universal: 'https://metamask.app.link',
+  },
+};
+
+const sessionParams = {
+  namespaces: {
+    eip155: {
+      methods: [
+        "eth_sendTransaction",
+        "eth_signTransaction",
+        "eth_sign",
+        "personal_sign",
+        "eth_signTypedData",
+      ],
+      chains: ["eip155:11155111"],
+      events: ["chainChanged", "accountsChanged"],
+      rpcMap: {
+        11155111: RPC_URL, 
+      },
+    },
+  },
 };
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
+  const { provider, address, isConnected } = useWalletConnectModal();
+
+  useEffect(() => {
+    if (isConnected) {
+      console.log("Wallet successfully synced with app! Address:", address);
+    }
+  }, [isConnected, address]);
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <>
+      <Stack screenOptions={{ headerShown: false }} />
+      <WalletConnectModal
+        projectId={projectId}
+        providerMetadata={providerMetadata}
+        sessionParams={sessionParams}
+      />
+    </>
   );
 }

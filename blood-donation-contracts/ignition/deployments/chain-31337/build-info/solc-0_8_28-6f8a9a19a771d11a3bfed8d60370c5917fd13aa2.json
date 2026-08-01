@@ -1,0 +1,49 @@
+{
+  "_format": "hh3-sol-build-info-1",
+  "id": "solc-0_8_28-6f8a9a19a771d11a3bfed8d60370c5917fd13aa2",
+  "solcVersion": "0.8.28",
+  "solcLongVersion": "0.8.28+commit.7893614a",
+  "compilerType": "solc",
+  "toolVersions": {
+    "hardhat": "3.12.0"
+  },
+  "userSourceNameMap": {
+    "contracts/BloodDonation.sol": "project/contracts/BloodDonation.sol"
+  },
+  "input": {
+    "language": "Solidity",
+    "settings": {
+      "evmVersion": "cancun",
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "outputSelection": {
+        "*": {
+          "": [
+            "ast"
+          ],
+          "*": [
+            "abi",
+            "evm.bytecode.linkReferences",
+            "evm.bytecode.object",
+            "evm.bytecode.opcodes",
+            "evm.bytecode.sourceMap",
+            "evm.deployedBytecode.immutableReferences",
+            "evm.deployedBytecode.linkReferences",
+            "evm.deployedBytecode.object",
+            "evm.deployedBytecode.opcodes",
+            "evm.deployedBytecode.sourceMap",
+            "evm.methodIdentifiers"
+          ]
+        }
+      },
+      "remappings": []
+    },
+    "sources": {
+      "project/contracts/BloodDonation.sol": {
+        "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\ncontract BloodDonation {\n    struct BloodBank {\n        string name;\n        string latitude;\n        string longitude;\n        string bloodGroups; \n        string inventoryLevels; // NEW: Added inventory details (e.g., \"A+: 5 units, O-: 2 units\")\n        bool isVerified;        // NEW: Added verification status\n        bool isActive;\n    }\n\n    mapping(address => BloodBank) public bloodBanks;\n    address[] public bloodBankAddresses;\n\n    // NEW: Blockchain Event for real-time updates\n    event BloodBankRegistered(address indexed bankAddress, string name, string bloodGroups);\n\n    function registerBloodBank(\n        string memory _name, \n        string memory _latitude, \n        string memory _longitude,\n        string memory _bloodGroups,\n        string memory _inventoryLevels // NEW: Accept inventory in parameters\n    ) public {\n        // Default to false for verification until verified by an admin, or set to true for testing\n        bloodBanks[msg.sender] = BloodBank(_name, _latitude, _longitude, _bloodGroups, _inventoryLevels, false, true);\n        bloodBankAddresses.push(msg.sender);\n\n        // Emit the event\n        emit BloodBankRegistered(msg.sender, _name, _bloodGroups);\n    }\n\n    function getBloodBanks() public view returns (address[] memory) {\n        return bloodBankAddresses;\n    }\n}"
+      }
+    }
+  }
+}
