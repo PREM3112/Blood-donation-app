@@ -1,12 +1,12 @@
 // app/contractConfig.ts
 
 // 1. Your deployed contract address on Ethereum Sepolia
-export const CONTRACT_ADDRESS = "0xB282978eCe9fE7589f7CFcdd766aB7d2Ee973ADf";
+export const CONTRACT_ADDRESS = "0x16d4f3bfE789d6Ae277E0BEe2B5d415E236d72b7";
 
 // 2. The Alchemy Sepolia RPC URL
 export const RPC_URL = "https://eth-sepolia.g.alchemy.com/v2/alch_rQZRROPAVz-kLUT0V9aBf";
 
-// 3. Your contract ABI
+// 3. Your updated contract ABI matching the IPFS deployment
 export const CONTRACT_ABI = [
   {
     "anonymous": false,
@@ -20,17 +20,42 @@ export const CONTRACT_ABI = [
       {
         "indexed": false,
         "internalType": "string",
-        "name": "name",
+        "name": "ipfsCID",
         "type": "string"
       },
       {
         "indexed": false,
         "internalType": "string",
-        "name": "bloodGroups",
+        "name": "latitude",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "longitude",
         "type": "string"
       }
     ],
     "name": "BloodBankRegistered",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "bankAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "newIpfsCID",
+        "type": "string"
+      }
+    ],
+    "name": "InventoryUpdated",
     "type": "event"
   },
   {
@@ -64,7 +89,7 @@ export const CONTRACT_ABI = [
     "outputs": [
       {
         "internalType": "string",
-        "name": "name",
+        "name": "ipfsCID",
         "type": "string"
       },
       {
@@ -75,16 +100,6 @@ export const CONTRACT_ABI = [
       {
         "internalType": "string",
         "name": "longitude",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "bloodGroups",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "inventoryLevels",
         "type": "string"
       },
       {
@@ -118,7 +133,7 @@ export const CONTRACT_ABI = [
     "inputs": [
       {
         "internalType": "string",
-        "name": "_name",
+        "name": "_ipfsCID",
         "type": "string"
       },
       {
@@ -130,19 +145,22 @@ export const CONTRACT_ABI = [
         "internalType": "string",
         "name": "_longitude",
         "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "_bloodGroups",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "_inventoryLevels",
-        "type": "string"
       }
     ],
     "name": "registerBloodBank",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_newIpfsCID",
+        "type": "string"
+      }
+    ],
+    "name": "updateInventory",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

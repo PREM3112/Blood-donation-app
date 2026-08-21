@@ -3,36 +3,65 @@ pragma solidity ^0.8.0;
 
 contract BloodDonation {
     struct BloodBank {
-        string name;
-        string latitude;
-        string longitude;
-        string bloodGroups; 
-        string inventoryLevels; // NEW: Added inventory details (e.g., "A+: 5 units, O-: 2 units")
-        bool isVerified;        // NEW: Added verification status
-        bool isActive;
+        string ipfsCID;        // IPFS hash storing JSON (name, bloodGroups, inventoryLevels, phone)
+        string latitude;       // Kept on-chain for quick map plotting
+        string longitude;      // Kept on-chain for quick map plotting
+        bool isVerified;       // Admin verification status
+        bool isActive;         // Active status
     }
 
     mapping(address => BloodBank) public bloodBanks;
     address[] public bloodBankAddresses;
 
-    // NEW: Blockchain Event for real-time updates
-    event BloodBankRegistered(address indexed bankAddress, string name, string bloodGroups);
+    // Events for real-time frontend and indexing updates
+    event BloodBankRegistered(address indexed bankAddress, string ipfsCID, string latitude, string longitude);
+    event InventoryUpdated(address indexed bankAddress, string newIpfsCID);
 
+    /**
+     * @dev Registers a new blood bank using an IPFS CID instead of raw text strings.
+     * @param _ipfsCID IPFS Hash pointing to the metadata JSON file
+     * @param _latitude Geo-coordinate latitude
+     * @param _longitude Geo-coordinate longitude
+     */
     function registerBloodBank(
-        string memory _name, 
+        string memory _ipfsCID, 
         string memory _latitude, 
-        string memory _longitude,
-        string memory _bloodGroups,
-        string memory _inventoryLevels // NEW: Accept inventory in parameters
+        string memory _longitude
     ) public {
-        // Default to false for verification until verified by an admin, or set to true for testing
-        bloodBanks[msg.sender] = BloodBank(_name, _latitude, _longitude, _bloodGroups, _inventoryLevels, false, true);
-        bloodBankAddresses.push(msg.sender);
+        // Prevent duplicate array entries if the bank is re-registering
+        if (bytes(bloodBanks[msg.sender].ipfsCID).length == 0) {
+            bloodBankAddresses.push(msg.sender);
+        }
 
-        // Emit the event
-        emit BloodBankRegistered(msg.sender, _name, _bloodGroups);
+        // Write to blockchain mapping
+        bloodBanks[msg.sender] = BloodBank({
+            ipfsCID: _ipfsCID,
+            latitude: _latitude,
+            longitude: _longitude,
+            isVerified: false, // Default to false until admin approval
+            isActive: true
+        });
+
+        // Emit registration event
+        emit BloodBankRegistered(msg.sender, _ipfsCID, _latitude, _longitude);
     }
 
+    /**
+     * @dev Allows a registered blood bank to update its inventory IPFS hash dynamically.
+     * @param _newIpfsCID Updated IPFS Hash containing new inventory data
+     */
+    function updateInventory(string memory _newIpfsCID) public {
+        require(bytes(bloodBanks[msg.sender].ipfsCID).length > 0, "Blood bank is not registered.");
+        
+        bloodBanks[msg.sender].ipfsCID = _newIpfsCID;
+
+        // Emit update event
+        emit InventoryUpdated(msg.sender, _newIpfsCID);
+    }
+
+    /**
+     * @dev Returns an array of all registered blood bank wallet addresses.
+     */
     function getBloodBanks() public view returns (address[] memory) {
         return bloodBankAddresses;
     }

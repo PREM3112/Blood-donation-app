@@ -1,3 +1,4 @@
+import * as Linking from 'expo-linking';
 import React, { useEffect } from 'react';
 import { Platform } from 'react-native';
 
@@ -32,8 +33,10 @@ const providerMetadata = {
   url: 'https://github.com/expo/expo',
   icons: ['https://walletconnect.com/walletconnect-logo.png'],
   redirect: {
-    native: 'blooddonationapp://',
-    universal: 'https://metamask.app.link',
+    // Dynamically captures your active exp:// tunnel URL
+    native: Linking.createURL(''), 
+    // Left completely blank so WalletConnect doesn't override with universal links
+    universal: '', 
   },
 };
 
@@ -46,6 +49,7 @@ const sessionParams = {
         "eth_sign",
         "personal_sign",
         "eth_signTypedData",
+        "wallet_switchEthereumChain",
       ],
       chains: ["eip155:11155111"],
       events: ["chainChanged", "accountsChanged"],

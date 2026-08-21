@@ -1,0 +1,30 @@
+name: Blood Stock Oracle Automator
+
+on:
+  schedule:
+    # This cron expression tells GitHub to run the script every 3 hours
+    - cron: '0 */3 * * *'
+  workflow_dispatch: 
+    # This allows you to click a button to run it manually
+
+jobs:
+  run-oracle:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Dependencies
+        run: npm install ethers dotenv
+
+      - name: Run Oracle Script
+        env:
+          SEPOLIA_RPC_URL: ${{ secrets.SEPOLIA_RPC_URL }}
+          PINATA_JWT: ${{ secrets.PINATA_JWT }}
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+        run: node oracle.js
