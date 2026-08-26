@@ -21,7 +21,7 @@ jobs:
 
       - name: Install Dependencies
         run: npm install ethers dotenv
-
+        run: npm install ethers dotenv axios cheerio
       - name: Run Oracle Script
         env:
           SEPOLIA_RPC_URL: ${{ secrets.SEPOLIA_RPC_URL }}
