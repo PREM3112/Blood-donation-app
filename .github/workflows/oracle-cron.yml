@@ -1,11 +1,8 @@
 name: Blood Stock Oracle Automator
-
 on:
   schedule:
-    # This cron expression tells GitHub to run the script every 3 hours
     - cron: '0 */3 * * *'
-  workflow_dispatch: 
-    # This allows you to click a button to run it manually
+  workflow_dispatch:
 
 jobs:
   run-oracle:
@@ -20,8 +17,8 @@ jobs:
           node-version: '18'
 
       - name: Install Dependencies
-        run: npm install ethers dotenv
         run: npm install ethers dotenv axios cheerio
+
       - name: Run Oracle Script
         env:
           SEPOLIA_RPC_URL: ${{ secrets.SEPOLIA_RPC_URL }}
