@@ -1,13 +1,31 @@
 // app/contractConfig.ts
 
-// 1. Your deployed contract address on Ethereum Sepolia
-export const CONTRACT_ADDRESS = "0x16d4f3bfE789d6Ae277E0BEe2B5d415E236d72b7";
+// 1. Your new secure deployed contract address on Ethereum Sepolia
+export const CONTRACT_ADDRESS = "0x8E14797A22A6B6fC611374eeA029747fD509fcB6";
 
 // 2. The Alchemy Sepolia RPC URL
-export const RPC_URL = "https://eth-sepolia.g.alchemy.com/v2/alch_rQZRROPAVz-kLUT0V9aBf";
+export const RPC_URL = "https://ethereum-sepolia-rpc.publicnode.com";
 
-// 3. Your updated contract ABI matching the IPFS deployment
+// 3. Your updated secure contract ABI including the admin verification layer
 export const CONTRACT_ABI = [
+  {
+    "type": "constructor",
+    "inputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "admin",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
   {
     "anonymous": false,
     "inputs": [
@@ -22,21 +40,28 @@ export const CONTRACT_ABI = [
         "internalType": "string",
         "name": "ipfsCID",
         "type": "string"
-      },
-      {
-        "indexed": false,
-        "internalType": "string",
-        "name": "latitude",
-        "type": "string"
-      },
-      {
-        "indexed": false,
-        "internalType": "string",
-        "name": "longitude",
-        "type": "string"
       }
     ],
     "name": "BloodBankRegistered",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "bankAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "status",
+        "type": "bool"
+      }
+    ],
+    "name": "BloodBankVerified",
     "type": "event"
   },
   {
@@ -161,6 +186,24 @@ export const CONTRACT_ABI = [
       }
     ],
     "name": "updateInventory",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_bankAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "bool",
+        "name": "_status",
+        "type": "bool"
+      }
+    ],
+    "name": "verifyBloodBank",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

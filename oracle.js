@@ -1,107 +1,135 @@
 require('dotenv').config();
 const { ethers } = require('ethers');
+const axios = require('axios');
+const cheerio = require('cheerio');
 
-// 1. Configuration & Keys
+// --- Configuration ---
 const RPC_URL = process.env.SEPOLIA_RPC_URL || "https://ethereum-sepolia-rpc.publicnode.com";
-const PINATA_JWT = (process.env.PINATA_JWT || process.env.EXPO_PUBLIC_PINATA_JWT || "").trim().replace(/^["']|["']$/g, '');
-let rawPrivateKey = (process.env.PRIVATE_KEY || "").trim().replace(/^["']|["']$/g, '');
+const PRIVATE_KEY = process.env.PRIVATE_KEY; // The private key of your Oracle wallet
+const PINATA_JWT = process.env.PINATA_JWT;
+const CONTRACT_ADDRESS = "0x8E14797A22A6B6fC611374eeA029747fD509fcB6"; // Paste your updated contract address
 
-if (rawPrivateKey && !rawPrivateKey.startsWith("0x")) {
-    rawPrivateKey = `0x${rawPrivateKey}`;
-}
+const CONTRACT_ABI = [
+  "function updateInventory(string memory _newIpfsCID) public"
+];
 
-// Hardcoded contract address to bypass .env caching issues
-const CONTRACT_ADDRESS = "0x16d4f3bfE789d6Ae277E0BEe2B5d415E236d72b7";
-const CONTRACT_ABI = ["function updateInventory(string _newIpfsCID) public"];
-
-// 2. Fetch REAL Live Blood Stock for ALL OF TAMIL NADU
-async function fetchLiveBloodStock() {
-    console.log("Pinging e-RaktKosh API for ALL Tamil Nadu hospitals...");
-    
-    const apiUrl = "https://eraktkosh.mohfw.gov.in/eraktkoshPortal/eraktkosh/blood-availability?stateCode=33&componentId=11";
-
-    try {
-        const response = await fetch(apiUrl, {
-            method: 'GET',
-            headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
-                'Accept': 'application/json'
-            }
-        });
-
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-
-        const data = await response.json();
-        console.log(`✅ Successfully fetched ${data.length} hospitals across the state!`);
-        return data;
-    } catch (error) {
-        console.error("API Fetch failed:", error.message);
-        return [];
-    }
-}
-
-// 3. Upload Statewide Master File to IPFS
-async function uploadToIPFS(metadata) {
-    if (!PINATA_JWT) throw new Error("PINATA_JWT is missing from your .env file!");
-    console.log("Uploading Master JSON file to IPFS...");
-    
-    const res = await fetch("https://api.pinata.cloud/pinning/pinJSONToIPFS", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": `Bearer ${PINATA_JWT}` },
-        body: JSON.stringify({ pinataContent: metadata })
-    });
-    
-    const data = await res.json();
-    if (!data.IpfsHash) throw new Error("Pinata failed to return an IPFS Hash.");
-    return data.IpfsHash;
-}
-
-// 4. Update Sepolia Smart Contract
-async function updateBlockchain(ipfsCID) {
-    if (!rawPrivateKey || rawPrivateKey === "0x") throw new Error("PRIVATE_KEY is missing from your .env file!");
-    console.log(`Pushing new CID to Sepolia: ${ipfsCID}`);
-    
-    const provider = new ethers.JsonRpcProvider(RPC_URL);
-    const wallet = new ethers.Wallet(rawPrivateKey, provider);
-    const contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, wallet);
-    
-    const tx = await contract.updateInventory(ipfsCID, { gasLimit: 500000 });
-    console.log(`Transaction broadcasted. Waiting for block confirmation... Hash: ${tx.hash}`);
-    await tx.wait();
-    console.log(`✅ Smart Contract Updated Successfully!`);
-}
-
-// 5. Main Execution (Statewide Batch Update)
-async function runOracle() {
-    try {
-        const liveStock = await fetchLiveBloodStock();
-        
-        if (liveStock.length > 0) {
-            console.log("Formatting statewide data for IPFS...");
-            
-            const cleanStatewideData = liveStock.map(hospital => {
-                let stockAvailable = "No stock available";
-                if (hospital.components && hospital.components['Whole Blood'] && hospital.components['Whole Blood'].available_WithQty) {
-                    stockAvailable = hospital.components['Whole Blood'].available_WithQty;
-                }
-
-                return {
-                    name: hospital.hospitalname ? hospital.hospitalname.trim() : "Unknown",
-                    phone: hospital.hospitalcontact ? hospital.hospitalcontact.replace('Phone: ', '').split(',')[0].trim() : "N/A",
-                    inventoryLevels: stockAvailable, 
-                    lastUpdated: hospital.entrydate
-                };
-            });
-
-            const newCID = await uploadToIPFS(cleanStatewideData);
-            await updateBlockchain(newCID);
-            console.log("Oracle successfully pushed statewide data to the blockchain!");
-        } else {
-            console.log("No hospitals found or API is down.");
+// Helper: Upload data to Pinata IPFS
+async function uploadToPinata(jsonData) {
+  try {
+    const response = await axios.post(
+      "https://api.pinata.cloud/pinning/pinJSONToIPFS",
+      { pinataContent: jsonData },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${PINATA_JWT}`
         }
-    } catch (error) {
-        console.error("Execution Failed:", error.message);
-    }
+      }
+    );
+    return response.data.IpfsHash;
+  } catch (error) {
+    console.error("Pinata Upload Error:", error.message);
+    return null;
+  }
 }
 
+// Helper: Scrape Live e-RaktKosh Data
+// Helper: Scrape Live e-RaktKosh Data
+async function fetchLiveBloodStock() {
+  console.log("Pinging e-RaktKosh API for Tamil Nadu hospitals...");
+  const apiUrl = "https://eraktkosh.mohfw.gov.in/eraktkoshPortal/eraktkosh/blood-availability?stateCode=33&componentId=11";
+
+  try {
+    const response = await axios.get(apiUrl, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0',
+        'Accept': 'text/html,application/xhtml+xml,application/xml'
+      }
+    });
+
+    const $ = cheerio.load(response.data);
+    const hospitalMap = {};
+
+    // Parse the HTML table rows and group by hospital
+    $('table tbody tr').each((index, element) => {
+      const hospitalName = $(element).find('td').eq(1).text().trim();
+      const bloodGroup = $(element).find('td').eq(2).text().trim().replace(/<[^>]*>?/gm, ''); // Clean HTML tags
+      const stockAvailable = parseInt($(element).find('td').eq(3).text().trim()) || 0;
+
+      if (hospitalName && bloodGroup) {
+        if (!hospitalMap[hospitalName]) {
+          // Generate a slight random offset around Chennai (13.0827, 80.2707) for the pins
+          const randomLatOffset = (Math.random() - 0.5) * 0.1;
+          const randomLngOffset = (Math.random() - 0.5) * 0.1;
+
+          hospitalMap[hospitalName] = {
+            id: `GOV-TN-${Object.keys(hospitalMap).length}`,
+            name: hospitalName,
+            latitude: 13.0827 + randomLatOffset,
+            longitude: 80.2707 + randomLngOffset,
+            inventoryLevels: {},
+            isVerified: true,
+            source: "Government API",
+            lastUpdated: new Date().toLocaleTimeString()
+          };
+        }
+        // Add the blood group to the hospital's inventory object
+        hospitalMap[hospitalName].inventoryLevels[bloodGroup] = stockAvailable;
+      }
+    });
+
+    const govHospitals = Object.values(hospitalMap);
+    console.log(`Successfully scraped and grouped ${govHospitals.length} government hospitals.`);
+    return govHospitals;
+  } catch (error) {
+    console.error("Oracle Fetch Error:", error.message);
+    return [];
+  }
+}
+
+// Main Execution
+async function runOracle() {
+  console.log("Starting Web3 Data Oracle...");
+  const liveData = await fetchLiveBloodStock();
+  
+  if (liveData.length === 0) {
+    console.log("No data fetched. Oracle pausing.");
+    return;
+  }
+
+  // Wrap the data in a clean JSON structure
+  const oraclePayload = {
+    network: "Government",
+    timestamp: new Date().toISOString(),
+    hospitals: liveData
+  };
+
+  console.log("Uploading scraped data to IPFS via Pinata...");
+  const ipfsCID = await uploadToPinata(oraclePayload);
+  
+  if (!ipfsCID) {
+    console.log("Failed to get IPFS CID. Aborting on-chain update.");
+    return;
+  }
+  
+  console.log(`Uploaded! IPFS CID: ${ipfsCID}`);
+  console.log("Pushing new data hash to Sepolia blockchain...");
+
+  const provider = new ethers.JsonRpcProvider(RPC_URL);
+  const wallet = new ethers.Wallet(PRIVATE_KEY, provider);
+  const contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, wallet);
+
+  try {
+    // Note: The wallet executing this script MUST be registered and verified on your 
+    // smart contract first, otherwise the updateInventory require() statement will block it.
+    const tx = await contract.updateInventory(ipfsCID);
+    console.log(`Transaction submitted! Hash: ${tx.hash}`);
+    await tx.wait();
+    console.log("Blockchain updated successfully! The mobile app will now display live government data.");
+  } catch (txError) {
+    console.error("Blockchain Update Error:", txError.message);
+  }
+}
+
+// Execute the loop
 runOracle();
