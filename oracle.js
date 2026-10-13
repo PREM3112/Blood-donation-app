@@ -5,8 +5,8 @@ const cheerio = require('cheerio');
 
 // --- Configuration ---
 const RPC_URL = process.env.SEPOLIA_RPC_URL || "https://ethereum-sepolia-rpc.publicnode.com";
-const PRIVATE_KEY = process.env.PRIVATE_KEY; // The private key of your Oracle wallet
-const PINATA_JWT = process.env.PINATA_JWT;
+const PRIVATE_KEY = process.env.PRIVATE_KEY.trim(); // The private key of your Oracle wallet
+const PINATA_JWT = process.env.PINATA_JWT.trim();
 const CONTRACT_ADDRESS = "0x8E14797A22A6B6fC611374eeA029747fD509fcB6"; 
 
 const CONTRACT_ABI = [
