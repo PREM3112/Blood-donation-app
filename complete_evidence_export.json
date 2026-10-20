@@ -1,0 +1,146 @@
+{
+  "exportTimestamp": "2026-10-15T15:04:56.118Z",
+  "baselineReceiptsAndDecodedInputs": [
+    {
+      "iteration": 1,
+      "txHash": "0x2e6ca1239a8e84c2cc570c6e2ca0f93e633d40538c1c382b0a18b9e3c6bde9ad",
+      "to": "0x5a9D64b0158fa3c4df12f9f1730dB326CA624BAf",
+      "status": "Success",
+      "gasUsed": "905014",
+      "blockNumber": 11920912,
+      "decodedInputs": {
+        "name": "Rajiv Gandhi Government General Hospital (Node)",
+        "licenseId": "GOV-TN-101",
+        "inventoryLevels": "O+: 15, O-: 2, A+: 8, B+: 11, AB+: 5",
+        "timestamp": "2026-10-15T14:05:06.371Z"
+      }
+    },
+    {
+      "iteration": 2,
+      "txHash": "0xcd26df181870c9b16f4db53e0264ebf9e2c37468e653488da2a1a3919035be13",
+      "to": "0x5a9D64b0158fa3c4df12f9f1730dB326CA624BAf",
+      "status": "Success",
+      "gasUsed": "61678",
+      "blockNumber": 11920913,
+      "decodedInputs": {
+        "name": "Rajiv Gandhi Government General Hospital (Node)",
+        "licenseId": "GOV-TN-101",
+        "inventoryLevels": "O+: 16, O-: 2, A+: 8, B+: 11, AB+: 5",
+        "timestamp": "2026-10-15T14:05:31.042Z"
+      }
+    },
+    {
+      "iteration": 3,
+      "txHash": "0xf744d19554a2d5ec82ca50792f58598c711f432fcb11b42d84e86fc2420af2c8",
+      "to": "0x5a9D64b0158fa3c4df12f9f1730dB326CA624BAf",
+      "status": "Success",
+      "gasUsed": "61678",
+      "blockNumber": 11920914,
+      "decodedInputs": {
+        "name": "Rajiv Gandhi Government General Hospital (Node)",
+        "licenseId": "GOV-TN-101",
+        "inventoryLevels": "O+: 17, O-: 2, A+: 8, B+: 11, AB+: 5",
+        "timestamp": "2026-10-15T14:05:39.012Z"
+      }
+    },
+    {
+      "iteration": 4,
+      "txHash": "0xa69302f2895e855852776167bce44d1c17b7b563a36e37e78d2eb2b75708021e",
+      "to": "0x5a9D64b0158fa3c4df12f9f1730dB326CA624BAf",
+      "status": "Success",
+      "gasUsed": "61678",
+      "blockNumber": 11920915,
+      "decodedInputs": {
+        "name": "Rajiv Gandhi Government General Hospital (Node)",
+        "licenseId": "GOV-TN-101",
+        "inventoryLevels": "O+: 18, O-: 2, A+: 8, B+: 11, AB+: 5",
+        "timestamp": "2026-10-15T14:05:51.150Z"
+      }
+    },
+    {
+      "iteration": 5,
+      "txHash": "0x93d9eccbe8a76943103a658f91a2670f636cae18047cf3168455cd2083c577e2",
+      "to": "0x5a9D64b0158fa3c4df12f9f1730dB326CA624BAf",
+      "status": "Success",
+      "gasUsed": "61678",
+      "blockNumber": 11920916,
+      "decodedInputs": {
+        "name": "Rajiv Gandhi Government General Hospital (Node)",
+        "licenseId": "GOV-TN-101",
+        "inventoryLevels": "O+: 19, O-: 2, A+: 8, B+: 11, AB+: 5",
+        "timestamp": "2026-10-15T14:06:03.211Z"
+      }
+    },
+    {
+      "iteration": 6,
+      "txHash": "0xbf234949ee75eeb37524d89b1cb5e1bb08d98ef269591492e0abf992fb74f63c",
+      "to": "0x5a9D64b0158fa3c4df12f9f1730dB326CA624BAf",
+      "status": "Success",
+      "gasUsed": "61678",
+      "blockNumber": 11920917,
+      "decodedInputs": {
+        "name": "Rajiv Gandhi Government General Hospital (Node)",
+        "licenseId": "GOV-TN-101",
+        "inventoryLevels": "O+: 20, O-: 2, A+: 8, B+: 11, AB+: 5",
+        "timestamp": "2026-10-15T14:06:15.317Z"
+      }
+    },
+    {
+      "iteration": 7,
+      "txHash": "0x913b7b2da4832a948a19c4341370cae73b4dec28f899ff33c3c0721680cfd67c",
+      "to": "0x5a9D64b0158fa3c4df12f9f1730dB326CA624BAf",
+      "status": "Success",
+      "gasUsed": "61678",
+      "blockNumber": 11920918,
+      "decodedInputs": {
+        "name": "Rajiv Gandhi Government General Hospital (Node)",
+        "licenseId": "GOV-TN-101",
+        "inventoryLevels": "O+: 21, O-: 2, A+: 8, B+: 11, AB+: 5",
+        "timestamp": "2026-10-15T14:06:39.762Z"
+      }
+    },
+    {
+      "iteration": 8,
+      "txHash": "0xed905e3317d9d2a91de8519b0a456db0bb6c1181a04657f7ff687475e22e9050",
+      "to": "0x5a9D64b0158fa3c4df12f9f1730dB326CA624BAf",
+      "status": "Success",
+      "gasUsed": "61678",
+      "blockNumber": 11920919,
+      "decodedInputs": {
+        "name": "Rajiv Gandhi Government General Hospital (Node)",
+        "licenseId": "GOV-TN-101",
+        "inventoryLevels": "O+: 22, O-: 2, A+: 8, B+: 11, AB+: 5",
+        "timestamp": "2026-10-15T14:06:51.824Z"
+      }
+    },
+    {
+      "iteration": 9,
+      "txHash": "0xe88b34132404ccedb954305f070f9b615513693a23269ca2c411ab04cab67c99",
+      "to": "0x5a9D64b0158fa3c4df12f9f1730dB326CA624BAf",
+      "status": "Success",
+      "gasUsed": "61678",
+      "blockNumber": 11920920,
+      "decodedInputs": {
+        "name": "Rajiv Gandhi Government General Hospital (Node)",
+        "licenseId": "GOV-TN-101",
+        "inventoryLevels": "O+: 23, O-: 2, A+: 8, B+: 11, AB+: 5",
+        "timestamp": "2026-10-15T14:07:03.970Z"
+      }
+    },
+    {
+      "iteration": 10,
+      "txHash": "0x04ed588bf673c2db64b258a8adb4ad036eaab59de50b4d6a9be5effe906c0d82",
+      "to": "0x5a9D64b0158fa3c4df12f9f1730dB326CA624BAf",
+      "status": "Success",
+      "gasUsed": "61678",
+      "blockNumber": 11920921,
+      "decodedInputs": {
+        "name": "Rajiv Gandhi Government General Hospital (Node)",
+        "licenseId": "GOV-TN-101",
+        "inventoryLevels": "O+: 24, O-: 2, A+: 8, B+: 11, AB+: 5",
+        "timestamp": "2026-10-15T14:07:16.102Z"
+      }
+    }
+  ],
+  "hybridReceiptsAndIPFSData": []
+}

@@ -1,14 +1,43 @@
 import { defineConfig } from "hardhat/config";
-import hardhatToolboxMochaEthers from "@nomicfoundation/hardhat-toolbox-mocha-ethers";
+import hardhatEthers from "@nomicfoundation/hardhat-ethers";
+import hardhatIgnitionEthers from "@nomicfoundation/hardhat-ignition-ethers";
+import * as dotenv from "dotenv";
+
+dotenv.config({ quiet: true });
 
 export default defineConfig({
-  plugins: [hardhatToolboxMochaEthers],
-  solidity: "0.8.20",
-  networks: {
-    sepolia: {
-      type: "http",
-      url: "https://eth-sepolia.g.alchemy.com/v2/alch_rQZRROPAVz-kLUT0V9aBf",
-      accounts: ["0x97ba7fbd42c1743ab42a8eed15c927b913e1e9f769237b16e6a14b37a15be2cc"],
+  plugins: [hardhatEthers, hardhatIgnitionEthers],
+
+  solidity: {
+    version: "0.8.20",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200,
+      },
+      evmVersion: "shanghai",
     },
+  },
+
+  networks: {
+    localhost: {
+      type: "http",
+      chainType: "l1",
+      url: "http://127.0.0.1:8545",
+    },
+
+    // Sepolia is included only when its RPC URL is configured.
+    ...(process.env.SEPOLIA_RPC_URL
+      ? {
+          sepolia: {
+            type: "http" as const,
+            chainType: "l1" as const,
+            url: process.env.SEPOLIA_RPC_URL,
+            accounts: process.env.PRIVATE_KEY?.trim()
+              ? [process.env.PRIVATE_KEY.trim()]
+              : [],
+          },
+        }
+      : {}),
   },
 });

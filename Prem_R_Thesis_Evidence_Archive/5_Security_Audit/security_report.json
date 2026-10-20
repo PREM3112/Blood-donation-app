@@ -1,0 +1,309 @@
+{
+  "startedAt": "2026-10-18T04:27:05.338Z",
+  "environment": "Local Hardhat node",
+  "scope": "Four access-control tests on a fresh local deployment. Rejected operations use eth_call simulation, not mined transactions. This is not a comprehensive security audit.",
+  "setupTransactions": [
+    {
+      "label": "Register bank to be verified",
+      "hash": "0xc827928419a16b711fd2591dba6d7daf439d285fcb2a5ee5ae3ef07aa524cbb3",
+      "receipt": {
+        "_type": "TransactionReceipt",
+        "blockHash": "0xceff8b604fd1b43ca0344b5b6ab550a079bf66a24c800acf644453f5a930aa8f",
+        "blockNumber": 8,
+        "contractAddress": null,
+        "cumulativeGasUsed": "161359",
+        "from": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+        "gasPrice": "438231819",
+        "blobGasUsed": null,
+        "blobGasPrice": null,
+        "gasUsed": "161359",
+        "hash": "0xc827928419a16b711fd2591dba6d7daf439d285fcb2a5ee5ae3ef07aa524cbb3",
+        "index": 0,
+        "logs": [
+          {
+            "_type": "log",
+            "address": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+            "blockHash": "0xceff8b604fd1b43ca0344b5b6ab550a079bf66a24c800acf644453f5a930aa8f",
+            "blockNumber": 8,
+            "data": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002e516d506f6e635937665652396a43335631705757776341715572625a61476438597659537965373556766a613669000000000000000000000000000000000000",
+            "index": 0,
+            "topics": [
+              "0xf86691fd3a664aeba999269de24b4252590218f3be9868ee5103812c94ec0021",
+              "0x00000000000000000000000070997970c51812dc3a010c7d01b50e0d17dc79c8"
+            ],
+            "transactionHash": "0xc827928419a16b711fd2591dba6d7daf439d285fcb2a5ee5ae3ef07aa524cbb3",
+            "transactionIndex": 0
+          }
+        ],
+        "logsBloom": "0x00000000000000000002000000000000000000000000000000000000000000000000000000000000000000000000080000000000000000000000200000000001000000000000000000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000080000001001000000000000000000000000000000",
+        "status": 1,
+        "to": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9"
+      }
+    },
+    {
+      "label": "Approve verified bank",
+      "hash": "0x37349ddcd5ed58a4ddd79186add598276700f921ffd469082f92dd868b9ba7d9",
+      "receipt": {
+        "_type": "TransactionReceipt",
+        "blockHash": "0x37415cd7414fb56cddba565717f773215bf1084f8a94c672f874de40cee7e894",
+        "blockNumber": 9,
+        "contractAddress": null,
+        "cumulativeGasUsed": "32987",
+        "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+        "gasPrice": "383747478",
+        "blobGasUsed": null,
+        "blobGasPrice": null,
+        "gasUsed": "32987",
+        "hash": "0x37349ddcd5ed58a4ddd79186add598276700f921ffd469082f92dd868b9ba7d9",
+        "index": 0,
+        "logs": [
+          {
+            "_type": "log",
+            "address": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+            "blockHash": "0x37415cd7414fb56cddba565717f773215bf1084f8a94c672f874de40cee7e894",
+            "blockNumber": 9,
+            "data": "0x0000000000000000000000000000000000000000000000000000000000000001",
+            "index": 0,
+            "topics": [
+              "0x72c4e849c1b74df2902f524c8cb4e55772d14b6483d7131e61fe37d23b0452ad",
+              "0x00000000000000000000000070997970c51812dc3a010c7d01b50e0d17dc79c8"
+            ],
+            "transactionHash": "0x37349ddcd5ed58a4ddd79186add598276700f921ffd469082f92dd868b9ba7d9",
+            "transactionIndex": 0
+          }
+        ],
+        "logsBloom": "0x00000000000000000002000000000000000000000000000000000000000000000000000000000000000000000000080000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000004000000000000008000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000",
+        "status": 1,
+        "to": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9"
+      }
+    },
+    {
+      "label": "Register unverified bank",
+      "hash": "0x6cb9e23851da48de9212b38cb64b9aa11b15dd8ec6d19ca87d9e55b4a48be835",
+      "receipt": {
+        "_type": "TransactionReceipt",
+        "blockHash": "0x01a5cecd6bcecc3d49a00cd29e4c5eeec2cfc10f17bba0e1a9daad1f459a9d51",
+        "blockNumber": 10,
+        "contractAddress": null,
+        "cumulativeGasUsed": "161359",
+        "from": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+        "gasPrice": "335831788",
+        "blobGasUsed": null,
+        "blobGasPrice": null,
+        "gasUsed": "161359",
+        "hash": "0x6cb9e23851da48de9212b38cb64b9aa11b15dd8ec6d19ca87d9e55b4a48be835",
+        "index": 0,
+        "logs": [
+          {
+            "_type": "log",
+            "address": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+            "blockHash": "0x01a5cecd6bcecc3d49a00cd29e4c5eeec2cfc10f17bba0e1a9daad1f459a9d51",
+            "blockNumber": 10,
+            "data": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002e516d506f6e635937665652396a43335631705757776341715572625a61476438597659537965373556766a613669000000000000000000000000000000000000",
+            "index": 0,
+            "topics": [
+              "0xf86691fd3a664aeba999269de24b4252590218f3be9868ee5103812c94ec0021",
+              "0x0000000000000000000000003c44cdddb6a900fa2b585dd299e03d12fa4293bc"
+            ],
+            "transactionHash": "0x6cb9e23851da48de9212b38cb64b9aa11b15dd8ec6d19ca87d9e55b4a48be835",
+            "transactionIndex": 0
+          }
+        ],
+        "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000080000000000000000000000200000100001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000008000000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000080000001000000000000000000000000000000000",
+        "status": 1,
+        "to": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9"
+      }
+    },
+    {
+      "label": "Revoke bank verification",
+      "hash": "0x37a03365507143616bea2668cc1be3161b2fb8cc59d5ec641c5a3709dc5ef017",
+      "receipt": {
+        "_type": "TransactionReceipt",
+        "blockHash": "0x82a473b64f5d5c29d193cf69de0eef213d0ecc75b4aa1e5a2b77cd7e46a690b0",
+        "blockNumber": 12,
+        "contractAddress": null,
+        "cumulativeGasUsed": "32975",
+        "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+        "gasPrice": "257368368",
+        "blobGasUsed": null,
+        "blobGasPrice": null,
+        "gasUsed": "32975",
+        "hash": "0x37a03365507143616bea2668cc1be3161b2fb8cc59d5ec641c5a3709dc5ef017",
+        "index": 0,
+        "logs": [
+          {
+            "_type": "log",
+            "address": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+            "blockHash": "0x82a473b64f5d5c29d193cf69de0eef213d0ecc75b4aa1e5a2b77cd7e46a690b0",
+            "blockNumber": 12,
+            "data": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "index": 0,
+            "topics": [
+              "0x72c4e849c1b74df2902f524c8cb4e55772d14b6483d7131e61fe37d23b0452ad",
+              "0x00000000000000000000000070997970c51812dc3a010c7d01b50e0d17dc79c8"
+            ],
+            "transactionHash": "0x37a03365507143616bea2668cc1be3161b2fb8cc59d5ec641c5a3709dc5ef017",
+            "transactionIndex": 0
+          }
+        ],
+        "logsBloom": "0x00000000000000000002000000000000000000000000000000000000000000000000000000000000000000000000080000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000004000000000000008000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000",
+        "status": 1,
+        "to": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9"
+      }
+    }
+  ],
+  "tests": [
+    {
+      "name": "1. Authorized inventory update",
+      "passed": true,
+      "method": "Mined local transaction and storage read",
+      "transactionHash": "0xe7c09e6206b1bab9f98de86bf0f69cf61c5cc2d69ac34f8f30154ed04ae5c191",
+      "receipt": {
+        "_type": "TransactionReceipt",
+        "blockHash": "0x7fb9f8a65bb3e80064ad34ae2966995469ab19e70bdd573f65c58499021b1aad",
+        "blockNumber": 11,
+        "contractAddress": null,
+        "cumulativeGasUsed": "40470",
+        "from": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+        "gasPrice": "294078605",
+        "blobGasUsed": null,
+        "blobGasPrice": null,
+        "gasUsed": "40470",
+        "hash": "0xe7c09e6206b1bab9f98de86bf0f69cf61c5cc2d69ac34f8f30154ed04ae5c191",
+        "index": 0,
+        "logs": [
+          {
+            "_type": "log",
+            "address": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+            "blockHash": "0x7fb9f8a65bb3e80064ad34ae2966995469ab19e70bdd573f65c58499021b1aad",
+            "blockNumber": 11,
+            "data": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002e516d59534c566a51447a455a7076344c4d666e684a75695761546e75447369483951794b6f6a763474484b516335000000000000000000000000000000000000",
+            "index": 0,
+            "topics": [
+              "0xb6a50552bf34ba857bc2e3e277a139804c829d798cdf4d967565d8f7e4674323",
+              "0x00000000000000000000000070997970c51812dc3a010c7d01b50e0d17dc79c8"
+            ],
+            "transactionHash": "0xe7c09e6206b1bab9f98de86bf0f69cf61c5cc2d69ac34f8f30154ed04ae5c191",
+            "transactionIndex": 0
+          }
+        ],
+        "logsBloom": "0x00000000020000000002000000000000000000000000000000000000000000000000000000000000000000000000080000100000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000000000001000000000000000000000000000000",
+        "status": 1,
+        "to": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9"
+      },
+      "stateAfter": {
+        "ipfsCID": "QmYSLVjQDzEZpv4LMfnhJuiWaTnuDsiH9QyKojv4tHKQc5",
+        "latitude": "13.0827",
+        "longitude": "80.2707",
+        "isVerified": true,
+        "isActive": true
+      }
+    },
+    {
+      "name": "2. Unverified bank update rejected",
+      "passed": true,
+      "method": "eth_call simulation",
+      "expectedReason": "Bank must be verified",
+      "actualReason": "Bank must be verified",
+      "errorCode": 3,
+      "revertData": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000001542616e6b206d7573742062652076657269666965640000000000000000000000",
+      "providerMessage": "VM Exception while processing transaction: reverted with reason string 'Bank must be verified'",
+      "stateBefore": {
+        "ipfsCID": "QmPoncY7fVR9jC3V1pWWwcAqUrbZaGd8YvYSye75Vvja6i",
+        "latitude": "13.0827",
+        "longitude": "80.2707",
+        "isVerified": false,
+        "isActive": true
+      },
+      "stateAfter": {
+        "ipfsCID": "QmPoncY7fVR9jC3V1pWWwcAqUrbZaGd8YvYSye75Vvja6i",
+        "latitude": "13.0827",
+        "longitude": "80.2707",
+        "isVerified": false,
+        "isActive": true
+      }
+    },
+    {
+      "name": "3. Non-admin verification rejected",
+      "passed": true,
+      "method": "eth_call simulation",
+      "expectedReason": "Only admin can call this",
+      "actualReason": "Only admin can call this",
+      "errorCode": 3,
+      "revertData": "0x08c379a0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000184f6e6c792061646d696e2063616e2063616c6c20746869730000000000000000",
+      "providerMessage": "VM Exception while processing transaction: reverted with reason string 'Only admin can call this'",
+      "stateBefore": {
+        "ipfsCID": "QmPoncY7fVR9jC3V1pWWwcAqUrbZaGd8YvYSye75Vvja6i",
+        "latitude": "13.0827",
+        "longitude": "80.2707",
+        "isVerified": false,
+        "isActive": true
+      },
+      "stateAfter": {
+        "ipfsCID": "QmPoncY7fVR9jC3V1pWWwcAqUrbZaGd8YvYSye75Vvja6i",
+        "latitude": "13.0827",
+        "longitude": "80.2707",
+        "isVerified": false,
+        "isActive": true
+      }
+    },
+    {
+      "name": "4. Update after revocation rejected",
+      "passed": true,
+      "method": "eth_call simulation",
+      "expectedReason": "Bank must be verified",
+      "actualReason": "Bank must be verified",
+      "errorCode": 3,
+      "revertData": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000001542616e6b206d7573742062652076657269666965640000000000000000000000",
+      "providerMessage": "VM Exception while processing transaction: reverted with reason string 'Bank must be verified'",
+      "stateBefore": {
+        "ipfsCID": "QmYSLVjQDzEZpv4LMfnhJuiWaTnuDsiH9QyKojv4tHKQc5",
+        "latitude": "13.0827",
+        "longitude": "80.2707",
+        "isVerified": false,
+        "isActive": true
+      },
+      "stateAfter": {
+        "ipfsCID": "QmYSLVjQDzEZpv4LMfnhJuiWaTnuDsiH9QyKojv4tHKQc5",
+        "latitude": "13.0827",
+        "longitude": "80.2707",
+        "isVerified": false,
+        "isActive": true
+      }
+    }
+  ],
+  "chainId": "31337",
+  "accounts": {
+    "admin": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "verifiedBank": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+    "unverifiedBank": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC"
+  },
+  "contractAddress": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+  "deploymentReceipt": {
+    "_type": "TransactionReceipt",
+    "blockHash": "0xe55074291b5d19c34fa1fb15b53e949ef8a0add827773bf567b4eff6a7e2a2a2",
+    "blockNumber": 7,
+    "contractAddress": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+    "cumulativeGasUsed": "592497",
+    "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "gasPrice": "499427272",
+    "blobGasUsed": null,
+    "blobGasPrice": null,
+    "gasUsed": "592497",
+    "hash": "0xb1aa213b47f024ad4028434c456d00e65f79776082ade4878a05d03257f46afb",
+    "index": 0,
+    "logs": [],
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "status": 1,
+    "to": null
+  },
+  "runtimeBytecodeHash": "0x8fc3805ff3452e81c1db9995df1b125287e3af505ddcc6be11211faca9cd7541",
+  "summary": {
+    "plannedTests": 4,
+    "completedTests": 4,
+    "passed": 4,
+    "failed": 0,
+    "allPassed": true
+  },
+  "completedAt": "2026-10-18T04:27:06.595Z"
+}

@@ -1,50 +1,42 @@
-# Welcome to your Expo app 👋
+# Corrected benchmark package
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+The corrected JSON is ready to use as a replacement summary of the supplied historical records. Its ten transaction rows and original export timestamp are unchanged. The previous summary is retained in correctionProvenance.
 
-## Get started
+Results: baseline mean 51,678 gas; hybrid mean 49,010 gas; saving 2,668 gas/update (5.16%). Totals: 516,780 and 490,100 gas. Population standard deviation: zero in each recorded series.
 
-1. Install dependencies
+## Files
+- experiment_evidence_report_corrected.json: corrected historical summary, not a newly executed experiment.
+- input_dataset.json: exact four-field payloads extracted from that report, including the fixed 2026-10-15 timestamp.
+- run_and_export_benchmark_reconstructed.cjs: optional reproduction script, reconstructed after the experiment. Do not describe it as the authenticated original execution script.
+- env.example.txt: configuration placeholders, with no credentials.
 
-   ```bash
-   npm install
-   ```
+## Optional new experiment
+You do not need to rerun the benchmark to use the corrected report. If reproducing it, extract these files into your project, keep the script beside input_dataset.json, and install:
 
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```powershell
+npm install ethers@6 axios dotenv
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Copy the variable names from env.example.txt into your local .env and supply your own values. Use a funded Sepolia test wallet already registered and verified on the hybrid contract. Never publish .env or private keys. Previously disclosed keys should be replaced.
 
-## Learn more
+Check syntax and show usage:
 
-To learn more about developing your project with Expo, look at the following resources:
+```powershell
+node --check run_and_export_benchmark_reconstructed.cjs
+node run_and_export_benchmark_reconstructed.cjs
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Explicitly start a NEW experiment (20 transactions if successful, plus IPFS uploads):
 
-## Join the community
+```powershell
+node run_and_export_benchmark_reconstructed.cjs --execute
+```
 
-Join our community of developers creating universal apps.
+The script creates a unique new_benchmark_* directory and checkpoints partial results. If interrupted, inspect hashes and receipts before rerunning; it does not resume or retry transactions automatically. Future gas values are measured, not forced to match the historical figures. Retain your package-lock.json with new results.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Evidence scope
+The correction was checked for arithmetic and exact preservation of historical rows. The new script was syntax-checked; no transactions or API uploads were executed during preparation. Gateway field comparison is not independent cryptographic reconstruction of an IPFS DAG. Runtime-code hashes identify bytes but do not prove source/build equivalence.
+
+The fixed timestamp is an experimental control, not the transaction time or proof of current inventory. Both contracts retain pre-existing state; a rerun is not a fresh-deployment experiment. Different access checks and events mean this is a comparison of the tested implementations, not isolation of storage location as the sole cause. Gas units exclude IPFS charges, model costs, fees and latency. Zero observed variance in this small deterministic workload does not imply universal constant gas costs.
+
+Suggested paper wording: “Across ten paired updates using a fixed-timestamp dataset, the recorded baseline and hybrid transactions consumed 51,678 and 49,010 gas per update, respectively, corresponding to a 5.16% reduction for this workload.”

@@ -1,0 +1,452 @@
+[
+  {
+    "id": 1,
+    "input": "Need 2 units of A+.",
+    "expected": {
+      "bloodGroup": "A+",
+      "quantity": 2,
+      "urgency": "MEDIUM"
+    }
+  },
+  {
+    "id": 2,
+    "input": "Emergency: need 3 units of A+ immediately.",
+    "expected": {
+      "bloodGroup": "A+",
+      "quantity": 3,
+      "urgency": "HIGH"
+    }
+  },
+  {
+    "id": 3,
+    "input": "Need 2 units of A-.",
+    "expected": {
+      "bloodGroup": "A-",
+      "quantity": 2,
+      "urgency": "MEDIUM"
+    }
+  },
+  {
+    "id": 4,
+    "input": "Emergency: need 3 units of A- immediately.",
+    "expected": {
+      "bloodGroup": "A-",
+      "quantity": 3,
+      "urgency": "HIGH"
+    }
+  },
+  {
+    "id": 5,
+    "input": "Need 2 units of B+.",
+    "expected": {
+      "bloodGroup": "B+",
+      "quantity": 2,
+      "urgency": "MEDIUM"
+    }
+  },
+  {
+    "id": 6,
+    "input": "Emergency: need 3 units of B+ immediately.",
+    "expected": {
+      "bloodGroup": "B+",
+      "quantity": 3,
+      "urgency": "HIGH"
+    }
+  },
+  {
+    "id": 7,
+    "input": "Need 2 units of B-.",
+    "expected": {
+      "bloodGroup": "B-",
+      "quantity": 2,
+      "urgency": "MEDIUM"
+    }
+  },
+  {
+    "id": 8,
+    "input": "Emergency: need 3 units of B- immediately.",
+    "expected": {
+      "bloodGroup": "B-",
+      "quantity": 3,
+      "urgency": "HIGH"
+    }
+  },
+  {
+    "id": 9,
+    "input": "Need 2 units of AB+.",
+    "expected": {
+      "bloodGroup": "AB+",
+      "quantity": 2,
+      "urgency": "MEDIUM"
+    }
+  },
+  {
+    "id": 10,
+    "input": "Emergency: need 3 units of AB+ immediately.",
+    "expected": {
+      "bloodGroup": "AB+",
+      "quantity": 3,
+      "urgency": "HIGH"
+    }
+  },
+  {
+    "id": 11,
+    "input": "Need 2 units of AB-.",
+    "expected": {
+      "bloodGroup": "AB-",
+      "quantity": 2,
+      "urgency": "MEDIUM"
+    }
+  },
+  {
+    "id": 12,
+    "input": "Emergency: need 3 units of AB- immediately.",
+    "expected": {
+      "bloodGroup": "AB-",
+      "quantity": 3,
+      "urgency": "HIGH"
+    }
+  },
+  {
+    "id": 13,
+    "input": "Need 2 units of O+.",
+    "expected": {
+      "bloodGroup": "O+",
+      "quantity": 2,
+      "urgency": "MEDIUM"
+    }
+  },
+  {
+    "id": 14,
+    "input": "Emergency: need 3 units of O+ immediately.",
+    "expected": {
+      "bloodGroup": "O+",
+      "quantity": 3,
+      "urgency": "HIGH"
+    }
+  },
+  {
+    "id": 15,
+    "input": "Need 2 units of O-.",
+    "expected": {
+      "bloodGroup": "O-",
+      "quantity": 2,
+      "urgency": "MEDIUM"
+    }
+  },
+  {
+    "id": 16,
+    "input": "Emergency: need 3 units of O- immediately.",
+    "expected": {
+      "bloodGroup": "O-",
+      "quantity": 3,
+      "urgency": "HIGH"
+    }
+  },
+  {
+    "id": 17,
+    "input": "Need five units of O positive.",
+    "expected": {
+      "bloodGroup": "O+",
+      "quantity": 5,
+      "urgency": "MEDIUM"
+    }
+  },
+  {
+    "id": 18,
+    "input": "Please send a dozen units of A negative.",
+    "expected": {
+      "bloodGroup": "A-",
+      "quantity": 12,
+      "urgency": "MEDIUM"
+    }
+  },
+  {
+    "id": 19,
+    "input": "Need half a dozen units of AB negative.",
+    "expected": {
+      "bloodGroup": "AB-",
+      "quantity": 6,
+      "urgency": "MEDIUM"
+    }
+  },
+  {
+    "id": 20,
+    "input": "Requesting twenty units of B positive.",
+    "expected": {
+      "bloodGroup": "B+",
+      "quantity": 20,
+      "urgency": "MEDIUM"
+    }
+  },
+  {
+    "id": 21,
+    "input": "Need one unit of A positive.",
+    "expected": {
+      "bloodGroup": "A+",
+      "quantity": 1,
+      "urgency": "MEDIUM"
+    }
+  },
+  {
+    "id": 22,
+    "input": "Please send 7 units of B negative.",
+    "expected": {
+      "bloodGroup": "B-",
+      "quantity": 7,
+      "urgency": "MEDIUM"
+    }
+  },
+  {
+    "id": 23,
+    "input": "Looking for 4 units of AB positive.",
+    "expected": {
+      "bloodGroup": "AB+",
+      "quantity": 4,
+      "urgency": "MEDIUM"
+    }
+  },
+  {
+    "id": 24,
+    "input": "Need 10 units of O negative.",
+    "expected": {
+      "bloodGroup": "O-",
+      "quantity": 10,
+      "urgency": "MEDIUM"
+    }
+  },
+  {
+    "id": 25,
+    "input": "Request: A+, quantity 6 units.",
+    "expected": {
+      "bloodGroup": "A+",
+      "quantity": 6,
+      "urgency": "MEDIUM"
+    }
+  },
+  {
+    "id": 26,
+    "input": "Please arrange 9 units of B+.",
+    "expected": {
+      "bloodGroup": "B+",
+      "quantity": 9,
+      "urgency": "MEDIUM"
+    }
+  },
+  {
+    "id": 27,
+    "input": "Non-urgent request for 2 units of O-.",
+    "expected": {
+      "bloodGroup": "O-",
+      "quantity": 2,
+      "urgency": "LOW"
+    }
+  },
+  {
+    "id": 28,
+    "input": "Routine request for 3 units of A+.",
+    "expected": {
+      "bloodGroup": "A+",
+      "quantity": 3,
+      "urgency": "LOW"
+    }
+  },
+  {
+    "id": 29,
+    "input": "Informational inquiry: is AB+ available?",
+    "expected": {
+      "bloodGroup": "AB+",
+      "quantity": null,
+      "urgency": "LOW"
+    }
+  },
+  {
+    "id": 30,
+    "input": "Non-urgent: need 1 unit of B-.",
+    "expected": {
+      "bloodGroup": "B-",
+      "quantity": 1,
+      "urgency": "LOW"
+    }
+  },
+  {
+    "id": 31,
+    "input": "Emergency: need 4 units of AB- now.",
+    "expected": {
+      "bloodGroup": "AB-",
+      "quantity": 4,
+      "urgency": "HIGH"
+    }
+  },
+  {
+    "id": 32,
+    "input": "Urgently send 5 units of O+ immediately.",
+    "expected": {
+      "bloodGroup": "O+",
+      "quantity": 5,
+      "urgency": "HIGH"
+    }
+  },
+  {
+    "id": 33,
+    "input": "Emergency: require 2 units of A-.",
+    "expected": {
+      "bloodGroup": "A-",
+      "quantity": 2,
+      "urgency": "HIGH"
+    }
+  },
+  {
+    "id": 34,
+    "input": "Need 6 units of B+ right now, immediately.",
+    "expected": {
+      "bloodGroup": "B+",
+      "quantity": 6,
+      "urgency": "HIGH"
+    }
+  },
+  {
+    "id": 35,
+    "input": "Need 2 units of blood.",
+    "expected": {
+      "bloodGroup": null,
+      "quantity": 2,
+      "urgency": "MEDIUM"
+    }
+  },
+  {
+    "id": 36,
+    "input": "Need O- blood.",
+    "expected": {
+      "bloodGroup": "O-",
+      "quantity": null,
+      "urgency": "MEDIUM"
+    }
+  },
+  {
+    "id": 37,
+    "input": "Need 3 units of O type blood.",
+    "expected": {
+      "bloodGroup": null,
+      "quantity": 3,
+      "urgency": "MEDIUM"
+    }
+  },
+  {
+    "id": 38,
+    "input": "Need blood from all blood groups.",
+    "expected": {
+      "bloodGroup": "All",
+      "quantity": null,
+      "urgency": "MEDIUM"
+    }
+  },
+  {
+    "id": 39,
+    "input": "Need 4 units of O- and 2 units of A+.",
+    "expected": {
+      "bloodGroup": null,
+      "quantity": null,
+      "urgency": "MEDIUM"
+    }
+  },
+  {
+    "id": 40,
+    "input": "Need blood.",
+    "expected": {
+      "bloodGroup": null,
+      "quantity": null,
+      "urgency": "MEDIUM"
+    }
+  },
+  {
+    "id": 41,
+    "input": "Emergency: need blood immediately.",
+    "expected": {
+      "bloodGroup": null,
+      "quantity": null,
+      "urgency": "HIGH"
+    }
+  },
+  {
+    "id": 42,
+    "input": "Non-urgent request for AB- blood.",
+    "expected": {
+      "bloodGroup": "AB-",
+      "quantity": null,
+      "urgency": "LOW"
+    }
+  },
+  {
+    "id": 43,
+    "input": "Order a pizza.",
+    "expected": {
+      "bloodGroup": null,
+      "quantity": null,
+      "urgency": "LOW"
+    }
+  },
+  {
+    "id": 44,
+    "input": "What is the weather today?",
+    "expected": {
+      "bloodGroup": null,
+      "quantity": null,
+      "urgency": "LOW"
+    }
+  },
+  {
+    "id": 45,
+    "input": "Book a train ticket.",
+    "expected": {
+      "bloodGroup": null,
+      "quantity": null,
+      "urgency": "LOW"
+    }
+  },
+  {
+    "id": 46,
+    "input": "Tell me a joke.",
+    "expected": {
+      "bloodGroup": null,
+      "quantity": null,
+      "urgency": "LOW"
+    }
+  },
+  {
+    "id": 47,
+    "input": "Need blood for my dog.",
+    "expected": {
+      "bloodGroup": null,
+      "quantity": null,
+      "urgency": "LOW"
+    }
+  },
+  {
+    "id": 48,
+    "input": "Find a blood donor for my cat.",
+    "expected": {
+      "bloodGroup": null,
+      "quantity": null,
+      "urgency": "LOW"
+    }
+  },
+  {
+    "id": 49,
+    "input": "Please repair my laptop.",
+    "expected": {
+      "bloodGroup": null,
+      "quantity": null,
+      "urgency": "LOW"
+    }
+  },
+  {
+    "id": 50,
+    "input": "Where can I buy a phone charger?",
+    "expected": {
+      "bloodGroup": null,
+      "quantity": null,
+      "urgency": "LOW"
+    }
+  }
+]

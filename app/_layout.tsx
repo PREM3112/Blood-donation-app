@@ -1,6 +1,7 @@
 import * as Linking from 'expo-linking';
 import React, { useEffect } from 'react';
 import { Platform } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 if (Platform.OS === 'web' && typeof window !== 'undefined') {
   (window as any).React = React;
@@ -33,9 +34,7 @@ const providerMetadata = {
   url: 'https://github.com/expo/expo',
   icons: ['https://walletconnect.com/walletconnect-logo.png'],
   redirect: {
-    // Dynamically captures your active exp:// tunnel URL
     native: Linking.createURL(''), 
-    // Left completely blank so WalletConnect doesn't override with universal links
     universal: '', 
   },
 };
@@ -62,6 +61,14 @@ const sessionParams = {
 
 export default function RootLayout() {
   const { provider, address, isConnected } = useWalletConnectModal();
+
+  useEffect(() => {
+    const nukeGhostSession = async () => {
+      await AsyncStorage.clear();
+      console.log("WalletConnect cache wiped clean!");
+    };
+    nukeGhostSession();
+  }, []);
 
   useEffect(() => {
     if (isConnected) {

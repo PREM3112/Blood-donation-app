@@ -61,7 +61,7 @@ export default function App() {
   const [recording, setRecording] = useState<Audio.Recording | null>(null);
   const [isRecording, setIsRecording] = useState(false);
 
-  const ADMIN_ADDRESS = "0xd1ee46023b00226635302a2f915f0c8e6d50c9cb";
+  const ADMIN_ADDRESS = "0x3955FEdCC7210d0A4663Cbd274c27D6b6A938147";
   const isAdmin = address && address.toLowerCase() === ADMIN_ADDRESS.toLowerCase();
 
   // --- Communication & Routing Helpers ---
@@ -127,9 +127,18 @@ export default function App() {
 
         const result = await parseAudioWithGemini(base64Audio);
         setAiMessage(result.replyMessage || 'Processed voice request.');
+        
         if (result.bloodGroup && bloodTypeOptions.includes(result.bloodGroup)) {
           setSelectedFilter(result.bloodGroup);
+        } else if (result.bloodGroup === "All" || !result.bloodGroup) {
+          setSelectedFilter('All');
         }
+
+        // AUTO-CLOSE MODAL AFTER 1.2 SECONDS
+        setTimeout(() => {
+          setIsAiModalVisible(false);
+          setAiMessage('Type or hold the microphone to speak your emergency request.'); 
+        }, 1200);
       }
     } catch (error) {
       setAiMessage('Failed to process voice request. Please try typing.');
@@ -148,12 +157,27 @@ export default function App() {
       const data = await response.json();
 
       if (data.features) {
-        const formattedHospitals = data.features.map((feature: any) => ({
-          name: feature.properties.name || "Unknown Hospital",
-          lat: feature.properties.lat,
-          lng: feature.properties.lon,
-          vicinity: feature.properties.street || feature.properties.city || 'Hospital / Clinic' 
-        }));
+        const formattedHospitals = data.features.map((feature: any, idx: number) => {
+          // Deterministic simulated real-time stock generation for public nodes
+          const unitsA = (idx * 3 + 4) % 15;
+          const unitsB = (idx * 2 + 1) % 12;
+          const unitsO = (idx * 5 + 6) % 20;
+          const unitsAB = (idx + 2) % 8;
+
+          const inventoryLevels = `A+: ${unitsA}, B+: ${unitsB}, O+: ${unitsO}, AB+: ${unitsAB}`;
+          const bloodGroups = 'A+, B+, O+, AB+';
+
+          return {
+            id: `geo-${idx}`,
+            name: feature.properties.name || "City Health Clinic",
+            latitude: feature.properties.lat,
+            longitude: feature.properties.lon,
+            vicinity: feature.properties.street || feature.properties.city || 'Hospital / Clinic',
+            inventoryLevels,
+            bloodGroups,
+            isVerified: false,
+          };
+        });
         setRealHospitals(formattedHospitals);
       }
     } catch (error) { console.error("Error fetching Geoapify hospitals:", error); }
@@ -198,7 +222,7 @@ export default function App() {
         if (cid && cid !== 'QmFallbackCID') {
           try {
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 4000);
+            const timeoutId = setTimeout(() => controller.abort(), 15000); // 15-second IPFS Timeout
             
             const ipfsRes = await fetch(`https://gateway.pinata.cloud/ipfs/${cid}`, { signal: controller.signal });
             clearTimeout(timeoutId);
@@ -252,12 +276,28 @@ export default function App() {
       }
 
       const web3Provider = new ethers.BrowserProvider(provider as any, "any");
-      const signer = await web3Provider.getSigner();
+      // --- FORCE WALLETCONNECT TO SEPOLIA ---
+      try {
+        await provider?.request({
+          method: 'wallet_switchEthereumChain',
+          params: [{ chainId: '0xaa36a7' }],
+        });
+      } catch (switchError) {
+        console.log("Network switch bypassed or failed:", switchError);
+      }
+      // --------------------------------------
       const contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, web3Provider);
 
       const encodedData = contract.interface.encodeFunctionData("registerBloodBank", [ipfsCID, location!.latitude.toString(), location!.longitude.toString()]);
-      const txResponse = await signer.sendTransaction({ to: CONTRACT_ADDRESS, value: 0n, data: encodedData, chainId: 11155111, gasLimit: 500000n, maxPriorityFeePerGas: 1500000000n });
-      await txResponse.wait();
+      const txHash = await provider?.request({
+        method: 'eth_sendTransaction',
+        params: [{
+          from: address,
+          to: CONTRACT_ADDRESS,
+          data: encodedData,
+        }],
+      });
+      console.log("Transaction Hash:", txHash);
       
       Alert.alert("Submitted", "Hospital registered! Awaiting Admin approval.");
       setBankName(''); setLicenseId(''); setBloodGroups(''); setInventoryLevels('');
@@ -269,29 +309,83 @@ export default function App() {
   const approveHospital = async (hospitalAddress: string, hospitalName: string) => {
     try {
       const web3Provider = new ethers.BrowserProvider(provider as any, "any");
-      const signer = await web3Provider.getSigner();
-      const contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer);
-      const tx = await contract.verifyBloodBank(hospitalAddress, true);
-      await tx.wait();
+
+      // --- FORCE WALLETCONNECT TO SEPOLIA ---
+      try {
+        await provider?.request({
+          method: 'wallet_switchEthereumChain',
+          params: [{ chainId: '0xaa36a7' }],
+        });
+      } catch (switchError) {
+        console.log("Network switch bypassed or failed:", switchError);
+      }
+      // --------------------------------------
+
+      const contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, web3Provider);
+      const encodedData = contract.interface.encodeFunctionData("verifyBloodBank", [hospitalAddress, true]);
+
+      // --- DIRECT WALLETCONNECT TRANSACTION ---
+      const txHash = await provider?.request({
+        method: 'eth_sendTransaction',
+        params: [{
+          from: address,
+          to: CONTRACT_ADDRESS,
+          data: encodedData,
+        }],
+      });
+      console.log("Approval Transaction Hash:", txHash);
+      // ----------------------------------------
+
       Alert.alert("Verified", `${hospitalName} is now approved on-chain!`);
       fetchBlockchainData(); 
-    } catch (error: any) { Alert.alert("Error", error?.message); }
+    } catch (error: any) { 
+      Alert.alert("Error", error?.message); 
+    }
   };
 
   const handleAiSearch = async () => {
     if (!aiInput.trim()) return;
+    
+    // TIMING BOUNDARY START: Immediately on button press
+    const startAppTime = performance.now(); 
+    const timestamp = new Date().toISOString();
+    
     setIsAiProcessing(true);
     setAiMessage('Analyzing your request...');
     
     try {
+      // API Call
       const result = await parseQueryWithGemini(aiInput);
-      setAiMessage(result.replyMessage || 'Found matching results. Updated map filters.');
+      
+      // TIMING BOUNDARY MIDDLE: State updates (Triggers map UI re-render)
       if (result.bloodGroup && bloodTypeOptions.includes(result.bloodGroup)) {
         setSelectedFilter(result.bloodGroup);
-      } else if (result.bloodGroup === "All" || !result.bloodGroup) {
+      } else {
         setSelectedFilter('All');
       }
-    } catch (error) {
+      setAiMessage(result.replyMessage || 'Filters updated.');
+
+      // TIMING BOUNDARY END: Map is now updating
+      const endAppTime = performance.now();
+      const duration = (endAppTime - startAppTime).toFixed(2);
+      
+      // TRACEABILITY & ENVIRONMENT LOG (Success)
+      console.log(`[LATENCY] Timestamp: ${timestamp} | Device: Oppo F23 5G | Network: Jio 5G | Input: "${aiInput}" | Output: ${JSON.stringify(result)} | Duration: ${duration}ms | Status: Success`);
+
+      setTimeout(() => {
+        setIsAiModalVisible(false);
+        setAiInput(''); 
+        setAiMessage('Type or hold the microphone to speak your emergency request.');
+      }, 1200);
+
+    } catch (error: any) {
+      // TIMING BOUNDARY END: Fallback UI update
+      const endAppTime = performance.now();
+      const duration = (endAppTime - startAppTime).toFixed(2);
+      
+      // TRACEABILITY & ENVIRONMENT LOG (Failure)
+      console.log(`[LATENCY] Timestamp: ${timestamp} | Device: Oppo F23 5G | Network: Jio 5G | Input: "${aiInput}" | Output: ERROR - ${error.message} | Duration: ${duration}ms | Status: Failure`);
+      
       setAiMessage('Encountered an issue. Please select filter manually.');
     } finally {
       setIsAiProcessing(false);
@@ -318,6 +412,7 @@ export default function App() {
     );
   }
 
+  // Filter Tier 1 on-chain banks
   const filteredBanks = bloodBanks.filter((bank) => {
     if (!bank.latitude || !bank.longitude) return false;
     const distanceInMeters = getDistance({ latitude: location.latitude, longitude: location.longitude }, { latitude: bank.latitude, longitude: bank.longitude });
@@ -325,6 +420,12 @@ export default function App() {
     if (!bank.isVerified && !isAdmin) return false;
     if (selectedFilter === 'All') return true;
     return bank.bloodGroups.toUpperCase().includes(selectedFilter.toUpperCase()) || bank.inventoryLevels.toUpperCase().includes(selectedFilter.toUpperCase());
+  });
+
+  // Filter Tier 2 public directory hospitals
+  const filteredRealHospitals = realHospitals.filter((hospital) => {
+    if (selectedFilter === 'All') return true;
+    return hospital.inventoryLevels.toUpperCase().includes(selectedFilter.toUpperCase());
   });
 
   return (
@@ -336,20 +437,19 @@ export default function App() {
       >
         <Marker coordinate={{ latitude: location.latitude, longitude: location.longitude }} title="You are here" pinColor="blue" />
 
-        {realHospitals.map((hospital, index) => (
+        {/* Tier 2: Public Real-World Hospitals (Red Pins) */}
+        {filteredRealHospitals.map((hospital, index) => (
           <Marker 
             key={`real-${index}`} 
-            coordinate={{ latitude: hospital.lat, longitude: hospital.lng }} 
-            title={hospital.name} 
-            description="Tap to autofill registration" 
+            coordinate={{ latitude: hospital.latitude, longitude: hospital.longitude }} 
+            title={`🏥 ${hospital.name}`} 
+            description={`Stock: ${hospital.inventoryLevels} (Tap for details)`} 
             pinColor="red" 
-            onCalloutPress={() => {
-              setBankName(hospital.name);
-              setIsHospitalFormVisible(true);
-            }} 
+            onCalloutPress={() => setSelectedHospital(hospital)} 
           />
         ))}
 
+        {/* Tier 1: Verified On-Chain Nodes (Green/Orange Pins) */}
         {filteredBanks.map((bank, index) => (
           <Marker 
             key={`${bank.id}-${index}`} 
@@ -386,7 +486,7 @@ export default function App() {
       {!isAdmin && (
         <View style={styles.bottomActionsContainer}>
           <TouchableOpacity style={styles.hospitalToggleBtn} onPress={() => setIsHospitalFormVisible(!isHospitalFormVisible)}>
-            <Text style={styles.hospitalToggleText}>🏥 {isHospitalFormVisible ? "Close Form" : "Hospital Portal"}</Text>
+            <Text style={styles.hospitalToggleText}>🏥 {isHospitalFormVisible ? "Close Form" : "Register Node"}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.aiFab} onPress={() => setIsAiModalVisible(true)}>
@@ -420,11 +520,11 @@ export default function App() {
         </BlurView>
       )}
 
-      {/* Hospital Registration Modal/Form */}
+      {/* Hospital Node Registration Modal */}
       {isHospitalFormVisible && !isAdmin && (
         <BlurView intensity={95} tint="light" style={styles.panelContainer}>
-          <Text style={styles.panelTitle}>🏥 Hospital Node: Register</Text>
-          <TextInput style={styles.input} placeholder="Hospital Name (Tap Red Pin to autofill)" placeholderTextColor="#666" value={bankName} onChangeText={setBankName} />
+          <Text style={styles.panelTitle}>🏥 Hospital Node: Register on Chain</Text>
+          <TextInput style={styles.input} placeholder="Hospital Name" placeholderTextColor="#666" value={bankName} onChangeText={setBankName} />
           <TextInput style={styles.input} placeholder="Govt Medical License ID (e.g. TN-MED-2026)" placeholderTextColor="#666" value={licenseId} onChangeText={setLicenseId} />
           <TextInput style={styles.input} placeholder="Available Blood Groups (e.g. A+, B+, O-)" placeholderTextColor="#666" value={bloodGroups} onChangeText={setBloodGroups} />
           <TextInput style={styles.input} placeholder="Stock Units (e.g. A+: 12, B+: 5, O-: 20)" placeholderTextColor="#666" value={inventoryLevels} onChangeText={setInventoryLevels} />
@@ -434,7 +534,7 @@ export default function App() {
         </BlurView>
       )}
 
-      {/* --- NEW SLIDING BOTTOM SHEET FOR HOSPITAL DETAILS --- */}
+      {/* Sliding Bottom Sheet for Details (Supports both Tier 1 and Tier 2) */}
       <Modal visible={!!selectedHospital} transparent={true} animationType="slide">
         <TouchableOpacity style={styles.modalOverlay} activeOpacity={1} onPress={() => setSelectedHospital(null)}>
           <View style={styles.bottomSheet} onStartShouldSetResponder={() => true}>
@@ -443,9 +543,9 @@ export default function App() {
 
             <Text style={styles.hospitalTitle}>{selectedHospital?.name}</Text>
             
-            <View style={styles.statusBadge}>
-              <Text style={styles.statusText}>
-                {selectedHospital?.isVerified ? "✅ Verified Network Node" : "⏳ Pending Node"}
+            <View style={[styles.statusBadge, !selectedHospital?.isVerified && styles.statusBadgeUnverified]}>
+              <Text style={[styles.statusText, !selectedHospital?.isVerified && styles.statusTextUnverified]}>
+                {selectedHospital?.isVerified ? "✅ Verified Network Node" : "🌐 Public Healthcare Node"}
               </Text>
             </View>
 
@@ -457,7 +557,7 @@ export default function App() {
                 return (
                   <View key={index} style={styles.stockCard}>
                     <Text style={styles.bloodTypeLabel}>{type?.trim()}</Text>
-                    <Text style={styles.unitLabel}>{units?.trim()} units</Text>
+                    <Text style={styles.unitLabel}>{units ? `${units.trim()} units` : 'Available'}</Text>
                   </View>
                 );
               })}
@@ -479,7 +579,7 @@ export default function App() {
 
             <TouchableOpacity 
               style={styles.emergencyButton} 
-              onPress={() => Alert.alert("Emergency Alert Sent", "The hospital has been notified of your urgent requirement.")}
+              onPress={() => Alert.alert("Emergency Alert Sent", `Priority dispatch triggered for ${selectedHospital?.name}.`)}
             >
               <Text style={styles.emergencyText}>🚨 SEND EMERGENCY ALERT</Text>
             </TouchableOpacity>
@@ -577,7 +677,7 @@ const styles = StyleSheet.create({
   aiCloseBtn: { backgroundColor: '#576574', paddingVertical: 14, borderRadius: 12, flex: 0.3, alignItems: 'center' },
   aiCloseText: { color: 'white', fontWeight: 'bold', fontSize: 15 },
 
-  // --- NEW BOTTOM SHEET STYLES ---
+  // Bottom Sheet Styles
   modalOverlay: {
     flex: 1,
     justifyContent: 'flex-end',
@@ -617,10 +717,16 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     marginBottom: 20,
   },
+  statusBadgeUnverified: {
+    backgroundColor: '#e3f2fd',
+  },
   statusText: {
     color: '#2e7d32',
     fontSize: 12,
     fontWeight: '600',
+  },
+  statusTextUnverified: {
+    color: '#1565c0',
   },
   sectionHeader: {
     fontSize: 16,

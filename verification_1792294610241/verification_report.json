@@ -1,0 +1,538 @@
+{
+  "startedAt": "2026-10-18T03:36:50.244Z",
+  "inputFile": "experiment_evidence_report.json",
+  "verificationScope": "RPC transaction/receipt checks and HTTPS gateway JSON comparison. Not a local cryptographic verification of IPFS DAG blocks, deployed-source equivalence, or storage-state equivalence.",
+  "rows": [
+    {
+      "iteration": 1,
+      "baselineHash": "0x26bb8cb43110fd759cc4d4e412a4b405a2d2d8935442f444dbf459909c53b898",
+      "hybridHash": "0x2159dd723478546b5ccab2e707587a81ec66fa766c10a88d3f6ec6df59753649",
+      "passed": true,
+      "baselineGas": "51678",
+      "hybridGas": "49010",
+      "decodedInputs": {
+        "name": "Rajiv Gandhi Government General Hospital (Node)",
+        "licenseId": "GOV-TN-101",
+        "inventoryLevels": "O+: 15, O-: 2, A+: 8, B+: 11, AB+: 5",
+        "timestamp": "2026-10-15T13:00:00.000Z"
+      },
+      "decodedCID": "QmPoncY7fVR9jC3V1pWWwcAqUrbZaGd8YvYSye75Vvja6i",
+      "retrieval": {
+        "url": "https://gateway.pinata.cloud/ipfs/QmPoncY7fVR9jC3V1pWWwcAqUrbZaGd8YvYSye75Vvja6i",
+        "retrievedAt": "2026-10-18T03:36:55.508Z",
+        "priorFailures": []
+      },
+      "retrievedIpfsJson": {
+        "name": "Rajiv Gandhi Government General Hospital (Node)",
+        "licenseId": "GOV-TN-101",
+        "inventoryLevels": "O+: 15, O-: 2, A+: 8, B+: 11, AB+: 5",
+        "timestamp": "2026-10-15T13:00:00.000Z"
+      },
+      "fieldMatches": {
+        "name": true,
+        "licenseId": true,
+        "inventoryLevels": true,
+        "timestamp": true
+      },
+      "checks": {
+        "baselineSuccessful": true,
+        "hybridSuccessful": true,
+        "baselineDestination": true,
+        "hybridDestination": true,
+        "baselineReceiptDestination": true,
+        "hybridReceiptDestination": true,
+        "baselineBlockConsistent": true,
+        "hybridBlockConsistent": true,
+        "baselineGasMatchesExport": true,
+        "hybridGasMatchesExport": true,
+        "cidMatchesExport": true,
+        "decodedInputsMatchExport": true,
+        "retrievedFieldsMatchExport": true,
+        "pairedPayloadFieldsMatch": true
+      }
+    },
+    {
+      "iteration": 2,
+      "baselineHash": "0x3273a3255d02988be68a5aa5dce39893db76e07c0ce0e7eb85943035dfbdf9a3",
+      "hybridHash": "0x2a88188e1ea983f16da052852db379b4f305bbad2ace4b6c7938e004a00682fe",
+      "passed": true,
+      "baselineGas": "51678",
+      "hybridGas": "49010",
+      "decodedInputs": {
+        "name": "Rajiv Gandhi Government General Hospital (Node)",
+        "licenseId": "GOV-TN-101",
+        "inventoryLevels": "O+: 16, O-: 2, A+: 8, B+: 11, AB+: 5",
+        "timestamp": "2026-10-15T13:00:00.000Z"
+      },
+      "decodedCID": "QmYSLVjQDzEZpv4LMfnhJuiWaTnuDsiH9QyKojv4tHKQc5",
+      "retrieval": {
+        "url": "https://gateway.pinata.cloud/ipfs/QmYSLVjQDzEZpv4LMfnhJuiWaTnuDsiH9QyKojv4tHKQc5",
+        "retrievedAt": "2026-10-18T03:37:02.550Z",
+        "priorFailures": []
+      },
+      "retrievedIpfsJson": {
+        "name": "Rajiv Gandhi Government General Hospital (Node)",
+        "licenseId": "GOV-TN-101",
+        "inventoryLevels": "O+: 16, O-: 2, A+: 8, B+: 11, AB+: 5",
+        "timestamp": "2026-10-15T13:00:00.000Z"
+      },
+      "fieldMatches": {
+        "name": true,
+        "licenseId": true,
+        "inventoryLevels": true,
+        "timestamp": true
+      },
+      "checks": {
+        "baselineSuccessful": true,
+        "hybridSuccessful": true,
+        "baselineDestination": true,
+        "hybridDestination": true,
+        "baselineReceiptDestination": true,
+        "hybridReceiptDestination": true,
+        "baselineBlockConsistent": true,
+        "hybridBlockConsistent": true,
+        "baselineGasMatchesExport": true,
+        "hybridGasMatchesExport": true,
+        "cidMatchesExport": true,
+        "decodedInputsMatchExport": true,
+        "retrievedFieldsMatchExport": true,
+        "pairedPayloadFieldsMatch": true
+      }
+    },
+    {
+      "iteration": 3,
+      "baselineHash": "0xb4a51fa89bcd3d0dc668e23ec20332fc703012cb0471659b9e3e32a35b388eda",
+      "hybridHash": "0x647c0374b4f5b495711bb1a686ee80617a2cf477c09acfa2b821a0f8fef14bdc",
+      "passed": true,
+      "baselineGas": "51678",
+      "hybridGas": "49010",
+      "decodedInputs": {
+        "name": "Rajiv Gandhi Government General Hospital (Node)",
+        "licenseId": "GOV-TN-101",
+        "inventoryLevels": "O+: 17, O-: 2, A+: 8, B+: 11, AB+: 5",
+        "timestamp": "2026-10-15T13:00:00.000Z"
+      },
+      "decodedCID": "QmaoiSonjJ7M6xvveZVjKtkdX78a5Z1fe2f8w4yF16FUTz",
+      "retrieval": {
+        "url": "https://gateway.pinata.cloud/ipfs/QmaoiSonjJ7M6xvveZVjKtkdX78a5Z1fe2f8w4yF16FUTz",
+        "retrievedAt": "2026-10-18T03:37:10.027Z",
+        "priorFailures": []
+      },
+      "retrievedIpfsJson": {
+        "name": "Rajiv Gandhi Government General Hospital (Node)",
+        "licenseId": "GOV-TN-101",
+        "inventoryLevels": "O+: 17, O-: 2, A+: 8, B+: 11, AB+: 5",
+        "timestamp": "2026-10-15T13:00:00.000Z"
+      },
+      "fieldMatches": {
+        "name": true,
+        "licenseId": true,
+        "inventoryLevels": true,
+        "timestamp": true
+      },
+      "checks": {
+        "baselineSuccessful": true,
+        "hybridSuccessful": true,
+        "baselineDestination": true,
+        "hybridDestination": true,
+        "baselineReceiptDestination": true,
+        "hybridReceiptDestination": true,
+        "baselineBlockConsistent": true,
+        "hybridBlockConsistent": true,
+        "baselineGasMatchesExport": true,
+        "hybridGasMatchesExport": true,
+        "cidMatchesExport": true,
+        "decodedInputsMatchExport": true,
+        "retrievedFieldsMatchExport": true,
+        "pairedPayloadFieldsMatch": true
+      }
+    },
+    {
+      "iteration": 4,
+      "baselineHash": "0xa9c15a25f0026b191f9fe684d0fc3ff78bbe0946bfb8b9839650374d88210051",
+      "hybridHash": "0xb926237b016381ea4b6dad493cf0fa53241d7b7c923ba06f27ba9db422c7bdee",
+      "passed": true,
+      "baselineGas": "51678",
+      "hybridGas": "49010",
+      "decodedInputs": {
+        "name": "Rajiv Gandhi Government General Hospital (Node)",
+        "licenseId": "GOV-TN-101",
+        "inventoryLevels": "O+: 18, O-: 2, A+: 8, B+: 11, AB+: 5",
+        "timestamp": "2026-10-15T13:00:00.000Z"
+      },
+      "decodedCID": "Qme8EeRx39gCYzu7Pa8nxsewDGVYV2CMvxXHsuiyd1NwCZ",
+      "retrieval": {
+        "url": "https://gateway.pinata.cloud/ipfs/Qme8EeRx39gCYzu7Pa8nxsewDGVYV2CMvxXHsuiyd1NwCZ",
+        "retrievedAt": "2026-10-18T03:37:16.103Z",
+        "priorFailures": []
+      },
+      "retrievedIpfsJson": {
+        "name": "Rajiv Gandhi Government General Hospital (Node)",
+        "licenseId": "GOV-TN-101",
+        "inventoryLevels": "O+: 18, O-: 2, A+: 8, B+: 11, AB+: 5",
+        "timestamp": "2026-10-15T13:00:00.000Z"
+      },
+      "fieldMatches": {
+        "name": true,
+        "licenseId": true,
+        "inventoryLevels": true,
+        "timestamp": true
+      },
+      "checks": {
+        "baselineSuccessful": true,
+        "hybridSuccessful": true,
+        "baselineDestination": true,
+        "hybridDestination": true,
+        "baselineReceiptDestination": true,
+        "hybridReceiptDestination": true,
+        "baselineBlockConsistent": true,
+        "hybridBlockConsistent": true,
+        "baselineGasMatchesExport": true,
+        "hybridGasMatchesExport": true,
+        "cidMatchesExport": true,
+        "decodedInputsMatchExport": true,
+        "retrievedFieldsMatchExport": true,
+        "pairedPayloadFieldsMatch": true
+      }
+    },
+    {
+      "iteration": 5,
+      "baselineHash": "0x1d087ea08b2097810abf8f5479954f73f23d3dc60df311f86deac8b08ae3db5a",
+      "hybridHash": "0x37016ad1b65dbeef79035f6d5b87897842b2c0a075fbad953246f23aa58adfff",
+      "passed": true,
+      "baselineGas": "51678",
+      "hybridGas": "49010",
+      "decodedInputs": {
+        "name": "Rajiv Gandhi Government General Hospital (Node)",
+        "licenseId": "GOV-TN-101",
+        "inventoryLevels": "O+: 19, O-: 2, A+: 8, B+: 11, AB+: 5",
+        "timestamp": "2026-10-15T13:00:00.000Z"
+      },
+      "decodedCID": "QmPtAqF6k8CJGuHtJoP1pH6xvGrNDhjDRcnPhwWNaXk3t9",
+      "retrieval": {
+        "url": "https://gateway.pinata.cloud/ipfs/QmPtAqF6k8CJGuHtJoP1pH6xvGrNDhjDRcnPhwWNaXk3t9",
+        "retrievedAt": "2026-10-18T03:37:20.984Z",
+        "priorFailures": []
+      },
+      "retrievedIpfsJson": {
+        "name": "Rajiv Gandhi Government General Hospital (Node)",
+        "licenseId": "GOV-TN-101",
+        "inventoryLevels": "O+: 19, O-: 2, A+: 8, B+: 11, AB+: 5",
+        "timestamp": "2026-10-15T13:00:00.000Z"
+      },
+      "fieldMatches": {
+        "name": true,
+        "licenseId": true,
+        "inventoryLevels": true,
+        "timestamp": true
+      },
+      "checks": {
+        "baselineSuccessful": true,
+        "hybridSuccessful": true,
+        "baselineDestination": true,
+        "hybridDestination": true,
+        "baselineReceiptDestination": true,
+        "hybridReceiptDestination": true,
+        "baselineBlockConsistent": true,
+        "hybridBlockConsistent": true,
+        "baselineGasMatchesExport": true,
+        "hybridGasMatchesExport": true,
+        "cidMatchesExport": true,
+        "decodedInputsMatchExport": true,
+        "retrievedFieldsMatchExport": true,
+        "pairedPayloadFieldsMatch": true
+      }
+    },
+    {
+      "iteration": 6,
+      "baselineHash": "0x4886cea51c80a8cb4a86c8f2a975b241b8da9cf38eacc7d4913c05ae54be7e66",
+      "hybridHash": "0xbfe2d6562bbcf4adfd032468875ddc8edff50a7adcdfe18ef2e37b67f24da946",
+      "passed": true,
+      "baselineGas": "51678",
+      "hybridGas": "49010",
+      "decodedInputs": {
+        "name": "Rajiv Gandhi Government General Hospital (Node)",
+        "licenseId": "GOV-TN-101",
+        "inventoryLevels": "O+: 20, O-: 2, A+: 8, B+: 11, AB+: 5",
+        "timestamp": "2026-10-15T13:00:00.000Z"
+      },
+      "decodedCID": "QmfCoqcyxQdMbu6bnw9XGJHYYy5VoCkksme4Lsf6vcN9DB",
+      "retrieval": {
+        "url": "https://gateway.pinata.cloud/ipfs/QmfCoqcyxQdMbu6bnw9XGJHYYy5VoCkksme4Lsf6vcN9DB",
+        "retrievedAt": "2026-10-18T03:37:28.421Z",
+        "priorFailures": []
+      },
+      "retrievedIpfsJson": {
+        "name": "Rajiv Gandhi Government General Hospital (Node)",
+        "licenseId": "GOV-TN-101",
+        "inventoryLevels": "O+: 20, O-: 2, A+: 8, B+: 11, AB+: 5",
+        "timestamp": "2026-10-15T13:00:00.000Z"
+      },
+      "fieldMatches": {
+        "name": true,
+        "licenseId": true,
+        "inventoryLevels": true,
+        "timestamp": true
+      },
+      "checks": {
+        "baselineSuccessful": true,
+        "hybridSuccessful": true,
+        "baselineDestination": true,
+        "hybridDestination": true,
+        "baselineReceiptDestination": true,
+        "hybridReceiptDestination": true,
+        "baselineBlockConsistent": true,
+        "hybridBlockConsistent": true,
+        "baselineGasMatchesExport": true,
+        "hybridGasMatchesExport": true,
+        "cidMatchesExport": true,
+        "decodedInputsMatchExport": true,
+        "retrievedFieldsMatchExport": true,
+        "pairedPayloadFieldsMatch": true
+      }
+    },
+    {
+      "iteration": 7,
+      "baselineHash": "0xfc8158e6955f65a4b4f1b154835eb61eee9a1795d1cc3564990b1b6d8605c4a0",
+      "hybridHash": "0x734b1bbfa5148089514e3615fdf38b0897dff91ab9063313511d5431070cbb41",
+      "passed": true,
+      "baselineGas": "51678",
+      "hybridGas": "49010",
+      "decodedInputs": {
+        "name": "Rajiv Gandhi Government General Hospital (Node)",
+        "licenseId": "GOV-TN-101",
+        "inventoryLevels": "O+: 21, O-: 2, A+: 8, B+: 11, AB+: 5",
+        "timestamp": "2026-10-15T13:00:00.000Z"
+      },
+      "decodedCID": "QmfVF8thk11Z8gPhvXG2N6pjtFDh76NCz3EeLGeA3GDzCR",
+      "retrieval": {
+        "url": "https://gateway.pinata.cloud/ipfs/QmfVF8thk11Z8gPhvXG2N6pjtFDh76NCz3EeLGeA3GDzCR",
+        "retrievedAt": "2026-10-18T03:37:34.255Z",
+        "priorFailures": []
+      },
+      "retrievedIpfsJson": {
+        "name": "Rajiv Gandhi Government General Hospital (Node)",
+        "licenseId": "GOV-TN-101",
+        "inventoryLevels": "O+: 21, O-: 2, A+: 8, B+: 11, AB+: 5",
+        "timestamp": "2026-10-15T13:00:00.000Z"
+      },
+      "fieldMatches": {
+        "name": true,
+        "licenseId": true,
+        "inventoryLevels": true,
+        "timestamp": true
+      },
+      "checks": {
+        "baselineSuccessful": true,
+        "hybridSuccessful": true,
+        "baselineDestination": true,
+        "hybridDestination": true,
+        "baselineReceiptDestination": true,
+        "hybridReceiptDestination": true,
+        "baselineBlockConsistent": true,
+        "hybridBlockConsistent": true,
+        "baselineGasMatchesExport": true,
+        "hybridGasMatchesExport": true,
+        "cidMatchesExport": true,
+        "decodedInputsMatchExport": true,
+        "retrievedFieldsMatchExport": true,
+        "pairedPayloadFieldsMatch": true
+      }
+    },
+    {
+      "iteration": 8,
+      "baselineHash": "0xc6ad3e13a2ca2b6c21a3e348c55cd13bfbf430a07ec6e2aa5c2b8b92f42aaa3f",
+      "hybridHash": "0x6019294c12cd17042a3d38d1f2a7a1c0ad3df029417c874336075abb5604fea8",
+      "passed": true,
+      "baselineGas": "51678",
+      "hybridGas": "49010",
+      "decodedInputs": {
+        "name": "Rajiv Gandhi Government General Hospital (Node)",
+        "licenseId": "GOV-TN-101",
+        "inventoryLevels": "O+: 22, O-: 2, A+: 8, B+: 11, AB+: 5",
+        "timestamp": "2026-10-15T13:00:00.000Z"
+      },
+      "decodedCID": "QmUDR56esj4W5CZMxi7zGjaehipG7KDPzs3yQLwPgc4NGP",
+      "retrieval": {
+        "url": "https://gateway.pinata.cloud/ipfs/QmUDR56esj4W5CZMxi7zGjaehipG7KDPzs3yQLwPgc4NGP",
+        "retrievedAt": "2026-10-18T03:37:39.380Z",
+        "priorFailures": []
+      },
+      "retrievedIpfsJson": {
+        "name": "Rajiv Gandhi Government General Hospital (Node)",
+        "licenseId": "GOV-TN-101",
+        "inventoryLevels": "O+: 22, O-: 2, A+: 8, B+: 11, AB+: 5",
+        "timestamp": "2026-10-15T13:00:00.000Z"
+      },
+      "fieldMatches": {
+        "name": true,
+        "licenseId": true,
+        "inventoryLevels": true,
+        "timestamp": true
+      },
+      "checks": {
+        "baselineSuccessful": true,
+        "hybridSuccessful": true,
+        "baselineDestination": true,
+        "hybridDestination": true,
+        "baselineReceiptDestination": true,
+        "hybridReceiptDestination": true,
+        "baselineBlockConsistent": true,
+        "hybridBlockConsistent": true,
+        "baselineGasMatchesExport": true,
+        "hybridGasMatchesExport": true,
+        "cidMatchesExport": true,
+        "decodedInputsMatchExport": true,
+        "retrievedFieldsMatchExport": true,
+        "pairedPayloadFieldsMatch": true
+      }
+    },
+    {
+      "iteration": 9,
+      "baselineHash": "0xcd5a7be2a713200d4179aefb4e9992b91a60be549e3471ee76ce1e4d940cc83e",
+      "hybridHash": "0xa84fe78a5f2677775ba359da4d553f80218191c98d6fa48102b83058af8bf11f",
+      "passed": true,
+      "baselineGas": "51678",
+      "hybridGas": "49010",
+      "decodedInputs": {
+        "name": "Rajiv Gandhi Government General Hospital (Node)",
+        "licenseId": "GOV-TN-101",
+        "inventoryLevels": "O+: 23, O-: 2, A+: 8, B+: 11, AB+: 5",
+        "timestamp": "2026-10-15T13:00:00.000Z"
+      },
+      "decodedCID": "Qmaajq9GQsJ7hHWeurzMzXejE6XgxTeYzsWhvhSoaCTpu3",
+      "retrieval": {
+        "url": "https://gateway.pinata.cloud/ipfs/Qmaajq9GQsJ7hHWeurzMzXejE6XgxTeYzsWhvhSoaCTpu3",
+        "retrievedAt": "2026-10-18T03:37:43.603Z",
+        "priorFailures": []
+      },
+      "retrievedIpfsJson": {
+        "name": "Rajiv Gandhi Government General Hospital (Node)",
+        "licenseId": "GOV-TN-101",
+        "inventoryLevels": "O+: 23, O-: 2, A+: 8, B+: 11, AB+: 5",
+        "timestamp": "2026-10-15T13:00:00.000Z"
+      },
+      "fieldMatches": {
+        "name": true,
+        "licenseId": true,
+        "inventoryLevels": true,
+        "timestamp": true
+      },
+      "checks": {
+        "baselineSuccessful": true,
+        "hybridSuccessful": true,
+        "baselineDestination": true,
+        "hybridDestination": true,
+        "baselineReceiptDestination": true,
+        "hybridReceiptDestination": true,
+        "baselineBlockConsistent": true,
+        "hybridBlockConsistent": true,
+        "baselineGasMatchesExport": true,
+        "hybridGasMatchesExport": true,
+        "cidMatchesExport": true,
+        "decodedInputsMatchExport": true,
+        "retrievedFieldsMatchExport": true,
+        "pairedPayloadFieldsMatch": true
+      }
+    },
+    {
+      "iteration": 10,
+      "baselineHash": "0x447f68e55bd020540ad2856b46a59ee1c0b432aa12bd1ba14c8b1a6dadabe138",
+      "hybridHash": "0xa29dc06eb690aeaae674df33a6cd1e630cc919b0a4b378ef5e22f3c7c2b1b11f",
+      "passed": true,
+      "baselineGas": "51678",
+      "hybridGas": "49010",
+      "decodedInputs": {
+        "name": "Rajiv Gandhi Government General Hospital (Node)",
+        "licenseId": "GOV-TN-101",
+        "inventoryLevels": "O+: 24, O-: 2, A+: 8, B+: 11, AB+: 5",
+        "timestamp": "2026-10-15T13:00:00.000Z"
+      },
+      "decodedCID": "QmPktJKJG9YDACWdzqGVSZgEFcGPzE8SNk7XWriyLjL2fL",
+      "retrieval": {
+        "url": "https://gateway.pinata.cloud/ipfs/QmPktJKJG9YDACWdzqGVSZgEFcGPzE8SNk7XWriyLjL2fL",
+        "retrievedAt": "2026-10-18T03:37:50.910Z",
+        "priorFailures": []
+      },
+      "retrievedIpfsJson": {
+        "name": "Rajiv Gandhi Government General Hospital (Node)",
+        "licenseId": "GOV-TN-101",
+        "inventoryLevels": "O+: 24, O-: 2, A+: 8, B+: 11, AB+: 5",
+        "timestamp": "2026-10-15T13:00:00.000Z"
+      },
+      "fieldMatches": {
+        "name": true,
+        "licenseId": true,
+        "inventoryLevels": true,
+        "timestamp": true
+      },
+      "checks": {
+        "baselineSuccessful": true,
+        "hybridSuccessful": true,
+        "baselineDestination": true,
+        "hybridDestination": true,
+        "baselineReceiptDestination": true,
+        "hybridReceiptDestination": true,
+        "baselineBlockConsistent": true,
+        "hybridBlockConsistent": true,
+        "baselineGasMatchesExport": true,
+        "hybridGasMatchesExport": true,
+        "cidMatchesExport": true,
+        "decodedInputsMatchExport": true,
+        "retrievedFieldsMatchExport": true,
+        "pairedPayloadFieldsMatch": true
+      }
+    }
+  ],
+  "deployments": {
+    "baseline": {
+      "txHash": "0x1259fb1cca7d8490f33560bf154ddb6f682c9a807779742060f2b097db50175c",
+      "checks": {
+        "successful": true,
+        "directCreationTransaction": true,
+        "createdExpectedContract": true
+      },
+      "passed": true,
+      "note": "Checks direct creation only; factory deployments need separate tracing."
+    },
+    "hybrid": {
+      "txHash": "0x410a34da5a3035de075b731153119abe3e568ee696f242bec3b8aa23b5498f15",
+      "checks": {
+        "successful": true,
+        "directCreationTransaction": true,
+        "createdExpectedContract": true
+      },
+      "passed": true,
+      "note": "Checks direct creation only; factory deployments need separate tracing."
+    }
+  },
+  "chainId": "11155111",
+  "summary": {
+    "totalPairs": 10,
+    "passedPairs": 10,
+    "failedOrIncompletePairs": 0,
+    "metrics": {
+      "baseline": {
+        "n": 10,
+        "totalGas": 516780,
+        "meanGas": 51678,
+        "medianGas": 51678,
+        "populationStandardDeviation": 0,
+        "minGas": 51678,
+        "maxGas": 51678
+      },
+      "hybrid": {
+        "n": 10,
+        "totalGas": 490100,
+        "meanGas": 49010,
+        "medianGas": 49010,
+        "populationStandardDeviation": 0,
+        "minGas": 49010,
+        "maxGas": 49010
+      },
+      "meanGasSavedPerUpdate": 2668,
+      "reductionPercent": 5.162738496071829
+    }
+  },
+  "completedAt": "2026-10-18T03:37:51.381Z"
+}

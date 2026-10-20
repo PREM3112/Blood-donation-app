@@ -42,3 +42,8 @@ app-example
 /ios
 /android
 .env 
+
+# Ignore local environment configuration files
+.env
+.env.local
+.env.production

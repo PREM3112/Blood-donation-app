@@ -1,0 +1,50 @@
+{
+  "_format": "hh3-sol-build-info-1",
+  "id": "solc-0_8_20-d74a91927e11be1dfc16ed77ce4a645f54d4b93f",
+  "solcVersion": "0.8.20",
+  "solcLongVersion": "0.8.20+commit.a1b79de6",
+  "compilerType": "solc",
+  "userSourceNameMap": {
+    "contracts/BloodDonation.sol": "project/contracts/BloodDonation.sol",
+    "contracts/BloodDonationBaseline.sol": "project/contracts/BloodDonationBaseline.sol"
+  },
+  "input": {
+    "language": "Solidity",
+    "settings": {
+      "evmVersion": "shanghai",
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "outputSelection": {
+        "*": {
+          "": [
+            "ast"
+          ],
+          "*": [
+            "abi",
+            "evm.bytecode.linkReferences",
+            "evm.bytecode.object",
+            "evm.bytecode.opcodes",
+            "evm.bytecode.sourceMap",
+            "evm.deployedBytecode.immutableReferences",
+            "evm.deployedBytecode.linkReferences",
+            "evm.deployedBytecode.object",
+            "evm.deployedBytecode.opcodes",
+            "evm.deployedBytecode.sourceMap",
+            "evm.methodIdentifiers"
+          ]
+        }
+      },
+      "remappings": []
+    },
+    "sources": {
+      "project/contracts/BloodDonation.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.0;\r\n\r\ncontract BloodDonation {\r\n    struct BloodBank {\r\n        string ipfsCID;\r\n        string latitude;\r\n        string longitude;\r\n        bool isVerified;\r\n        bool isActive;\r\n    }\r\n\r\n    address public admin;\r\n    mapping(address => BloodBank) public bloodBanks;\r\n\r\n    event BloodBankRegistered(address indexed bankAddress, string ipfsCID);\r\n    event BloodBankVerified(address indexed bankAddress, bool status);\r\n    event InventoryUpdated(address indexed bankAddress, string newIpfsCID);\r\n\r\n    modifier onlyAdmin() {\r\n        require(msg.sender == admin, \"Only admin can call this\");\r\n        _;\r\n    }\r\n\r\n    modifier onlyVerifiedBank() {\r\n        require(bloodBanks[msg.sender].isVerified, \"Bank must be verified\");\r\n        _;\r\n    }\r\n\r\n    constructor() {\r\n        admin = msg.sender;\r\n    }\r\n\r\n    function registerBloodBank(string memory _ipfsCID, string memory _latitude, string memory _longitude) public {\r\n        bloodBanks[msg.sender] = BloodBank({\r\n            ipfsCID: _ipfsCID,\r\n            latitude: _latitude,\r\n            longitude: _longitude,\r\n            isVerified: false,\r\n            isActive: true\r\n        });\r\n        emit BloodBankRegistered(msg.sender, _ipfsCID);\r\n    }\r\n\r\n    function verifyBloodBank(address _bankAddress, bool _status) public onlyAdmin {\r\n        require(bytes(bloodBanks[_bankAddress].ipfsCID).length > 0, \"Bank not registered\");\r\n        bloodBanks[_bankAddress].isVerified = _status;\r\n        emit BloodBankVerified(_bankAddress, _status);\r\n    }\r\n\r\n    function updateInventory(string memory _newIpfsCID) public onlyVerifiedBank {\r\n        bloodBanks[msg.sender].ipfsCID = _newIpfsCID;\r\n        emit InventoryUpdated(msg.sender, _newIpfsCID);\r\n    }\r\n}"
+      },
+      "project/contracts/BloodDonationBaseline.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.0;\r\n\r\ncontract BloodDonationBaseline {\r\n    struct BloodBank {\r\n        string name;\r\n        string licenseId;\r\n        string inventoryLevels;\r\n        string timestamp;\r\n    }\r\n\r\n    mapping(address => BloodBank) public bloodBanks;\r\n\r\n    function updateInventoryOnChain(\r\n        string memory _name,\r\n        string memory _licenseId,\r\n        string memory _inventoryLevels,\r\n        string memory _timestamp\r\n    ) public {\r\n        bloodBanks[msg.sender] = BloodBank(_name, _licenseId, _inventoryLevels, _timestamp);\r\n    }\r\n}"
+      }
+    }
+  }
+}

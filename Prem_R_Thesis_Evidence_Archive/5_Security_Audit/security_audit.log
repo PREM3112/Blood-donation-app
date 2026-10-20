@@ -1,0 +1,133 @@
+LOCAL ACCESS-CONTROL TEST REPORT
+
+Started: 2026-10-18T04:27:05.338Z
+
+Contract: 0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9
+
+
+
+PASS: 1. Authorized inventory update
+{
+  "name": "1. Authorized inventory update",
+  "passed": true,
+  "method": "Mined local transaction and storage read",
+  "transactionHash": "0xe7c09e6206b1bab9f98de86bf0f69cf61c5cc2d69ac34f8f30154ed04ae5c191",
+  "receipt": {
+    "_type": "TransactionReceipt",
+    "blockHash": "0x7fb9f8a65bb3e80064ad34ae2966995469ab19e70bdd573f65c58499021b1aad",
+    "blockNumber": 11,
+    "contractAddress": null,
+    "cumulativeGasUsed": "40470",
+    "from": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+    "gasPrice": "294078605",
+    "blobGasUsed": null,
+    "blobGasPrice": null,
+    "gasUsed": "40470",
+    "hash": "0xe7c09e6206b1bab9f98de86bf0f69cf61c5cc2d69ac34f8f30154ed04ae5c191",
+    "index": 0,
+    "logs": [
+      {
+        "_type": "log",
+        "address": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+        "blockHash": "0x7fb9f8a65bb3e80064ad34ae2966995469ab19e70bdd573f65c58499021b1aad",
+        "blockNumber": 11,
+        "data": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002e516d59534c566a51447a455a7076344c4d666e684a75695761546e75447369483951794b6f6a763474484b516335000000000000000000000000000000000000",
+        "index": 0,
+        "topics": [
+          "0xb6a50552bf34ba857bc2e3e277a139804c829d798cdf4d967565d8f7e4674323",
+          "0x00000000000000000000000070997970c51812dc3a010c7d01b50e0d17dc79c8"
+        ],
+        "transactionHash": "0xe7c09e6206b1bab9f98de86bf0f69cf61c5cc2d69ac34f8f30154ed04ae5c191",
+        "transactionIndex": 0
+      }
+    ],
+    "logsBloom": "0x00000000020000000002000000000000000000000000000000000000000000000000000000000000000000000000080000100000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000000000001000000000000000000000000000000",
+    "status": 1,
+    "to": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9"
+  },
+  "stateAfter": {
+    "ipfsCID": "QmYSLVjQDzEZpv4LMfnhJuiWaTnuDsiH9QyKojv4tHKQc5",
+    "latitude": "13.0827",
+    "longitude": "80.2707",
+    "isVerified": true,
+    "isActive": true
+  }
+}
+
+PASS: 2. Unverified bank update rejected
+{
+  "name": "2. Unverified bank update rejected",
+  "passed": true,
+  "method": "eth_call simulation",
+  "expectedReason": "Bank must be verified",
+  "actualReason": "Bank must be verified",
+  "errorCode": 3,
+  "revertData": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000001542616e6b206d7573742062652076657269666965640000000000000000000000",
+  "providerMessage": "VM Exception while processing transaction: reverted with reason string 'Bank must be verified'",
+  "stateBefore": {
+    "ipfsCID": "QmPoncY7fVR9jC3V1pWWwcAqUrbZaGd8YvYSye75Vvja6i",
+    "latitude": "13.0827",
+    "longitude": "80.2707",
+    "isVerified": false,
+    "isActive": true
+  },
+  "stateAfter": {
+    "ipfsCID": "QmPoncY7fVR9jC3V1pWWwcAqUrbZaGd8YvYSye75Vvja6i",
+    "latitude": "13.0827",
+    "longitude": "80.2707",
+    "isVerified": false,
+    "isActive": true
+  }
+}
+
+PASS: 3. Non-admin verification rejected
+{
+  "name": "3. Non-admin verification rejected",
+  "passed": true,
+  "method": "eth_call simulation",
+  "expectedReason": "Only admin can call this",
+  "actualReason": "Only admin can call this",
+  "errorCode": 3,
+  "revertData": "0x08c379a0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000184f6e6c792061646d696e2063616e2063616c6c20746869730000000000000000",
+  "providerMessage": "VM Exception while processing transaction: reverted with reason string 'Only admin can call this'",
+  "stateBefore": {
+    "ipfsCID": "QmPoncY7fVR9jC3V1pWWwcAqUrbZaGd8YvYSye75Vvja6i",
+    "latitude": "13.0827",
+    "longitude": "80.2707",
+    "isVerified": false,
+    "isActive": true
+  },
+  "stateAfter": {
+    "ipfsCID": "QmPoncY7fVR9jC3V1pWWwcAqUrbZaGd8YvYSye75Vvja6i",
+    "latitude": "13.0827",
+    "longitude": "80.2707",
+    "isVerified": false,
+    "isActive": true
+  }
+}
+
+PASS: 4. Update after revocation rejected
+{
+  "name": "4. Update after revocation rejected",
+  "passed": true,
+  "method": "eth_call simulation",
+  "expectedReason": "Bank must be verified",
+  "actualReason": "Bank must be verified",
+  "errorCode": 3,
+  "revertData": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000001542616e6b206d7573742062652076657269666965640000000000000000000000",
+  "providerMessage": "VM Exception while processing transaction: reverted with reason string 'Bank must be verified'",
+  "stateBefore": {
+    "ipfsCID": "QmYSLVjQDzEZpv4LMfnhJuiWaTnuDsiH9QyKojv4tHKQc5",
+    "latitude": "13.0827",
+    "longitude": "80.2707",
+    "isVerified": false,
+    "isActive": true
+  },
+  "stateAfter": {
+    "ipfsCID": "QmYSLVjQDzEZpv4LMfnhJuiWaTnuDsiH9QyKojv4tHKQc5",
+    "latitude": "13.0827",
+    "longitude": "80.2707",
+    "isVerified": false,
+    "isActive": true
+  }
+}
