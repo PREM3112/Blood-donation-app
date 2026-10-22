@@ -1,0 +1,2352 @@
+{
+  "experiment": "Exploratory 50-query text extraction evaluation",
+  "startedAt": "2026-10-20T02:41:26.785Z",
+  "servicePath": "app/geminiService.ts",
+  "serviceSha256": "606c714cf7cac53180187ceee7d4c532176b2080a7dc9e7d9cf0f02b52910f1d",
+  "datasetSha256": "fb9e208078fb8f476149477310970aed0d13d2f4aae0154631b8e2e3b00fff98",
+  "modelFromSource": "gemini-2.5-flash",
+  "nodeVersion": "v24.11.0",
+  "timingBoundary": "Immediately before parser call to return or exception",
+  "policy": {
+    "automaticRetries": false,
+    "quotaFailure": "Save and stop; explicit resume permitted",
+    "incorrectAnswer": "Record once; never retry to obtain a pass",
+    "otherFailure": "Record as terminal for this experiment"
+  },
+  "dataset": [
+    {
+      "id": 1,
+      "input": "Need 2 units of A+.",
+      "expected": {
+        "bloodGroup": "A+",
+        "quantity": 2,
+        "urgency": "MEDIUM"
+      }
+    },
+    {
+      "id": 2,
+      "input": "Emergency: need 3 units of A+ immediately.",
+      "expected": {
+        "bloodGroup": "A+",
+        "quantity": 3,
+        "urgency": "HIGH"
+      }
+    },
+    {
+      "id": 3,
+      "input": "Need 2 units of A-.",
+      "expected": {
+        "bloodGroup": "A-",
+        "quantity": 2,
+        "urgency": "MEDIUM"
+      }
+    },
+    {
+      "id": 4,
+      "input": "Emergency: need 3 units of A- immediately.",
+      "expected": {
+        "bloodGroup": "A-",
+        "quantity": 3,
+        "urgency": "HIGH"
+      }
+    },
+    {
+      "id": 5,
+      "input": "Need 2 units of B+.",
+      "expected": {
+        "bloodGroup": "B+",
+        "quantity": 2,
+        "urgency": "MEDIUM"
+      }
+    },
+    {
+      "id": 6,
+      "input": "Emergency: need 3 units of B+ immediately.",
+      "expected": {
+        "bloodGroup": "B+",
+        "quantity": 3,
+        "urgency": "HIGH"
+      }
+    },
+    {
+      "id": 7,
+      "input": "Need 2 units of B-.",
+      "expected": {
+        "bloodGroup": "B-",
+        "quantity": 2,
+        "urgency": "MEDIUM"
+      }
+    },
+    {
+      "id": 8,
+      "input": "Emergency: need 3 units of B- immediately.",
+      "expected": {
+        "bloodGroup": "B-",
+        "quantity": 3,
+        "urgency": "HIGH"
+      }
+    },
+    {
+      "id": 9,
+      "input": "Need 2 units of AB+.",
+      "expected": {
+        "bloodGroup": "AB+",
+        "quantity": 2,
+        "urgency": "MEDIUM"
+      }
+    },
+    {
+      "id": 10,
+      "input": "Emergency: need 3 units of AB+ immediately.",
+      "expected": {
+        "bloodGroup": "AB+",
+        "quantity": 3,
+        "urgency": "HIGH"
+      }
+    },
+    {
+      "id": 11,
+      "input": "Need 2 units of AB-.",
+      "expected": {
+        "bloodGroup": "AB-",
+        "quantity": 2,
+        "urgency": "MEDIUM"
+      }
+    },
+    {
+      "id": 12,
+      "input": "Emergency: need 3 units of AB- immediately.",
+      "expected": {
+        "bloodGroup": "AB-",
+        "quantity": 3,
+        "urgency": "HIGH"
+      }
+    },
+    {
+      "id": 13,
+      "input": "Need 2 units of O+.",
+      "expected": {
+        "bloodGroup": "O+",
+        "quantity": 2,
+        "urgency": "MEDIUM"
+      }
+    },
+    {
+      "id": 14,
+      "input": "Emergency: need 3 units of O+ immediately.",
+      "expected": {
+        "bloodGroup": "O+",
+        "quantity": 3,
+        "urgency": "HIGH"
+      }
+    },
+    {
+      "id": 15,
+      "input": "Need 2 units of O-.",
+      "expected": {
+        "bloodGroup": "O-",
+        "quantity": 2,
+        "urgency": "MEDIUM"
+      }
+    },
+    {
+      "id": 16,
+      "input": "Emergency: need 3 units of O- immediately.",
+      "expected": {
+        "bloodGroup": "O-",
+        "quantity": 3,
+        "urgency": "HIGH"
+      }
+    },
+    {
+      "id": 17,
+      "input": "Need five units of O positive.",
+      "expected": {
+        "bloodGroup": "O+",
+        "quantity": 5,
+        "urgency": "MEDIUM"
+      }
+    },
+    {
+      "id": 18,
+      "input": "Please send a dozen units of A negative.",
+      "expected": {
+        "bloodGroup": "A-",
+        "quantity": 12,
+        "urgency": "MEDIUM"
+      }
+    },
+    {
+      "id": 19,
+      "input": "Need half a dozen units of AB negative.",
+      "expected": {
+        "bloodGroup": "AB-",
+        "quantity": 6,
+        "urgency": "MEDIUM"
+      }
+    },
+    {
+      "id": 20,
+      "input": "Requesting twenty units of B positive.",
+      "expected": {
+        "bloodGroup": "B+",
+        "quantity": 20,
+        "urgency": "MEDIUM"
+      }
+    },
+    {
+      "id": 21,
+      "input": "Need one unit of A positive.",
+      "expected": {
+        "bloodGroup": "A+",
+        "quantity": 1,
+        "urgency": "MEDIUM"
+      }
+    },
+    {
+      "id": 22,
+      "input": "Please send 7 units of B negative.",
+      "expected": {
+        "bloodGroup": "B-",
+        "quantity": 7,
+        "urgency": "MEDIUM"
+      }
+    },
+    {
+      "id": 23,
+      "input": "Looking for 4 units of AB positive.",
+      "expected": {
+        "bloodGroup": "AB+",
+        "quantity": 4,
+        "urgency": "MEDIUM"
+      }
+    },
+    {
+      "id": 24,
+      "input": "Need 10 units of O negative.",
+      "expected": {
+        "bloodGroup": "O-",
+        "quantity": 10,
+        "urgency": "MEDIUM"
+      }
+    },
+    {
+      "id": 25,
+      "input": "Request: A+, quantity 6 units.",
+      "expected": {
+        "bloodGroup": "A+",
+        "quantity": 6,
+        "urgency": "MEDIUM"
+      }
+    },
+    {
+      "id": 26,
+      "input": "Please arrange 9 units of B+.",
+      "expected": {
+        "bloodGroup": "B+",
+        "quantity": 9,
+        "urgency": "MEDIUM"
+      }
+    },
+    {
+      "id": 27,
+      "input": "Non-urgent request for 2 units of O-.",
+      "expected": {
+        "bloodGroup": "O-",
+        "quantity": 2,
+        "urgency": "LOW"
+      }
+    },
+    {
+      "id": 28,
+      "input": "Routine request for 3 units of A+.",
+      "expected": {
+        "bloodGroup": "A+",
+        "quantity": 3,
+        "urgency": "LOW"
+      }
+    },
+    {
+      "id": 29,
+      "input": "Informational inquiry: is AB+ available?",
+      "expected": {
+        "bloodGroup": "AB+",
+        "quantity": null,
+        "urgency": "LOW"
+      }
+    },
+    {
+      "id": 30,
+      "input": "Non-urgent: need 1 unit of B-.",
+      "expected": {
+        "bloodGroup": "B-",
+        "quantity": 1,
+        "urgency": "LOW"
+      }
+    },
+    {
+      "id": 31,
+      "input": "Emergency: need 4 units of AB- now.",
+      "expected": {
+        "bloodGroup": "AB-",
+        "quantity": 4,
+        "urgency": "HIGH"
+      }
+    },
+    {
+      "id": 32,
+      "input": "Urgently send 5 units of O+ immediately.",
+      "expected": {
+        "bloodGroup": "O+",
+        "quantity": 5,
+        "urgency": "HIGH"
+      }
+    },
+    {
+      "id": 33,
+      "input": "Emergency: require 2 units of A-.",
+      "expected": {
+        "bloodGroup": "A-",
+        "quantity": 2,
+        "urgency": "HIGH"
+      }
+    },
+    {
+      "id": 34,
+      "input": "Need 6 units of B+ right now, immediately.",
+      "expected": {
+        "bloodGroup": "B+",
+        "quantity": 6,
+        "urgency": "HIGH"
+      }
+    },
+    {
+      "id": 35,
+      "input": "Need 2 units of blood.",
+      "expected": {
+        "bloodGroup": null,
+        "quantity": 2,
+        "urgency": "MEDIUM"
+      }
+    },
+    {
+      "id": 36,
+      "input": "Need O- blood.",
+      "expected": {
+        "bloodGroup": "O-",
+        "quantity": null,
+        "urgency": "MEDIUM"
+      }
+    },
+    {
+      "id": 37,
+      "input": "Need 3 units of O type blood.",
+      "expected": {
+        "bloodGroup": null,
+        "quantity": 3,
+        "urgency": "MEDIUM"
+      }
+    },
+    {
+      "id": 38,
+      "input": "Need blood from all blood groups.",
+      "expected": {
+        "bloodGroup": "All",
+        "quantity": null,
+        "urgency": "MEDIUM"
+      }
+    },
+    {
+      "id": 39,
+      "input": "Need 4 units of O- and 2 units of A+.",
+      "expected": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "MEDIUM"
+      }
+    },
+    {
+      "id": 40,
+      "input": "Need blood.",
+      "expected": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "MEDIUM"
+      }
+    },
+    {
+      "id": 41,
+      "input": "Emergency: need blood immediately.",
+      "expected": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "HIGH"
+      }
+    },
+    {
+      "id": 42,
+      "input": "Non-urgent request for AB- blood.",
+      "expected": {
+        "bloodGroup": "AB-",
+        "quantity": null,
+        "urgency": "LOW"
+      }
+    },
+    {
+      "id": 43,
+      "input": "Order a pizza.",
+      "expected": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "LOW"
+      }
+    },
+    {
+      "id": 44,
+      "input": "What is the weather today?",
+      "expected": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "LOW"
+      }
+    },
+    {
+      "id": 45,
+      "input": "Book a train ticket.",
+      "expected": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "LOW"
+      }
+    },
+    {
+      "id": 46,
+      "input": "Tell me a joke.",
+      "expected": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "LOW"
+      }
+    },
+    {
+      "id": 47,
+      "input": "Need blood for my dog.",
+      "expected": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "LOW"
+      }
+    },
+    {
+      "id": 48,
+      "input": "Find a blood donor for my cat.",
+      "expected": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "LOW"
+      }
+    },
+    {
+      "id": 49,
+      "input": "Please repair my laptop.",
+      "expected": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "LOW"
+      }
+    },
+    {
+      "id": 50,
+      "input": "Where can I buy a phone charger?",
+      "expected": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "LOW"
+      }
+    }
+  ],
+  "rows": [
+    {
+      "id": 1,
+      "input": "Need 2 units of A+.",
+      "expected": {
+        "bloodGroup": "A+",
+        "quantity": 2,
+        "urgency": "MEDIUM"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-20T02:41:26.847Z",
+          "status": "returned",
+          "durationMs": 1875.29,
+          "actual": {
+            "bloodGroup": "A+",
+            "quantity": 2,
+            "urgency": "MEDIUM",
+            "replyMessage": "Searching for 2 units of A+ blood."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "A+",
+        "quantity": 2,
+        "urgency": "MEDIUM",
+        "replyMessage": "Searching for 2 units of A+ blood."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 2,
+      "input": "Emergency: need 3 units of A+ immediately.",
+      "expected": {
+        "bloodGroup": "A+",
+        "quantity": 3,
+        "urgency": "HIGH"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-20T02:41:43.728Z",
+          "status": "returned",
+          "durationMs": 1605.52,
+          "actual": {
+            "bloodGroup": "A+",
+            "quantity": 3,
+            "urgency": "HIGH",
+            "replyMessage": "Acknowledged: Emergency request for 3 units of A+ blood."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "A+",
+        "quantity": 3,
+        "urgency": "HIGH",
+        "replyMessage": "Acknowledged: Emergency request for 3 units of A+ blood."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 3,
+      "input": "Need 2 units of A-.",
+      "expected": {
+        "bloodGroup": "A-",
+        "quantity": 2,
+        "urgency": "MEDIUM"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-20T02:42:00.350Z",
+          "status": "returned",
+          "durationMs": 1768.05,
+          "actual": {
+            "bloodGroup": "A-",
+            "quantity": 2,
+            "urgency": "MEDIUM",
+            "replyMessage": "Searching for 2 units of A- blood."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "A-",
+        "quantity": 2,
+        "urgency": "MEDIUM",
+        "replyMessage": "Searching for 2 units of A- blood."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 4,
+      "input": "Emergency: need 3 units of A- immediately.",
+      "expected": {
+        "bloodGroup": "A-",
+        "quantity": 3,
+        "urgency": "HIGH"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-20T02:42:17.135Z",
+          "status": "returned",
+          "durationMs": 1656.85,
+          "actual": {
+            "bloodGroup": "A-",
+            "quantity": 3,
+            "urgency": "HIGH",
+            "replyMessage": "Searching for 3 units of A- blood with high urgency."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "A-",
+        "quantity": 3,
+        "urgency": "HIGH",
+        "replyMessage": "Searching for 3 units of A- blood with high urgency."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 5,
+      "input": "Need 2 units of B+.",
+      "expected": {
+        "bloodGroup": "B+",
+        "quantity": 2,
+        "urgency": "MEDIUM"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-20T02:42:33.807Z",
+          "status": "returned",
+          "durationMs": 1760.4,
+          "actual": {
+            "bloodGroup": "B+",
+            "quantity": 2,
+            "urgency": "MEDIUM",
+            "replyMessage": "Searching for 2 units of B+ blood."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "B+",
+        "quantity": 2,
+        "urgency": "MEDIUM",
+        "replyMessage": "Searching for 2 units of B+ blood."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 6,
+      "input": "Emergency: need 3 units of B+ immediately.",
+      "expected": {
+        "bloodGroup": "B+",
+        "quantity": 3,
+        "urgency": "HIGH"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-20T02:42:50.573Z",
+          "status": "returned",
+          "durationMs": 1601.17,
+          "actual": {
+            "bloodGroup": "B+",
+            "quantity": 3,
+            "urgency": "HIGH",
+            "replyMessage": "Acknowledged: 3 units of B+ blood requested with high urgency."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "B+",
+        "quantity": 3,
+        "urgency": "HIGH",
+        "replyMessage": "Acknowledged: 3 units of B+ blood requested with high urgency."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 7,
+      "input": "Need 2 units of B-.",
+      "expected": {
+        "bloodGroup": "B-",
+        "quantity": 2,
+        "urgency": "MEDIUM"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-20T02:43:07.186Z",
+          "status": "returned",
+          "durationMs": 1715.72,
+          "actual": {
+            "bloodGroup": "B-",
+            "quantity": 2,
+            "urgency": "MEDIUM",
+            "replyMessage": "Searching for B- blood, 2 units."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "B-",
+        "quantity": 2,
+        "urgency": "MEDIUM",
+        "replyMessage": "Searching for B- blood, 2 units."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 8,
+      "input": "Emergency: need 3 units of B- immediately.",
+      "expected": {
+        "bloodGroup": "B-",
+        "quantity": 3,
+        "urgency": "HIGH"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-20T02:43:23.915Z",
+          "status": "returned",
+          "durationMs": 1983.55,
+          "actual": {
+            "bloodGroup": "B-",
+            "quantity": 3,
+            "urgency": "HIGH",
+            "replyMessage": "Acknowledged request for 3 units of B- blood with high urgency."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "B-",
+        "quantity": 3,
+        "urgency": "HIGH",
+        "replyMessage": "Acknowledged request for 3 units of B- blood with high urgency."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 9,
+      "input": "Need 2 units of AB+.",
+      "expected": {
+        "bloodGroup": "AB+",
+        "quantity": 2,
+        "urgency": "MEDIUM"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-20T02:43:40.905Z",
+          "status": "returned",
+          "durationMs": 1346.36,
+          "actual": {
+            "bloodGroup": "AB+",
+            "quantity": 2,
+            "urgency": "MEDIUM",
+            "replyMessage": "Searching for 2 units of AB+ blood."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "AB+",
+        "quantity": 2,
+        "urgency": "MEDIUM",
+        "replyMessage": "Searching for 2 units of AB+ blood."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 10,
+      "input": "Emergency: need 3 units of AB+ immediately.",
+      "expected": {
+        "bloodGroup": "AB+",
+        "quantity": 3,
+        "urgency": "HIGH"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-20T02:43:57.267Z",
+          "status": "returned",
+          "durationMs": 3431.92,
+          "actual": {
+            "bloodGroup": "AB+",
+            "quantity": 3,
+            "urgency": "HIGH",
+            "replyMessage": "Acknowledged: 3 units of AB+ blood requested with high urgency."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "AB+",
+        "quantity": 3,
+        "urgency": "HIGH",
+        "replyMessage": "Acknowledged: 3 units of AB+ blood requested with high urgency."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 11,
+      "input": "Need 2 units of AB-.",
+      "expected": {
+        "bloodGroup": "AB-",
+        "quantity": 2,
+        "urgency": "MEDIUM"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-20T02:44:15.718Z",
+          "status": "returned",
+          "durationMs": 1632.42,
+          "actual": {
+            "bloodGroup": "AB-",
+            "quantity": 2,
+            "urgency": "MEDIUM",
+            "replyMessage": "Searching for 2 units of AB- blood."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "AB-",
+        "quantity": 2,
+        "urgency": "MEDIUM",
+        "replyMessage": "Searching for 2 units of AB- blood."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 12,
+      "input": "Emergency: need 3 units of AB- immediately.",
+      "expected": {
+        "bloodGroup": "AB-",
+        "quantity": 3,
+        "urgency": "HIGH"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-20T02:44:32.370Z",
+          "status": "returned",
+          "durationMs": 1616.23,
+          "actual": {
+            "bloodGroup": "AB-",
+            "quantity": 3,
+            "urgency": "HIGH",
+            "replyMessage": "Acknowledged: Emergency request for 3 units of AB- blood."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "AB-",
+        "quantity": 3,
+        "urgency": "HIGH",
+        "replyMessage": "Acknowledged: Emergency request for 3 units of AB- blood."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 13,
+      "input": "Need 2 units of O+.",
+      "expected": {
+        "bloodGroup": "O+",
+        "quantity": 2,
+        "urgency": "MEDIUM"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-20T02:44:49.003Z",
+          "status": "returned",
+          "durationMs": 1855.2,
+          "actual": {
+            "bloodGroup": "O+",
+            "quantity": 2,
+            "urgency": "MEDIUM",
+            "replyMessage": "Searching for O+ blood, 2 units."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "O+",
+        "quantity": 2,
+        "urgency": "MEDIUM",
+        "replyMessage": "Searching for O+ blood, 2 units."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 14,
+      "input": "Emergency: need 3 units of O+ immediately.",
+      "expected": {
+        "bloodGroup": "O+",
+        "quantity": 3,
+        "urgency": "HIGH"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-20T02:45:05.867Z",
+          "status": "returned",
+          "durationMs": 1740.81,
+          "actual": {
+            "bloodGroup": "O+",
+            "quantity": 3,
+            "urgency": "HIGH",
+            "replyMessage": "Searching for O+ blood, 3 units, with high urgency."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "O+",
+        "quantity": 3,
+        "urgency": "HIGH",
+        "replyMessage": "Searching for O+ blood, 3 units, with high urgency."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 15,
+      "input": "Need 2 units of O-.",
+      "expected": {
+        "bloodGroup": "O-",
+        "quantity": 2,
+        "urgency": "MEDIUM"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-20T02:45:22.627Z",
+          "status": "returned",
+          "durationMs": 1802.43,
+          "actual": {
+            "bloodGroup": "O-",
+            "quantity": 2,
+            "urgency": "MEDIUM",
+            "replyMessage": "Searching for O- blood, 2 units."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "O-",
+        "quantity": 2,
+        "urgency": "MEDIUM",
+        "replyMessage": "Searching for O- blood, 2 units."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 16,
+      "input": "Emergency: need 3 units of O- immediately.",
+      "expected": {
+        "bloodGroup": "O-",
+        "quantity": 3,
+        "urgency": "HIGH"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-20T02:45:39.449Z",
+          "status": "returned",
+          "durationMs": 1856.47,
+          "actual": {
+            "bloodGroup": "O-",
+            "quantity": 3,
+            "urgency": "HIGH",
+            "replyMessage": "Acknowledged request for 3 units of O- blood with high urgency."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "O-",
+        "quantity": 3,
+        "urgency": "HIGH",
+        "replyMessage": "Acknowledged request for 3 units of O- blood with high urgency."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 17,
+      "input": "Need five units of O positive.",
+      "expected": {
+        "bloodGroup": "O+",
+        "quantity": 5,
+        "urgency": "MEDIUM"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-20T02:45:56.329Z",
+          "status": "returned",
+          "durationMs": 1806.03,
+          "actual": {
+            "bloodGroup": "O+",
+            "quantity": 5,
+            "urgency": "MEDIUM",
+            "replyMessage": "Searching for O+ blood, 5 units."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "O+",
+        "quantity": 5,
+        "urgency": "MEDIUM",
+        "replyMessage": "Searching for O+ blood, 5 units."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 18,
+      "input": "Please send a dozen units of A negative.",
+      "expected": {
+        "bloodGroup": "A-",
+        "quantity": 12,
+        "urgency": "MEDIUM"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-20T02:46:13.145Z",
+          "status": "returned",
+          "durationMs": 1640.02,
+          "actual": {
+            "bloodGroup": "A-",
+            "quantity": 12,
+            "urgency": "MEDIUM",
+            "replyMessage": "Searching for A- blood group, quantity 12 units."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "A-",
+        "quantity": 12,
+        "urgency": "MEDIUM",
+        "replyMessage": "Searching for A- blood group, quantity 12 units."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 19,
+      "input": "Need half a dozen units of AB negative.",
+      "expected": {
+        "bloodGroup": "AB-",
+        "quantity": 6,
+        "urgency": "MEDIUM"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-20T02:46:29.804Z",
+          "status": "returned",
+          "durationMs": 1731.57,
+          "actual": {
+            "bloodGroup": "AB-",
+            "quantity": 6,
+            "urgency": "MEDIUM",
+            "replyMessage": "Searching for 6 units of AB- blood."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "AB-",
+        "quantity": 6,
+        "urgency": "MEDIUM",
+        "replyMessage": "Searching for 6 units of AB- blood."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 20,
+      "input": "Requesting twenty units of B positive.",
+      "expected": {
+        "bloodGroup": "B+",
+        "quantity": 20,
+        "urgency": "MEDIUM"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-20T02:46:46.556Z",
+          "status": "returned",
+          "durationMs": 1751.65,
+          "actual": {
+            "bloodGroup": "B+",
+            "quantity": 20,
+            "urgency": "MEDIUM",
+            "replyMessage": "Searching for B+ blood, quantity 20 units."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "B+",
+        "quantity": 20,
+        "urgency": "MEDIUM",
+        "replyMessage": "Searching for B+ blood, quantity 20 units."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 21,
+      "input": "Need one unit of A positive.",
+      "expected": {
+        "bloodGroup": "A+",
+        "quantity": 1,
+        "urgency": "MEDIUM"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-20T02:47:03.324Z",
+          "status": "returned",
+          "durationMs": 1353.87,
+          "actual": {
+            "bloodGroup": "A+",
+            "quantity": 1,
+            "urgency": "MEDIUM",
+            "replyMessage": "Searching for A+ blood, 1 unit."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "A+",
+        "quantity": 1,
+        "urgency": "MEDIUM",
+        "replyMessage": "Searching for A+ blood, 1 unit."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 22,
+      "input": "Please send 7 units of B negative.",
+      "expected": {
+        "bloodGroup": "B-",
+        "quantity": 7,
+        "urgency": "MEDIUM"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-20T02:47:19.686Z",
+          "status": "error",
+          "durationMs": 702.51,
+          "error": "AI request limit reached. Please use manual filters."
+        },
+        {
+          "number": 2,
+          "startedAt": "2026-10-21T04:47:54.231Z",
+          "status": "returned",
+          "durationMs": 1729.42,
+          "actual": {
+            "bloodGroup": "B-",
+            "quantity": 7,
+            "urgency": "MEDIUM",
+            "replyMessage": "Searching for 7 units of B- blood."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "B-",
+        "quantity": 7,
+        "urgency": "MEDIUM",
+        "replyMessage": "Searching for 7 units of B- blood."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 23,
+      "input": "Looking for 4 units of AB positive.",
+      "expected": {
+        "bloodGroup": "AB+",
+        "quantity": 4,
+        "urgency": "MEDIUM"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-21T04:48:10.978Z",
+          "status": "returned",
+          "durationMs": 1572.23,
+          "actual": {
+            "bloodGroup": "AB+",
+            "quantity": 4,
+            "urgency": "MEDIUM",
+            "replyMessage": "Searching for 4 units of AB+ blood."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "AB+",
+        "quantity": 4,
+        "urgency": "MEDIUM",
+        "replyMessage": "Searching for 4 units of AB+ blood."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 24,
+      "input": "Need 10 units of O negative.",
+      "expected": {
+        "bloodGroup": "O-",
+        "quantity": 10,
+        "urgency": "MEDIUM"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-21T04:48:27.568Z",
+          "status": "returned",
+          "durationMs": 1513,
+          "actual": {
+            "bloodGroup": "O-",
+            "quantity": 10,
+            "urgency": "MEDIUM",
+            "replyMessage": "Searching for O- blood, 10 units."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "O-",
+        "quantity": 10,
+        "urgency": "MEDIUM",
+        "replyMessage": "Searching for O- blood, 10 units."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 25,
+      "input": "Request: A+, quantity 6 units.",
+      "expected": {
+        "bloodGroup": "A+",
+        "quantity": 6,
+        "urgency": "MEDIUM"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-21T04:48:44.091Z",
+          "status": "returned",
+          "durationMs": 1423.34,
+          "actual": {
+            "bloodGroup": "A+",
+            "quantity": 6,
+            "urgency": "MEDIUM",
+            "replyMessage": "Searching for A+ blood, 6 units."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "A+",
+        "quantity": 6,
+        "urgency": "MEDIUM",
+        "replyMessage": "Searching for A+ blood, 6 units."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 26,
+      "input": "Please arrange 9 units of B+.",
+      "expected": {
+        "bloodGroup": "B+",
+        "quantity": 9,
+        "urgency": "MEDIUM"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-21T04:49:00.521Z",
+          "status": "returned",
+          "durationMs": 1524.23,
+          "actual": {
+            "bloodGroup": "B+",
+            "quantity": 9,
+            "urgency": "MEDIUM",
+            "replyMessage": "Searching for B+ blood, quantity 9 units."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "B+",
+        "quantity": 9,
+        "urgency": "MEDIUM",
+        "replyMessage": "Searching for B+ blood, quantity 9 units."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 27,
+      "input": "Non-urgent request for 2 units of O-.",
+      "expected": {
+        "bloodGroup": "O-",
+        "quantity": 2,
+        "urgency": "LOW"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-21T04:49:17.059Z",
+          "status": "returned",
+          "durationMs": 1775.49,
+          "actual": {
+            "bloodGroup": "O-",
+            "quantity": 2,
+            "urgency": "LOW",
+            "replyMessage": "Acknowledged: Non-urgent request for 2 units of O- blood."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "O-",
+        "quantity": 2,
+        "urgency": "LOW",
+        "replyMessage": "Acknowledged: Non-urgent request for 2 units of O- blood."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 28,
+      "input": "Routine request for 3 units of A+.",
+      "expected": {
+        "bloodGroup": "A+",
+        "quantity": 3,
+        "urgency": "LOW"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-21T04:49:33.849Z",
+          "status": "returned",
+          "durationMs": 1664.29,
+          "actual": {
+            "bloodGroup": "A+",
+            "quantity": 3,
+            "urgency": "LOW",
+            "replyMessage": "Acknowledged: Routine request for 3 units of A+ blood."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "A+",
+        "quantity": 3,
+        "urgency": "LOW",
+        "replyMessage": "Acknowledged: Routine request for 3 units of A+ blood."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 29,
+      "input": "Informational inquiry: is AB+ available?",
+      "expected": {
+        "bloodGroup": "AB+",
+        "quantity": null,
+        "urgency": "LOW"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-21T04:49:50.526Z",
+          "status": "returned",
+          "durationMs": 1850.77,
+          "actual": {
+            "bloodGroup": "AB+",
+            "quantity": null,
+            "urgency": "LOW",
+            "replyMessage": "You are inquiring about AB+ blood. I cannot provide information on availability."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "AB+",
+        "quantity": null,
+        "urgency": "LOW",
+        "replyMessage": "You are inquiring about AB+ blood. I cannot provide information on availability."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 30,
+      "input": "Non-urgent: need 1 unit of B-.",
+      "expected": {
+        "bloodGroup": "B-",
+        "quantity": 1,
+        "urgency": "LOW"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-21T04:50:07.391Z",
+          "status": "returned",
+          "durationMs": 1688.02,
+          "actual": {
+            "bloodGroup": "B-",
+            "quantity": 1,
+            "urgency": "LOW",
+            "replyMessage": "Understood, you are looking for 1 unit of B- blood with low urgency."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "B-",
+        "quantity": 1,
+        "urgency": "LOW",
+        "replyMessage": "Understood, you are looking for 1 unit of B- blood with low urgency."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 31,
+      "input": "Emergency: need 4 units of AB- now.",
+      "expected": {
+        "bloodGroup": "AB-",
+        "quantity": 4,
+        "urgency": "HIGH"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-21T04:50:24.094Z",
+          "status": "returned",
+          "durationMs": 1778.74,
+          "actual": {
+            "bloodGroup": "AB-",
+            "quantity": 4,
+            "urgency": "HIGH",
+            "replyMessage": "Searching for AB- blood, 4 units, with high urgency."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "AB-",
+        "quantity": 4,
+        "urgency": "HIGH",
+        "replyMessage": "Searching for AB- blood, 4 units, with high urgency."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 32,
+      "input": "Urgently send 5 units of O+ immediately.",
+      "expected": {
+        "bloodGroup": "O+",
+        "quantity": 5,
+        "urgency": "HIGH"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-21T04:50:40.887Z",
+          "status": "returned",
+          "durationMs": 1689.87,
+          "actual": {
+            "bloodGroup": "O+",
+            "quantity": 5,
+            "urgency": "HIGH",
+            "replyMessage": "Searching for O+ blood, 5 units, with high urgency."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "O+",
+        "quantity": 5,
+        "urgency": "HIGH",
+        "replyMessage": "Searching for O+ blood, 5 units, with high urgency."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 33,
+      "input": "Emergency: require 2 units of A-.",
+      "expected": {
+        "bloodGroup": "A-",
+        "quantity": 2,
+        "urgency": "HIGH"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-21T04:50:57.591Z",
+          "status": "returned",
+          "durationMs": 1562.74,
+          "actual": {
+            "bloodGroup": "A-",
+            "quantity": 2,
+            "urgency": "HIGH",
+            "replyMessage": "Acknowledged: Emergency request for 2 units of A- blood."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "A-",
+        "quantity": 2,
+        "urgency": "HIGH",
+        "replyMessage": "Acknowledged: Emergency request for 2 units of A- blood."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 34,
+      "input": "Need 6 units of B+ right now, immediately.",
+      "expected": {
+        "bloodGroup": "B+",
+        "quantity": 6,
+        "urgency": "HIGH"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-21T04:51:14.157Z",
+          "status": "returned",
+          "durationMs": 1382.1,
+          "actual": {
+            "bloodGroup": "B+",
+            "quantity": 6,
+            "urgency": "HIGH",
+            "replyMessage": "Searching for 6 units of B+ blood with high urgency."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "B+",
+        "quantity": 6,
+        "urgency": "HIGH",
+        "replyMessage": "Searching for 6 units of B+ blood with high urgency."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 35,
+      "input": "Need 2 units of blood.",
+      "expected": {
+        "bloodGroup": null,
+        "quantity": 2,
+        "urgency": "MEDIUM"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-21T04:51:30.550Z",
+          "status": "returned",
+          "durationMs": 1473.54,
+          "actual": {
+            "bloodGroup": null,
+            "quantity": 2,
+            "urgency": "MEDIUM",
+            "replyMessage": "Searching for 2 units of blood."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": null,
+        "quantity": 2,
+        "urgency": "MEDIUM",
+        "replyMessage": "Searching for 2 units of blood."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 36,
+      "input": "Need O- blood.",
+      "expected": {
+        "bloodGroup": "O-",
+        "quantity": null,
+        "urgency": "MEDIUM"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-21T04:51:47.038Z",
+          "status": "returned",
+          "durationMs": 1417.37,
+          "actual": {
+            "bloodGroup": "O-",
+            "quantity": null,
+            "urgency": "MEDIUM",
+            "replyMessage": "Searching for O- blood."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "O-",
+        "quantity": null,
+        "urgency": "MEDIUM",
+        "replyMessage": "Searching for O- blood."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 37,
+      "input": "Need 3 units of O type blood.",
+      "expected": {
+        "bloodGroup": null,
+        "quantity": 3,
+        "urgency": "MEDIUM"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-21T04:52:03.467Z",
+          "status": "returned",
+          "durationMs": 1714.17,
+          "actual": {
+            "bloodGroup": null,
+            "quantity": 3,
+            "urgency": "MEDIUM",
+            "replyMessage": "Searching for 3 units of O type blood. Please specify if O+ or O- is needed for a more precise search."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": null,
+        "quantity": 3,
+        "urgency": "MEDIUM",
+        "replyMessage": "Searching for 3 units of O type blood. Please specify if O+ or O- is needed for a more precise search."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 38,
+      "input": "Need blood from all blood groups.",
+      "expected": {
+        "bloodGroup": "All",
+        "quantity": null,
+        "urgency": "MEDIUM"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-21T04:52:20.195Z",
+          "status": "returned",
+          "durationMs": 1696.3,
+          "actual": {
+            "bloodGroup": "All",
+            "quantity": null,
+            "urgency": "MEDIUM",
+            "replyMessage": "Searching for all blood groups."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "All",
+        "quantity": null,
+        "urgency": "MEDIUM",
+        "replyMessage": "Searching for all blood groups."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 39,
+      "input": "Need 4 units of O- and 2 units of A+.",
+      "expected": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "MEDIUM"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-21T04:52:36.905Z",
+          "status": "returned",
+          "durationMs": 1573.18,
+          "actual": {
+            "bloodGroup": null,
+            "quantity": null,
+            "urgency": "MEDIUM",
+            "replyMessage": "I can only process requests for one blood group at a time. Please specify either O- or A+."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "MEDIUM",
+        "replyMessage": "I can only process requests for one blood group at a time. Please specify either O- or A+."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 40,
+      "input": "Need blood.",
+      "expected": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "MEDIUM"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-21T04:52:53.486Z",
+          "status": "returned",
+          "durationMs": 1608.37,
+          "actual": {
+            "bloodGroup": null,
+            "quantity": null,
+            "urgency": "MEDIUM",
+            "replyMessage": "I've noted your request for blood. Please specify the blood group and quantity needed."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "MEDIUM",
+        "replyMessage": "I've noted your request for blood. Please specify the blood group and quantity needed."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 41,
+      "input": "Emergency: need blood immediately.",
+      "expected": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "HIGH"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-21T04:53:10.103Z",
+          "status": "returned",
+          "durationMs": 1689.52,
+          "actual": {
+            "bloodGroup": null,
+            "quantity": null,
+            "urgency": "HIGH",
+            "replyMessage": "Emergency request received. Please specify the blood group and quantity needed."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "HIGH",
+        "replyMessage": "Emergency request received. Please specify the blood group and quantity needed."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 42,
+      "input": "Non-urgent request for AB- blood.",
+      "expected": {
+        "bloodGroup": "AB-",
+        "quantity": null,
+        "urgency": "LOW"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-21T04:53:26.813Z",
+          "status": "returned",
+          "durationMs": 1677.56,
+          "actual": {
+            "bloodGroup": "AB-",
+            "quantity": null,
+            "urgency": "LOW",
+            "replyMessage": "Acknowledged a non-urgent request for AB- blood."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": "AB-",
+        "quantity": null,
+        "urgency": "LOW",
+        "replyMessage": "Acknowledged a non-urgent request for AB- blood."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 43,
+      "input": "Order a pizza.",
+      "expected": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "LOW"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-21T04:53:43.503Z",
+          "status": "error",
+          "durationMs": 448.9,
+          "error": "AI request limit reached. Please use manual filters."
+        },
+        {
+          "number": 2,
+          "startedAt": "2026-10-22T05:34:51.948Z",
+          "status": "returned",
+          "durationMs": 2707.37,
+          "actual": {
+            "bloodGroup": null,
+            "quantity": null,
+            "urgency": "LOW",
+            "replyMessage": "This interface is designed for human blood resource searches only."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "LOW",
+        "replyMessage": "This interface is designed for human blood resource searches only."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 44,
+      "input": "What is the weather today?",
+      "expected": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "LOW"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-22T05:35:09.680Z",
+          "status": "returned",
+          "durationMs": 3054.18,
+          "actual": {
+            "bloodGroup": null,
+            "quantity": null,
+            "urgency": "LOW",
+            "replyMessage": "This interface handles human blood resource searches. Please ask about blood group requests."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "LOW",
+        "replyMessage": "This interface handles human blood resource searches. Please ask about blood group requests."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 45,
+      "input": "Book a train ticket.",
+      "expected": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "LOW"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-22T05:35:27.757Z",
+          "status": "returned",
+          "durationMs": 1872.53,
+          "actual": {
+            "bloodGroup": null,
+            "quantity": null,
+            "urgency": "LOW",
+            "replyMessage": "This interface handles human blood resource searches. I cannot book train tickets."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "LOW",
+        "replyMessage": "This interface handles human blood resource searches. I cannot book train tickets."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 46,
+      "input": "Tell me a joke.",
+      "expected": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "LOW"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-22T05:35:44.649Z",
+          "status": "returned",
+          "durationMs": 2183.28,
+          "actual": {
+            "bloodGroup": null,
+            "quantity": null,
+            "urgency": "LOW",
+            "replyMessage": "This interface is designed for human blood resource searches. Please let me know if you have a request related to blood groups or quantities."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "LOW",
+        "replyMessage": "This interface is designed for human blood resource searches. Please let me know if you have a request related to blood groups or quantities."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 47,
+      "input": "Need blood for my dog.",
+      "expected": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "LOW"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-22T05:36:01.853Z",
+          "status": "returned",
+          "durationMs": 2090.04,
+          "actual": {
+            "bloodGroup": null,
+            "quantity": null,
+            "urgency": "LOW",
+            "replyMessage": "This interface is designed for human blood resource searches only."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "LOW",
+        "replyMessage": "This interface is designed for human blood resource searches only."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 48,
+      "input": "Find a blood donor for my cat.",
+      "expected": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "LOW"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-22T05:36:18.954Z",
+          "status": "returned",
+          "durationMs": 2897.09,
+          "actual": {
+            "bloodGroup": null,
+            "quantity": null,
+            "urgency": "LOW",
+            "replyMessage": "This interface handles human blood resource searches. Please specify a human blood group and quantity."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "LOW",
+        "replyMessage": "This interface handles human blood resource searches. Please specify a human blood group and quantity."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 49,
+      "input": "Please repair my laptop.",
+      "expected": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "LOW"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-22T05:36:36.870Z",
+          "status": "returned",
+          "durationMs": 2185.98,
+          "actual": {
+            "bloodGroup": null,
+            "quantity": null,
+            "urgency": "LOW",
+            "replyMessage": "This interface is designed for human blood resource searches. I cannot assist with laptop repair."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "LOW",
+        "replyMessage": "This interface is designed for human blood resource searches. I cannot assist with laptop repair."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    },
+    {
+      "id": 50,
+      "input": "Where can I buy a phone charger?",
+      "expected": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "LOW"
+      },
+      "status": "completed",
+      "attempts": [
+        {
+          "number": 1,
+          "startedAt": "2026-10-22T05:36:54.065Z",
+          "status": "returned",
+          "durationMs": 2337.68,
+          "actual": {
+            "bloodGroup": null,
+            "quantity": null,
+            "urgency": "LOW",
+            "replyMessage": "This interface is designed for human blood resource searches. I cannot assist with finding a phone charger."
+          }
+        }
+      ],
+      "actual": {
+        "bloodGroup": null,
+        "quantity": null,
+        "urgency": "LOW",
+        "replyMessage": "This interface is designed for human blood resource searches. I cannot assist with finding a phone charger."
+      },
+      "checks": {
+        "schemaValid": true,
+        "bloodGroup": true,
+        "quantity": true,
+        "urgency": true,
+        "exactMatch": true
+      }
+    }
+  ],
+  "updatedAt": "2026-10-22T05:37:11.423Z",
+  "summary": {
+    "plannedQueries": 50,
+    "attemptedQueries": 50,
+    "validCompletedResponses": 50,
+    "exactMatches": 50,
+    "terminalFailures": 0,
+    "quotaBlockedQueries": 0,
+    "pendingQueries": 0,
+    "completionPercent": 100,
+    "exactMatchPercentAmongValid": 100,
+    "overallSuccessfulExtractionPercent": 100,
+    "bloodGroupAccuracyAmongValid": 100,
+    "quantityAccuracyAmongValid": 100,
+    "urgencyAccuracyAmongValid": 100,
+    "totalRecordedAttempts": 52,
+    "complete": true
+  }
+}

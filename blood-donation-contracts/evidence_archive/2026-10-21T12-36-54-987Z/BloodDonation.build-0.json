@@ -1,0 +1,50 @@
+{
+  "_format": "hh3-sol-build-info-1",
+  "id": "solc-0_8_20-78f611610645e6589b3bebbefb0b8b41624ef9be",
+  "solcVersion": "0.8.20",
+  "solcLongVersion": "0.8.20+commit.a1b79de6",
+  "compilerType": "solc",
+  "userSourceNameMap": {
+    "contracts/BloodDonation.sol": "project/contracts/BloodDonation.sol",
+    "contracts/BloodDonationBaseline.sol": "project/contracts/BloodDonationBaseline.sol"
+  },
+  "input": {
+    "language": "Solidity",
+    "settings": {
+      "evmVersion": "shanghai",
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "outputSelection": {
+        "*": {
+          "": [
+            "ast"
+          ],
+          "*": [
+            "abi",
+            "evm.bytecode.linkReferences",
+            "evm.bytecode.object",
+            "evm.bytecode.opcodes",
+            "evm.bytecode.sourceMap",
+            "evm.deployedBytecode.immutableReferences",
+            "evm.deployedBytecode.linkReferences",
+            "evm.deployedBytecode.object",
+            "evm.deployedBytecode.opcodes",
+            "evm.deployedBytecode.sourceMap",
+            "evm.methodIdentifiers"
+          ]
+        }
+      },
+      "remappings": []
+    },
+    "sources": {
+      "project/contracts/BloodDonation.sol": {
+        "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.20;\n\ncontract BloodDonation {\n    address public admin;\n\n    struct BankStatus { bool isRegistered; bool isVerified; bool isActive; }\n    struct InventoryData { string ipfsCID; }\n\n    mapping(address => BankStatus) public bankStatuses;\n    mapping(address => InventoryData) public inventories;\n\n    event BloodBankRegistered(address indexed bankAddress);\n    event BloodBankVerified(address indexed bankAddress, bool status);\n    event InventoryUpdated(address indexed bankAddress);\n\n    constructor() { admin = msg.sender; }\n\n    modifier onlyAdmin() { require(msg.sender == admin, \"Only admin can call this\"); _; }\n    modifier onlyVerifiedActiveBank() {\n        require(bankStatuses[msg.sender].isRegistered, \"Bank not registered\");\n        require(bankStatuses[msg.sender].isActive, \"Bank not active\");\n        require(bankStatuses[msg.sender].isVerified, \"Bank not verified\");\n        _;\n    }\n\n    function registerBloodBank() public {\n        require(!bankStatuses[msg.sender].isRegistered, \"Bank already registered\");\n        bankStatuses[msg.sender] = BankStatus({ isRegistered: true, isVerified: false, isActive: true });\n        emit BloodBankRegistered(msg.sender);\n    }\n\n    function verifyBloodBank(address _bankAddress, bool _status) public onlyAdmin {\n        require(bankStatuses[_bankAddress].isRegistered, \"Bank must be registered first\");\n        bankStatuses[_bankAddress].isVerified = _status;\n        emit BloodBankVerified(_bankAddress, _status);\n    }\n\n    function updateInventory(string memory _newIpfsCID) public onlyVerifiedActiveBank {\n        inventories[msg.sender] = InventoryData({ ipfsCID: _newIpfsCID });\n        emit InventoryUpdated(msg.sender);\n    }\n}"
+      },
+      "project/contracts/BloodDonationBaseline.sol": {
+        "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.20;\n\ncontract BloodDonationBaseline {\n    address public admin;\n\n    struct BankStatus { bool isRegistered; bool isVerified; bool isActive; }\n    struct InventoryData { string name; string licenseId; string inventoryLevels; string timestamp; }\n\n    mapping(address => BankStatus) public bankStatuses;\n    mapping(address => InventoryData) public inventories;\n\n    event BloodBankRegistered(address indexed bankAddress);\n    event BloodBankVerified(address indexed bankAddress, bool status);\n    event InventoryUpdated(address indexed bankAddress);\n\n    constructor() { admin = msg.sender; }\n\n    modifier onlyAdmin() { require(msg.sender == admin, \"Only admin can call this\"); _; }\n    modifier onlyVerifiedActiveBank() {\n        require(bankStatuses[msg.sender].isRegistered, \"Bank not registered\");\n        require(bankStatuses[msg.sender].isActive, \"Bank not active\");\n        require(bankStatuses[msg.sender].isVerified, \"Bank not verified\");\n        _;\n    }\n\n    function registerBloodBank() public {\n        require(!bankStatuses[msg.sender].isRegistered, \"Bank already registered\");\n        bankStatuses[msg.sender] = BankStatus({ isRegistered: true, isVerified: false, isActive: true });\n        emit BloodBankRegistered(msg.sender);\n    }\n\n    function verifyBloodBank(address _bankAddress, bool _status) public onlyAdmin {\n        require(bankStatuses[_bankAddress].isRegistered, \"Bank must be registered first\");\n        bankStatuses[_bankAddress].isVerified = _status;\n        emit BloodBankVerified(_bankAddress, _status);\n    }\n\n    function updateInventory(string memory _name, string memory _licenseId, string memory _inventoryLevels, string memory _timestamp) public onlyVerifiedActiveBank {\n        inventories[msg.sender] = InventoryData({ name: _name, licenseId: _licenseId, inventoryLevels: _inventoryLevels, timestamp: _timestamp });\n        emit InventoryUpdated(msg.sender);\n    }\n}"
+      }
+    }
+  }
+}

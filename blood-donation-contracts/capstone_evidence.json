@@ -1,0 +1,86 @@
+{
+  "verifier": "Scientific Benchmark Export",
+  "wallet": "0x54A2479b0aba6801Ad48DD2B46c686DD28ED9294",
+  "trials": [
+    {
+      "scenario": "Prep Small Baseline",
+      "hash": "0x881bb80d1c621f6b4a042edc47d5ddf758747a7af642812e01d2f49f2901bc86",
+      "gasUsed": "62355"
+    },
+    {
+      "scenario": "Prep Small Hybrid",
+      "hash": "0xe299ab8f57b1ad9e1e48b9c76168082343cedc97eb6596eeb4ff58a5b45fc983",
+      "gasUsed": "47817"
+    },
+    {
+      "scenario": "Small->Small Baseline Trial 1",
+      "hash": "0x0045f89721855e3cbe888c4c93bfac30e97229ddb8ce8c88d7102ae037b76f62",
+      "gasUsed": "39832"
+    },
+    {
+      "scenario": "Small->Small Hybrid Trial 1",
+      "hash": "0xd4f1fded7f2db33d0d9ea0aea3a14661e16a9f579dff795faad13731baba3a9d",
+      "gasUsed": "27817"
+    },
+    {
+      "scenario": "Small->Small Baseline Trial 2",
+      "hash": "0x09007b29f509da75f2410d3fce0a562c29e51054f73c8372e781ab913ee0fb95",
+      "gasUsed": "39832"
+    },
+    {
+      "scenario": "Small->Small Hybrid Trial 2",
+      "hash": "0xba0306bf756789c8f02c03cf250ad3c0fe8fb8d96759b79d5168bc881a826d40",
+      "gasUsed": "27817"
+    },
+    {
+      "scenario": "Small->Small Baseline Trial 3",
+      "hash": "0x4cdce08d3e11a014a3ebdf230580c5f0d544395caaad26d6ab19273fe8a1f84d",
+      "gasUsed": "39832"
+    },
+    {
+      "scenario": "Small->Small Hybrid Trial 3",
+      "hash": "0xc75ff4f80b6b2a2518d29b36eedfe95fd08f053cf758a00d093e92c5c6fe32f0",
+      "gasUsed": "27817"
+    },
+    {
+      "scenario": "Prep Large Baseline",
+      "hash": "0x3200c838d596285a77a5ae039690016f388632b5486baa0ed3053e179aa4b05d",
+      "gasUsed": "264474"
+    },
+    {
+      "scenario": "Prep Large Hybrid",
+      "hash": "0x738d2cdc3c33a2540e567783d1d6212cea0bdebace361d630725e186fcc13554",
+      "gasUsed": "47817"
+    },
+    {
+      "scenario": "Large->Large Baseline Trial 1",
+      "hash": "0x633175c3b925291345892981bd8622bca0de2d8e2ed813f7d990bafc04e818ea",
+      "gasUsed": "41880"
+    },
+    {
+      "scenario": "Large->Large Hybrid Trial 1",
+      "hash": "0xc477218f00bc3b6efe830f14e4343fe9e3f5548f09ad0af6d26fb4420c472492",
+      "gasUsed": "27817"
+    },
+    {
+      "scenario": "Large->Large Baseline Trial 2",
+      "hash": "0x952e4d34129293f93a49c61774b89bf501acb830ba51f25626665e85024f7900",
+      "gasUsed": "41880"
+    },
+    {
+      "scenario": "Large->Large Hybrid Trial 2",
+      "hash": "0x097b5f9466881164a796489233da3a6ca0caaf4cdca7b9f8a10b899e5c704b04",
+      "gasUsed": "27817"
+    },
+    {
+      "scenario": "Large->Large Baseline Trial 3",
+      "hash": "0x7286ab20613bb79a187f91e4963f734839e5aaaeb05a68933e05b44bac82f39a",
+      "gasUsed": "41880"
+    },
+    {
+      "scenario": "Large->Large Hybrid Trial 3",
+      "hash": "0x50783690e772eb02ddc041c39da7c05e64ddfd794350170b7fcced5be20d582a",
+      "gasUsed": "27817"
+    }
+  ]
+}

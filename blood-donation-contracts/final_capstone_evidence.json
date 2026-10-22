@@ -1,0 +1,158 @@
+{
+  "verifier": "Changed-Value Multi-Trial Benchmark",
+  "wallet": "0x54A2479b0aba6801Ad48DD2B46c686DD28ED9294",
+  "trials": [
+    {
+      "scenario": "Prep Small Baseline",
+      "hash": "0x1d627277b5bc2df38b33f63f0d4cba159f24af1633c57f972fdab15d63e62fdd",
+      "inputs": [
+        "City Hospital",
+        "LIC12345",
+        "{\"O+\":20}",
+        "2026-10-21T12:00:00Z"
+      ],
+      "gasUsed": "62316"
+    },
+    {
+      "scenario": "Prep Small Hybrid",
+      "hash": "0xbcae9419cbb43e9a5ba0894ea09863aca53d548f4b3b324c68424e42f6fb6290",
+      "inputs": [
+        "bafkreibtn2mh2xzmre6iyllyk4cjzix2w5iw6q5e76s3hsog5mpzn5yife"
+      ],
+      "gasUsed": "47817"
+    },
+    {
+      "scenario": "Measure Small Baseline Trial 1",
+      "hash": "0x677f8f826903fe5cb4067d97c29431dbddb777cab320d12ba382206303708a3d",
+      "inputs": [
+        "City Hospital",
+        "LIC12345",
+        "{\"O+\":25}",
+        "2026-10-21T12:05:00Z"
+      ],
+      "gasUsed": "53447"
+    },
+    {
+      "scenario": "Measure Small Hybrid Trial 1",
+      "hash": "0x3917bf0a39d08e72d509a14b2a535a94d2d104d90cca7c0f3f5c3a9cbc6d149e",
+      "inputs": [
+        "bafkreidd2bsrkl4xzlfuwzs6rcr36csv7m3euqxhaweohx2rv6nuj56oei"
+      ],
+      "gasUsed": "47817"
+    },
+    {
+      "scenario": "Measure Small Baseline Trial 2",
+      "hash": "0xaf5bb4c623a31a75446b601f375aea8c619003666cf4fe7ceb60ea14f3d459c5",
+      "inputs": [
+        "City Hospital",
+        "LIC12345",
+        "{\"O+\":20}",
+        "2026-10-21T12:00:00Z"
+      ],
+      "gasUsed": "53447"
+    },
+    {
+      "scenario": "Measure Small Hybrid Trial 2",
+      "hash": "0x8c228b19c2fe5bc3ae26d82494d71c4ccf35fd4dd9205ecdb5cdc33a03ab04cf",
+      "inputs": [
+        "bafkreibtn2mh2xzmre6iyllyk4cjzix2w5iw6q5e76s3hsog5mpzn5yife"
+      ],
+      "gasUsed": "47817"
+    },
+    {
+      "scenario": "Measure Small Baseline Trial 3",
+      "hash": "0xb5322e70a8cddf4498813f06970d44397c97e301edef2b9488e06224da390fac",
+      "inputs": [
+        "City Hospital",
+        "LIC12345",
+        "{\"O+\":25}",
+        "2026-10-21T12:05:00Z"
+      ],
+      "gasUsed": "53447"
+    },
+    {
+      "scenario": "Measure Small Hybrid Trial 3",
+      "hash": "0xd73c98940b440636d8ca46d0a2087e9283dcb4d1cf3ea4b8c8143b9d2bf7f0bf",
+      "inputs": [
+        "bafkreidd2bsrkl4xzlfuwzs6rcr36csv7m3euqxhaweohx2rv6nuj56oei"
+      ],
+      "gasUsed": "47817"
+    },
+    {
+      "scenario": "Prep Large Baseline",
+      "hash": "0x3a3d261a16fae6f0cb84436ec8a0aab272144b6d3cb008112ed2d8dd1112da21",
+      "inputs": [
+        "City Hospital",
+        "LIC12345",
+        "{\"O+\":11,\"O-\":4,\"A+\":14,\"A-\":2,\"B+\":7,\"B-\":3,\"AB+\":4,\"AB-\":1}",
+        "2026-10-21T12:00:00Z"
+      ],
+      "gasUsed": "274426"
+    },
+    {
+      "scenario": "Prep Large Hybrid",
+      "hash": "0xe39181f0bacb67defd5195a9aca97dd7fe2207510d93e4e0188fff66adfd2562",
+      "inputs": [
+        "bafkreicoqx3ztrbx3jmc67uwi26yytikwpajwnhwyiwtzaz4mxvz6su3wu"
+      ],
+      "gasUsed": "47817"
+    },
+    {
+      "scenario": "Measure Large Baseline Trial 1",
+      "hash": "0xfe37e2b4caeef31f6d3436799f129e3aba7fe016e70c565c2b35399d441f8b18",
+      "inputs": [
+        "City Hospital",
+        "LIC12345",
+        "{\"O+\":15,\"O-\":6,\"A+\":10,\"A-\":4,\"B+\":9,\"B-\":1,\"AB+\":5,\"AB-\":2}",
+        "2026-10-21T12:05:00Z"
+      ],
+      "gasUsed": "68731"
+    },
+    {
+      "scenario": "Measure Large Hybrid Trial 1",
+      "hash": "0x703e97b2971eb3a1ab69376ca574fe294b0cc5ceb613be855f84f654370a1267",
+      "inputs": [
+        "bafkreicwculxoqwqq5rhfceri2y4djumaagbfo7cr7odrqhbulzc6ncj4m"
+      ],
+      "gasUsed": "47817"
+    },
+    {
+      "scenario": "Measure Large Baseline Trial 2",
+      "hash": "0x88858f4437164e0a851be110802ffa10695502300226d78320840436f043ea63",
+      "inputs": [
+        "City Hospital",
+        "LIC12345",
+        "{\"O+\":11,\"O-\":4,\"A+\":14,\"A-\":2,\"B+\":7,\"B-\":3,\"AB+\":4,\"AB-\":1}",
+        "2026-10-21T12:00:00Z"
+      ],
+      "gasUsed": "68731"
+    },
+    {
+      "scenario": "Measure Large Hybrid Trial 2",
+      "hash": "0xf10cff898bce5ff9412cbd957632d4488005b44efb0e35ccfcf83b1901dd8f55",
+      "inputs": [
+        "bafkreicoqx3ztrbx3jmc67uwi26yytikwpajwnhwyiwtzaz4mxvz6su3wu"
+      ],
+      "gasUsed": "47817"
+    },
+    {
+      "scenario": "Measure Large Baseline Trial 3",
+      "hash": "0xd72db3de19b4e81c22af2ed02fc044a094701ed08b91722399282e9909627604",
+      "inputs": [
+        "City Hospital",
+        "LIC12345",
+        "{\"O+\":15,\"O-\":6,\"A+\":10,\"A-\":4,\"B+\":9,\"B-\":1,\"AB+\":5,\"AB-\":2}",
+        "2026-10-21T12:05:00Z"
+      ],
+      "gasUsed": "68731"
+    },
+    {
+      "scenario": "Measure Large Hybrid Trial 3",
+      "hash": "0x998d0e80594b506f3e7d22f556d38fc97790f90a70c0c28b7727bd1af17e75ac",
+      "inputs": [
+        "bafkreicwculxoqwqq5rhfceri2y4djumaagbfo7cr7odrqhbulzc6ncj4m"
+      ],
+      "gasUsed": "47817"
+    }
+  ]
+}

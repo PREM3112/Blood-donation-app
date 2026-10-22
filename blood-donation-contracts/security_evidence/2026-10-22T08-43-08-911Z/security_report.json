@@ -1,0 +1,722 @@
+{
+  "startedAt": "2026-10-22T08:43:08.914Z",
+  "chainId": "31337",
+  "environment": "Local Hardhat network",
+  "scope": {
+    "deployment": "Fresh local deployments of the current artifacts",
+    "negativeTests": "eth_call simulation via staticCall",
+    "positiveTests": "Mined local transactions",
+    "limitations": [
+      "This is not a Sepolia deployment audit.",
+      "An EVM rejection is recorded with its decoded reason.",
+      "Verification revocation is not a separate inactive-status test.",
+      "These tests do not constitute a comprehensive security audit."
+    ]
+  },
+  "accounts": {
+    "admin": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "unregisteredBank": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+    "unverifiedBank": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+    "revokedBank": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+    "validBank": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65"
+  },
+  "contracts": [
+    {
+      "name": "BloodDonationBaseline",
+      "address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "artifactSha256": "bcfb6967e50c2bb459b09c56f292f28026aea2dff8d6383b279e961ed3dc3860",
+      "deploymentReceipt": {
+        "_type": "TransactionReceipt",
+        "blockHash": "0x28cec1085a0bcb9a9cca759c70c62d5eb3f56b2a9b22c3ef31c58537fe79a9cd",
+        "blockNumber": 1,
+        "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "cumulativeGasUsed": "687640",
+        "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+        "gasPrice": "1107421875",
+        "blobGasUsed": null,
+        "blobGasPrice": null,
+        "gasUsed": "687640",
+        "hash": "0x9e0aafc2efaf830d856ae3adebc0b3490cf5fb580f8aef2ced646e2bdff2f955",
+        "index": 0,
+        "logs": [],
+        "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "status": 1,
+        "to": null
+      },
+      "setupTransactions": [
+        {
+          "label": "Register unverified bank",
+          "hash": "0xdc39169945a863ec0d0510cd91290eb0c4d67b8eccf5f869703845d48171a0d5",
+          "receipt": {
+            "_type": "TransactionReceipt",
+            "blockHash": "0xb38ce0b5dab18431bc076dc9425418f63a9483795f47e41ec803a8f8a147bd16",
+            "blockNumber": 2,
+            "contractAddress": null,
+            "cumulativeGasUsed": "44980",
+            "from": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+            "gasPrice": "972167089",
+            "blobGasUsed": null,
+            "blobGasPrice": null,
+            "gasUsed": "44980",
+            "hash": "0xdc39169945a863ec0d0510cd91290eb0c4d67b8eccf5f869703845d48171a0d5",
+            "index": 0,
+            "logs": [
+              {
+                "_type": "log",
+                "address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+                "blockHash": "0xb38ce0b5dab18431bc076dc9425418f63a9483795f47e41ec803a8f8a147bd16",
+                "blockNumber": 2,
+                "data": "0x",
+                "index": 0,
+                "topics": [
+                  "0x4c1c996201a1e9fa2ff4cf082871fa26ce6d9c10c16e29f19b60c40f02bbea0e",
+                  "0x0000000000000000000000003c44cdddb6a900fa2b585dd299e03d12fa4293bc"
+                ],
+                "transactionHash": "0xdc39169945a863ec0d0510cd91290eb0c4d67b8eccf5f869703845d48171a0d5",
+                "transactionIndex": 0
+              }
+            ],
+            "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000000000000040000000000000400000000000000800000000000000000000000000000000000000000000000000010000000000000000000000000000000200000000000000000000200000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "status": 1,
+            "to": "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+          }
+        },
+        {
+          "label": "Register bank that will be revoked",
+          "hash": "0xe0dfd74b082c8c6a79aa063b159917e0f37595432fc021b407e71c80721effcd",
+          "receipt": {
+            "_type": "TransactionReceipt",
+            "blockHash": "0xba09ed44360b79664589484a75cff8ef48233b5948833ec20d1e4a293c2de3c1",
+            "blockNumber": 3,
+            "contractAddress": null,
+            "cumulativeGasUsed": "44980",
+            "from": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+            "gasPrice": "850828404",
+            "blobGasUsed": null,
+            "blobGasPrice": null,
+            "gasUsed": "44980",
+            "hash": "0xe0dfd74b082c8c6a79aa063b159917e0f37595432fc021b407e71c80721effcd",
+            "index": 0,
+            "logs": [
+              {
+                "_type": "log",
+                "address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+                "blockHash": "0xba09ed44360b79664589484a75cff8ef48233b5948833ec20d1e4a293c2de3c1",
+                "blockNumber": 3,
+                "data": "0x",
+                "index": 0,
+                "topics": [
+                  "0x4c1c996201a1e9fa2ff4cf082871fa26ce6d9c10c16e29f19b60c40f02bbea0e",
+                  "0x00000000000000000000000090f79bf6eb2c4f870365e785982e1f101e93b906"
+                ],
+                "transactionHash": "0xe0dfd74b082c8c6a79aa063b159917e0f37595432fc021b407e71c80721effcd",
+                "transactionIndex": 0
+              }
+            ],
+            "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040000000000000400000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000400000200000000000000000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000400000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000",
+            "status": 1,
+            "to": "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+          }
+        },
+        {
+          "label": "Verify bank before revocation",
+          "hash": "0x3fafe90277d2596e0496a67de72fab8b955fd4660c9a093cd8913da5075083bc",
+          "receipt": {
+            "_type": "TransactionReceipt",
+            "blockHash": "0x681a534b4921b172940f8b9f69e7d8f7a153139d4296a121dbfae49e076b19ed",
+            "blockNumber": 4,
+            "contractAddress": null,
+            "cumulativeGasUsed": "30895",
+            "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+            "gasPrice": "744634313",
+            "blobGasUsed": null,
+            "blobGasPrice": null,
+            "gasUsed": "30895",
+            "hash": "0x3fafe90277d2596e0496a67de72fab8b955fd4660c9a093cd8913da5075083bc",
+            "index": 0,
+            "logs": [
+              {
+                "_type": "log",
+                "address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+                "blockHash": "0x681a534b4921b172940f8b9f69e7d8f7a153139d4296a121dbfae49e076b19ed",
+                "blockNumber": 4,
+                "data": "0x0000000000000000000000000000000000000000000000000000000000000001",
+                "index": 0,
+                "topics": [
+                  "0x72c4e849c1b74df2902f524c8cb4e55772d14b6483d7131e61fe37d23b0452ad",
+                  "0x00000000000000000000000090f79bf6eb2c4f870365e785982e1f101e93b906"
+                ],
+                "transactionHash": "0x3fafe90277d2596e0496a67de72fab8b955fd4660c9a093cd8913da5075083bc",
+                "transactionIndex": 0
+              }
+            ],
+            "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000400000200000000000000000000000000001000000000000000000000000000000000000000000000000040000000000000001000000000400000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000",
+            "status": 1,
+            "to": "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+          }
+        },
+        {
+          "label": "Revoke bank verification",
+          "hash": "0x4b01beebef1b07211e8203e00f7c1adc16d85c1995b2fa3ebb46779d0331ca71",
+          "receipt": {
+            "_type": "TransactionReceipt",
+            "blockHash": "0x32de720b7ce53598f147f9465c8d511d4a6844e5fc653f9b2a3bbd7b4c579cdf",
+            "blockNumber": 5,
+            "contractAddress": null,
+            "cumulativeGasUsed": "30883",
+            "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+            "gasPrice": "651650881",
+            "blobGasUsed": null,
+            "blobGasPrice": null,
+            "gasUsed": "30883",
+            "hash": "0x4b01beebef1b07211e8203e00f7c1adc16d85c1995b2fa3ebb46779d0331ca71",
+            "index": 0,
+            "logs": [
+              {
+                "_type": "log",
+                "address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+                "blockHash": "0x32de720b7ce53598f147f9465c8d511d4a6844e5fc653f9b2a3bbd7b4c579cdf",
+                "blockNumber": 5,
+                "data": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                "index": 0,
+                "topics": [
+                  "0x72c4e849c1b74df2902f524c8cb4e55772d14b6483d7131e61fe37d23b0452ad",
+                  "0x00000000000000000000000090f79bf6eb2c4f870365e785982e1f101e93b906"
+                ],
+                "transactionHash": "0x4b01beebef1b07211e8203e00f7c1adc16d85c1995b2fa3ebb46779d0331ca71",
+                "transactionIndex": 0
+              }
+            ],
+            "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000400000200000000000000000000000000001000000000000000000000000000000000000000000000000040000000000000001000000000400000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000",
+            "status": 1,
+            "to": "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+          }
+        },
+        {
+          "label": "Register valid bank",
+          "hash": "0x6c07a1020480e3138fcdf7eb612de6207fc2540117da9c1894e4d2b8bafd806e",
+          "receipt": {
+            "_type": "TransactionReceipt",
+            "blockHash": "0xa3239d3b975921342c31563dddbb0298f22e73f2919d30c5c339f962d4a03b24",
+            "blockNumber": 6,
+            "contractAddress": null,
+            "cumulativeGasUsed": "44980",
+            "from": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+            "gasPrice": "570278376",
+            "blobGasUsed": null,
+            "blobGasPrice": null,
+            "gasUsed": "44980",
+            "hash": "0x6c07a1020480e3138fcdf7eb612de6207fc2540117da9c1894e4d2b8bafd806e",
+            "index": 0,
+            "logs": [
+              {
+                "_type": "log",
+                "address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+                "blockHash": "0xa3239d3b975921342c31563dddbb0298f22e73f2919d30c5c339f962d4a03b24",
+                "blockNumber": 6,
+                "data": "0x",
+                "index": 0,
+                "topics": [
+                  "0x4c1c996201a1e9fa2ff4cf082871fa26ce6d9c10c16e29f19b60c40f02bbea0e",
+                  "0x00000000000000000000000015d34aaf54267db7d7c367839aaf71a00a2c6a65"
+                ],
+                "transactionHash": "0x6c07a1020480e3138fcdf7eb612de6207fc2540117da9c1894e4d2b8bafd806e",
+                "transactionIndex": 0
+              }
+            ],
+            "logsBloom": "0x00000000040000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040000000000000400000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000300000000000000000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000000",
+            "status": 1,
+            "to": "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+          }
+        },
+        {
+          "label": "Verify valid bank",
+          "hash": "0xc53e50e69a2c250a017e2c70999cac37e8bd04971fd2c5406d4243e390c2c6e4",
+          "receipt": {
+            "_type": "TransactionReceipt",
+            "blockHash": "0x5996af223f723a0e9f4ca2f039f82a738fe09c1ad843306dddc08234c1f69fe1",
+            "blockNumber": 7,
+            "contractAddress": null,
+            "cumulativeGasUsed": "30895",
+            "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+            "gasPrice": "499100459",
+            "blobGasUsed": null,
+            "blobGasPrice": null,
+            "gasUsed": "30895",
+            "hash": "0xc53e50e69a2c250a017e2c70999cac37e8bd04971fd2c5406d4243e390c2c6e4",
+            "index": 0,
+            "logs": [
+              {
+                "_type": "log",
+                "address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+                "blockHash": "0x5996af223f723a0e9f4ca2f039f82a738fe09c1ad843306dddc08234c1f69fe1",
+                "blockNumber": 7,
+                "data": "0x0000000000000000000000000000000000000000000000000000000000000001",
+                "index": 0,
+                "topics": [
+                  "0x72c4e849c1b74df2902f524c8cb4e55772d14b6483d7131e61fe37d23b0452ad",
+                  "0x00000000000000000000000015d34aaf54267db7d7c367839aaf71a00a2c6a65"
+                ],
+                "transactionHash": "0xc53e50e69a2c250a017e2c70999cac37e8bd04971fd2c5406d4243e390c2c6e4",
+                "transactionIndex": 0
+              }
+            ],
+            "logsBloom": "0x00000000040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000300000000000000000000000000001000000000000000000000000000000000000000000000000040000000000000001000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000000",
+            "status": 1,
+            "to": "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+          }
+        }
+      ]
+    },
+    {
+      "name": "BloodDonation",
+      "address": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+      "artifactSha256": "96065a93ca8a830e3fa7003c9a4bf8e88cf62ff5b99cf3cb1fee0763873602da",
+      "deploymentReceipt": {
+        "_type": "TransactionReceipt",
+        "blockHash": "0xb64228847dcc3ec2ef0cbe220cd96abc34746dc6c09e7bf49db1b171c3b6c875",
+        "blockNumber": 9,
+        "contractAddress": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+        "cumulativeGasUsed": "531955",
+        "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+        "gasPrice": "382396661",
+        "blobGasUsed": null,
+        "blobGasPrice": null,
+        "gasUsed": "531955",
+        "hash": "0x08b09621d073d71ca2fe152abc7f76054b0ab5363f00a5672bb9b262b2084033",
+        "index": 0,
+        "logs": [],
+        "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "status": 1,
+        "to": null
+      },
+      "setupTransactions": [
+        {
+          "label": "Register unverified bank",
+          "hash": "0x60e761e0d6a86d05501125c3ec6b8ae7ca12eb7b2ae2caca09b4d0dd240ae617",
+          "receipt": {
+            "_type": "TransactionReceipt",
+            "blockHash": "0x3a01e65908550b56f1b1d785c0798e83bcdc8cdeff30a7579e8da9aebc10c4f9",
+            "blockNumber": 10,
+            "contractAddress": null,
+            "cumulativeGasUsed": "45002",
+            "from": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+            "gasPrice": "335444653",
+            "blobGasUsed": null,
+            "blobGasPrice": null,
+            "gasUsed": "45002",
+            "hash": "0x60e761e0d6a86d05501125c3ec6b8ae7ca12eb7b2ae2caca09b4d0dd240ae617",
+            "index": 0,
+            "logs": [
+              {
+                "_type": "log",
+                "address": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+                "blockHash": "0x3a01e65908550b56f1b1d785c0798e83bcdc8cdeff30a7579e8da9aebc10c4f9",
+                "blockNumber": 10,
+                "data": "0x",
+                "index": 0,
+                "topics": [
+                  "0x4c1c996201a1e9fa2ff4cf082871fa26ce6d9c10c16e29f19b60c40f02bbea0e",
+                  "0x0000000000000000000000003c44cdddb6a900fa2b585dd299e03d12fa4293bc"
+                ],
+                "transactionHash": "0x60e761e0d6a86d05501125c3ec6b8ae7ca12eb7b2ae2caca09b4d0dd240ae617",
+                "transactionIndex": 0
+              }
+            ],
+            "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000800000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000001000000000100000000000000",
+            "status": 1,
+            "to": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9"
+          }
+        },
+        {
+          "label": "Register bank that will be revoked",
+          "hash": "0x89508b1f40ff8d419c19aa37b91833d840260768e247e51b7b3f771c5829b9c5",
+          "receipt": {
+            "_type": "TransactionReceipt",
+            "blockHash": "0x6ec7c60ee4dd17ae5d1bf56a8bd53591be60ef4184aab41659ae8b9557ca02ec",
+            "blockNumber": 11,
+            "contractAddress": null,
+            "cumulativeGasUsed": "45002",
+            "from": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+            "gasPrice": "293576970",
+            "blobGasUsed": null,
+            "blobGasPrice": null,
+            "gasUsed": "45002",
+            "hash": "0x89508b1f40ff8d419c19aa37b91833d840260768e247e51b7b3f771c5829b9c5",
+            "index": 0,
+            "logs": [
+              {
+                "_type": "log",
+                "address": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+                "blockHash": "0x6ec7c60ee4dd17ae5d1bf56a8bd53591be60ef4184aab41659ae8b9557ca02ec",
+                "blockNumber": 11,
+                "data": "0x",
+                "index": 0,
+                "topics": [
+                  "0x4c1c996201a1e9fa2ff4cf082871fa26ce6d9c10c16e29f19b60c40f02bbea0e",
+                  "0x00000000000000000000000090f79bf6eb2c4f870365e785982e1f101e93b906"
+                ],
+                "transactionHash": "0x89508b1f40ff8d419c19aa37b91833d840260768e247e51b7b3f771c5829b9c5",
+                "transactionIndex": 0
+              }
+            ],
+            "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000020000000000000000000000000000000000000000010000000000000000001000000000100000000000000",
+            "status": 1,
+            "to": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9"
+          }
+        },
+        {
+          "label": "Verify bank before revocation",
+          "hash": "0x4ea4d9d2a3fbd1a561a5e94b1ff25ab2a8c070ac9eff1f625bbbeb20aa711996",
+          "receipt": {
+            "_type": "TransactionReceipt",
+            "blockHash": "0x2867230faf7d36bba14b081d0526036e2f7508f828ad31b6d8e1c44c88e278c1",
+            "blockNumber": 12,
+            "contractAddress": null,
+            "cumulativeGasUsed": "30917",
+            "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+            "gasPrice": "256934898",
+            "blobGasUsed": null,
+            "blobGasPrice": null,
+            "gasUsed": "30917",
+            "hash": "0x4ea4d9d2a3fbd1a561a5e94b1ff25ab2a8c070ac9eff1f625bbbeb20aa711996",
+            "index": 0,
+            "logs": [
+              {
+                "_type": "log",
+                "address": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+                "blockHash": "0x2867230faf7d36bba14b081d0526036e2f7508f828ad31b6d8e1c44c88e278c1",
+                "blockNumber": 12,
+                "data": "0x0000000000000000000000000000000000000000000000000000000000000001",
+                "index": 0,
+                "topics": [
+                  "0x72c4e849c1b74df2902f524c8cb4e55772d14b6483d7131e61fe37d23b0452ad",
+                  "0x00000000000000000000000090f79bf6eb2c4f870365e785982e1f101e93b906"
+                ],
+                "transactionHash": "0x4ea4d9d2a3fbd1a561a5e94b1ff25ab2a8c070ac9eff1f625bbbeb20aa711996",
+                "transactionIndex": 0
+              }
+            ],
+            "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000400000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000001000000000400000000020000000000000000000000000000000000000000010000000000000000001000000000100000000000000",
+            "status": 1,
+            "to": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9"
+          }
+        },
+        {
+          "label": "Revoke bank verification",
+          "hash": "0xd4ea83ea0198fa772dbc08e437b0adfea03b2a7614e251647668205919802bf1",
+          "receipt": {
+            "_type": "TransactionReceipt",
+            "blockHash": "0x2c40088efb42146704b7b98a9ecf4c1dbc91fd63fe9b06b2282b18d191972a7a",
+            "blockNumber": 13,
+            "contractAddress": null,
+            "cumulativeGasUsed": "30905",
+            "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+            "gasPrice": "224851134",
+            "blobGasUsed": null,
+            "blobGasPrice": null,
+            "gasUsed": "30905",
+            "hash": "0xd4ea83ea0198fa772dbc08e437b0adfea03b2a7614e251647668205919802bf1",
+            "index": 0,
+            "logs": [
+              {
+                "_type": "log",
+                "address": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+                "blockHash": "0x2c40088efb42146704b7b98a9ecf4c1dbc91fd63fe9b06b2282b18d191972a7a",
+                "blockNumber": 13,
+                "data": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                "index": 0,
+                "topics": [
+                  "0x72c4e849c1b74df2902f524c8cb4e55772d14b6483d7131e61fe37d23b0452ad",
+                  "0x00000000000000000000000090f79bf6eb2c4f870365e785982e1f101e93b906"
+                ],
+                "transactionHash": "0xd4ea83ea0198fa772dbc08e437b0adfea03b2a7614e251647668205919802bf1",
+                "transactionIndex": 0
+              }
+            ],
+            "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000400000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000001000000000400000000020000000000000000000000000000000000000000010000000000000000001000000000100000000000000",
+            "status": 1,
+            "to": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9"
+          }
+        },
+        {
+          "label": "Register valid bank",
+          "hash": "0x5787c43a90fda289232ad6f21a5e3c5a7ef388a917b40746179aab4001a6749b",
+          "receipt": {
+            "_type": "TransactionReceipt",
+            "blockHash": "0x4c605405528fb6f46bbcb93c71099c997e10f6c33bb774b638769439df545a15",
+            "blockNumber": 14,
+            "contractAddress": null,
+            "cumulativeGasUsed": "45002",
+            "from": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+            "gasPrice": "196773697",
+            "blobGasUsed": null,
+            "blobGasPrice": null,
+            "gasUsed": "45002",
+            "hash": "0x5787c43a90fda289232ad6f21a5e3c5a7ef388a917b40746179aab4001a6749b",
+            "index": 0,
+            "logs": [
+              {
+                "_type": "log",
+                "address": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+                "blockHash": "0x4c605405528fb6f46bbcb93c71099c997e10f6c33bb774b638769439df545a15",
+                "blockNumber": 14,
+                "data": "0x",
+                "index": 0,
+                "topics": [
+                  "0x4c1c996201a1e9fa2ff4cf082871fa26ce6d9c10c16e29f19b60c40f02bbea0e",
+                  "0x00000000000000000000000015d34aaf54267db7d7c367839aaf71a00a2c6a65"
+                ],
+                "transactionHash": "0x5787c43a90fda289232ad6f21a5e3c5a7ef388a917b40746179aab4001a6749b",
+                "transactionIndex": 0
+              }
+            ],
+            "logsBloom": "0x00000000040000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000020000000000000000004000000000000000000000000000000000000000001000000000100000000000000",
+            "status": 1,
+            "to": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9"
+          }
+        },
+        {
+          "label": "Verify valid bank",
+          "hash": "0x7b42eeab450f7685555dc0e618814745b9a42f1fea013901eb51f1f223241f2e",
+          "receipt": {
+            "_type": "TransactionReceipt",
+            "blockHash": "0x8f6f6e2e1f2b36132d56f0738b5711a1748907e32a36ff8bc4eccc97b9634ee9",
+            "blockNumber": 15,
+            "contractAddress": null,
+            "cumulativeGasUsed": "30917",
+            "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+            "gasPrice": "172213882",
+            "blobGasUsed": null,
+            "blobGasPrice": null,
+            "gasUsed": "30917",
+            "hash": "0x7b42eeab450f7685555dc0e618814745b9a42f1fea013901eb51f1f223241f2e",
+            "index": 0,
+            "logs": [
+              {
+                "_type": "log",
+                "address": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+                "blockHash": "0x8f6f6e2e1f2b36132d56f0738b5711a1748907e32a36ff8bc4eccc97b9634ee9",
+                "blockNumber": 15,
+                "data": "0x0000000000000000000000000000000000000000000000000000000000000001",
+                "index": 0,
+                "topics": [
+                  "0x72c4e849c1b74df2902f524c8cb4e55772d14b6483d7131e61fe37d23b0452ad",
+                  "0x00000000000000000000000015d34aaf54267db7d7c367839aaf71a00a2c6a65"
+                ],
+                "transactionHash": "0x7b42eeab450f7685555dc0e618814745b9a42f1fea013901eb51f1f223241f2e",
+                "transactionIndex": 0
+              }
+            ],
+            "logsBloom": "0x00000000040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000100000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000001000000000000000000020000000000000000004000000000000000000000000000000000000000001000000000100000000000000",
+            "status": 1,
+            "to": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9"
+          }
+        }
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "contract": "BloodDonationBaseline",
+      "name": "Authorized inventory update succeeds",
+      "method": "Mined local transaction",
+      "status": "PASS",
+      "inputs": [
+        "City Hospital",
+        "LIC12345",
+        "{\"O+\":20}",
+        "2026-10-21T12:00:00Z"
+      ],
+      "hash": "0xa6b9f373b2943a773fdf037fb1750d91626d2c54c8fcc87c72a8eb013a96db80",
+      "receipt": {
+        "_type": "TransactionReceipt",
+        "blockHash": "0x305ccb44f00bd1b53aa651f5d819ed7bd269e49d370cc9e3d62bc2e48907fc50",
+        "blockNumber": 8,
+        "contractAddress": null,
+        "cumulativeGasUsed": "119047",
+        "from": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+        "gasPrice": "436777150",
+        "blobGasUsed": null,
+        "blobGasPrice": null,
+        "gasUsed": "119047",
+        "hash": "0xa6b9f373b2943a773fdf037fb1750d91626d2c54c8fcc87c72a8eb013a96db80",
+        "index": 0,
+        "logs": [
+          {
+            "_type": "log",
+            "address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+            "blockHash": "0x305ccb44f00bd1b53aa651f5d819ed7bd269e49d370cc9e3d62bc2e48907fc50",
+            "blockNumber": 8,
+            "data": "0x",
+            "index": 0,
+            "topics": [
+              "0x3dcf3c8539dce745e1c9273b56ef9b74f6a26bf514ffe70a04d4ef09de4addfd",
+              "0x00000000000000000000000015d34aaf54267db7d7c367839aaf71a00a2c6a65"
+            ],
+            "transactionHash": "0xa6b9f373b2943a773fdf037fb1750d91626d2c54c8fcc87c72a8eb013a96db80",
+            "transactionIndex": 0
+          }
+        ],
+        "logsBloom": "0x00000000040010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008300000000000000000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000400000000000000000",
+        "status": 1,
+        "to": "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+      }
+    },
+    {
+      "contract": "BloodDonationBaseline",
+      "name": "Unregistered bank update is rejected",
+      "method": "staticCall",
+      "status": "PASS",
+      "revert": {
+        "data": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000001342616e6b206e6f74207265676973746572656400000000000000000000000000",
+        "name": "Error",
+        "args": [
+          "Bank not registered"
+        ]
+      }
+    },
+    {
+      "contract": "BloodDonationBaseline",
+      "name": "Unverified bank update is rejected",
+      "method": "staticCall",
+      "status": "PASS",
+      "revert": {
+        "data": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000001142616e6b206e6f74207665726966696564000000000000000000000000000000",
+        "name": "Error",
+        "args": [
+          "Bank not verified"
+        ]
+      }
+    },
+    {
+      "contract": "BloodDonationBaseline",
+      "name": "Update after verification revocation is rejected",
+      "method": "staticCall",
+      "status": "PASS",
+      "revert": {
+        "data": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000001142616e6b206e6f74207665726966696564000000000000000000000000000000",
+        "name": "Error",
+        "args": [
+          "Bank not verified"
+        ]
+      }
+    },
+    {
+      "contract": "BloodDonationBaseline",
+      "name": "Non-admin verification is rejected",
+      "method": "staticCall",
+      "status": "PASS",
+      "revert": {
+        "data": "0x08c379a0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000184f6e6c792061646d696e2063616e2063616c6c20746869730000000000000000",
+        "name": "Error",
+        "args": [
+          "Only admin can call this"
+        ]
+      }
+    },
+    {
+      "contract": "BloodDonation",
+      "name": "Authorized inventory update succeeds",
+      "method": "Mined local transaction",
+      "status": "PASS",
+      "inputs": [
+        "bafkreibtn2mh2xzmre6iyllyk4cjzix2w5iw6q5e76s3hsog5mpzn5yife"
+      ],
+      "hash": "0xeadd7bd9f87e50f1d39f8b31ad42dfb4949513a8f330fe0dfd60cd55b539225f",
+      "receipt": {
+        "_type": "TransactionReceipt",
+        "blockHash": "0x501a5a89ae144fb07f4f90daa15f1237e015fdaf94a79ee7d3f42a080a9f8090",
+        "blockNumber": 16,
+        "contractAddress": null,
+        "cumulativeGasUsed": "93572",
+        "from": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+        "gasPrice": "150709332",
+        "blobGasUsed": null,
+        "blobGasPrice": null,
+        "gasUsed": "93572",
+        "hash": "0xeadd7bd9f87e50f1d39f8b31ad42dfb4949513a8f330fe0dfd60cd55b539225f",
+        "index": 0,
+        "logs": [
+          {
+            "_type": "log",
+            "address": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+            "blockHash": "0x501a5a89ae144fb07f4f90daa15f1237e015fdaf94a79ee7d3f42a080a9f8090",
+            "blockNumber": 16,
+            "data": "0x",
+            "index": 0,
+            "topics": [
+              "0x3dcf3c8539dce745e1c9273b56ef9b74f6a26bf514ffe70a04d4ef09de4addfd",
+              "0x00000000000000000000000015d34aaf54267db7d7c367839aaf71a00a2c6a65"
+            ],
+            "transactionHash": "0xeadd7bd9f87e50f1d39f8b31ad42dfb4949513a8f330fe0dfd60cd55b539225f",
+            "transactionIndex": 0
+          }
+        ],
+        "logsBloom": "0x00000000040010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000020000000000000000004000000000000000000000000000000000000000001000000400100000000000000",
+        "status": 1,
+        "to": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9"
+      }
+    },
+    {
+      "contract": "BloodDonation",
+      "name": "Unregistered bank update is rejected",
+      "method": "staticCall",
+      "status": "PASS",
+      "revert": {
+        "data": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000001342616e6b206e6f74207265676973746572656400000000000000000000000000",
+        "name": "Error",
+        "args": [
+          "Bank not registered"
+        ]
+      }
+    },
+    {
+      "contract": "BloodDonation",
+      "name": "Unverified bank update is rejected",
+      "method": "staticCall",
+      "status": "PASS",
+      "revert": {
+        "data": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000001142616e6b206e6f74207665726966696564000000000000000000000000000000",
+        "name": "Error",
+        "args": [
+          "Bank not verified"
+        ]
+      }
+    },
+    {
+      "contract": "BloodDonation",
+      "name": "Update after verification revocation is rejected",
+      "method": "staticCall",
+      "status": "PASS",
+      "revert": {
+        "data": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000001142616e6b206e6f74207665726966696564000000000000000000000000000000",
+        "name": "Error",
+        "args": [
+          "Bank not verified"
+        ]
+      }
+    },
+    {
+      "contract": "BloodDonation",
+      "name": "Non-admin verification is rejected",
+      "method": "staticCall",
+      "status": "PASS",
+      "revert": {
+        "data": "0x08c379a0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000184f6e6c792061646d696e2063616e2063616c6c20746869730000000000000000",
+        "name": "Error",
+        "args": [
+          "Only admin can call this"
+        ]
+      }
+    }
+  ],
+  "complete": true,
+  "summary": {
+    "passed": 10,
+    "failed": 0,
+    "unresolved": 0,
+    "total": 10
+  },
+  "finishedAt": "2026-10-22T08:43:09.242Z"
+}

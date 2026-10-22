@@ -1,12 +1,11 @@
-import { defineConfig } from "hardhat/config";
+import { defineConfig, configVariable } from "hardhat/config";
 import hardhatEthers from "@nomicfoundation/hardhat-ethers";
-import hardhatIgnitionEthers from "@nomicfoundation/hardhat-ignition-ethers";
 import * as dotenv from "dotenv";
 
 dotenv.config({ quiet: true });
 
 export default defineConfig({
-  plugins: [hardhatEthers, hardhatIgnitionEthers],
+  plugins: [hardhatEthers],
 
   solidity: {
     version: "0.8.20",
@@ -20,24 +19,12 @@ export default defineConfig({
   },
 
   networks: {
-    localhost: {
+    sepolia: {
       type: "http",
       chainType: "l1",
-      url: "http://127.0.0.1:8545",
+      chainId: 11155111,
+      url: configVariable("SEPOLIA_RPC_URL"),
+      accounts: [configVariable("PRIVATE_KEY")],
     },
-
-    // Sepolia is included only when its RPC URL is configured.
-    ...(process.env.SEPOLIA_RPC_URL
-      ? {
-          sepolia: {
-            type: "http" as const,
-            chainType: "l1" as const,
-            url: process.env.SEPOLIA_RPC_URL,
-            accounts: process.env.PRIVATE_KEY?.trim()
-              ? [process.env.PRIVATE_KEY.trim()]
-              : [],
-          },
-        }
-      : {}),
   },
 });

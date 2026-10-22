@@ -1,0 +1,20 @@
+{
+  "Baseline": "0x773Ceb52DFBa30CC9394682a38092f90049B0D69",
+  "Hybrid": "0x3Fd87E33BCC9108A373Ae8a2259E09BB6388aEAf",
+  "chainId": "11155111",
+  "timestamp": "2026-10-21T07:26:25.335Z",
+  "baseline": {
+    "contractName": "BloodDonationBaseline",
+    "address": "0x773Ceb52DFBa30CC9394682a38092f90049B0D69",
+    "transactionHash": "0xab5e79b0f1f5809967f81c6d1b60d7293be645e83822938410497557bfa85374",
+    "blockNumber": 11960923,
+    "deploymentGas": "4697354"
+  },
+  "hybrid": {
+    "contractName": "BloodDonation",
+    "address": "0x3Fd87E33BCC9108A373Ae8a2259E09BB6388aEAf",
+    "transactionHash": "0xb949ac5a85895e382eb97d7baefca2f2896b64883ffc73facbe7f4ceaff99091",
+    "blockNumber": 11960924,
+    "deploymentGas": "3583931"
+  }
+}
