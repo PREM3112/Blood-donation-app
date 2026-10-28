@@ -16,8 +16,8 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install Dependencies
-        run: npm install ethers dotenv axios cheerio
+      - name: Install dependencies
+        run: npm install ethers dotenv axios cheerio --legacy-peer-deps
 
       - name: Run Oracle Script
         env:
